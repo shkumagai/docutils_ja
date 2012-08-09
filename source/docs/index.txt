@@ -269,7 +269,9 @@ __ http://www.python.org/peps/pep-0287.html
 * `Docutils Runtime Settings <api/runtime-settings.html>`__
 * (`Docutils Transforms <ref/transforms.html>`__ should be moved here)
 
-`PEP 258`_ is an overview of the architecture of Docutils.
+.. `PEP 258`_ is an overview of the architecture of Docutils.
+
+`PEP 258`_ は Docutils の構造の概要です。
 
 
 .. _howto:
@@ -297,7 +299,9 @@ __ http://www.python.org/peps/pep-0287.html
 ``dev/``: コア開発者向け 開発ノートとプラン
 ===========================================
 
-Docutils-general:
+.. Docutils-general:
+
+Docutils 一般:
 
 * `Docutils Hacker's Guide <dev/hacking.html>`__
 * `Docutils Distributor's Guide <dev/distributing.html>`__
@@ -313,7 +317,9 @@ Docutils-general:
 * `Plan for Enthought API Documentation Tool <dev/enthought-plan.html>`_
 * `Enthought API Documentation Tool RFP <dev/enthought-rfp.html>`_
 
-reStructuredText_:
+.. reStructuredText_:
+
+reStructuredText_ について:
 
 * `A Record of reStructuredText Syntax Alternatives
   <dev/rst/alternatives.html>`__
