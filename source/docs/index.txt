@@ -149,7 +149,9 @@ Docutils 一般:
 
 .. `reStructuredText <http://docutils.sourceforge.net/rst.html>`_:
 
-   * `A ReStructuredText Primer (HTML) <user/rst/quickstart.html>`__ (or
+`reStructuredText <http://docutils.sourceforge.net/rst.html>`_ について:
+
+.. * `A ReStructuredText Primer (HTML) <user/rst/quickstart.html>`__ (or
      `text source <user/rst/quickstart.txt>`__)
    * `Quick reStructuredText <user/rst/quickref.html>`__ (user reference)
    * `reStructuredText Cheat Sheet <user/rst/cheatsheet.txt>`__ (text
@@ -157,8 +159,6 @@ Docutils 一般:
    * `reStructuredText Demonstration <user/rst/demo.html>`_ (a
      demonstration of most reStructuredText features; you can also have a
      look at the `text source <user/rst/demo.txt>`__)
-
-`reStructuredText <http://docutils.sourceforge.net/rst.html>`_ について:
 
 * `ReStructuredText 入門 (HTML) <user/rst/quickstart.html>`__ (または
   `テキストソース <user/rst/quickstart.txt>`__)
@@ -174,7 +174,9 @@ Docutils 一般:
 
 エディタサポート:
 
-* `Emacs support for reStructuredText <user/emacs.html>`_
+.. * `Emacs support for reStructuredText <user/emacs.html>`_
+
+* `Emacs サポート for reStructuredText <user/emacs.html>`_
 
 
 .. _ref:
