@@ -1,5 +1,9 @@
+.. ==========================================
+    Docutils_ Project Documentation Overview
+   ==========================================
+
 ==========================================
- Docutils_ Project Documentation Overview
+ Docutils_ プロジェクト ドキュメント 概要
 ==========================================
 
 :Author: David Goodger
@@ -8,8 +12,11 @@
 :Revision: $Revision$
 :Copyright: This document has been placed in the public domain.
 
-The latest working documents may be accessed individually below, or
-from the ``docs`` directory of the `Docutils distribution`_.
+.. The latest working documents may be accessed individually below, or
+   from the ``docs`` directory of the `Docutils distribution`_.
+
+作業中の最新ドキュメントは、下記から個別にアクセスするか、
+`Docutils distribution`_ の ``docs`` ディレクトリからアクセスできます。
 
 .. _Docutils: http://docutils.sourceforge.net/
 .. _Docutils distribution: http://docutils.sourceforge.net/#download
@@ -17,51 +24,93 @@ from the ``docs`` directory of the `Docutils distribution`_.
 .. contents::
 
 
-Docutils Stakeholders
-=====================
+.. Docutils Stakeholders
+   =====================
 
-Docutils stakeholders can be categorized in several groups:
+Docutils が対象とする人たち
+===========================
 
-1. End-users: users of reStructuredText and the Docutils tools.
-   Although some are developers (e.g. Python developers utilizing
-   reStructuredText for docstrings in their source), many are not.
+.. Docutils stakeholders can be categorized in several groups:
 
-2. Client-developers: developers using Docutils as a library,
-   programmers developing *with* Docutils.
+   1. End-users: users of reStructuredText and the Docutils tools.
+      Although some are developers (e.g. Python developers utilizing
+      reStructuredText for docstrings in their source), many are not.
 
-3. Component-developers: those who implement application-specific
-   components, directives, and/or roles, separately from Docutils.
+   2. Client-developers: developers using Docutils as a library,
+      programmers developing *with* Docutils.
 
-4. Core-developers: developers of the Docutils codebase and
-   participants in the Docutils project community.
+   3. Component-developers: those who implement application-specific
+      components, directives, and/or roles, separately from Docutils.
 
-5. Re-implementers: developers of alternate implementations of
-   Docutils.
+   4. Core-developers: developers of the Docutils codebase and
+      participants in the Docutils project community.
 
-There's a lot of overlap between these groups.  Most (perhaps all)
-core-developers, component-developers, client-developers, and
-re-implementers are also end-users.  Core-developers are also
-client-developers, and may also be component-developers in other
-projects.  Component-developers are also client-developers.
+   5. Re-implementers: developers of alternate implementations of
+      Docutils.
+
+Docutils が対象とする人々はいくつかに分類することができます:
+
+1. エンドユーザ: reStructuredText や Docutils ツールの利用者です。
+   中には開発者 (例えば、ソースの docstrings に reStucturedText を活用する
+   Python開発者など) もいますが、多くはありません。
+
+2. クライアントの開発者: Docutils をライブラリとして使う開発者や、
+   Docutils を使った開発をするプログラマです。
+
+3. コンポーネントの開発者: Docutils とは別に、アプリケーション固有の
+   コンポーネントや、ディレクティブ、ロール等を実装する人です。
+
+4. コアの開発者: Docutils コードベースの開発者や、Docutils プロジェクトの
+   コミュニティの関係者です。
+
+5. 再実装する開発者: Docutils の別の実装を行う開発者です。
 
 
-Project Fundamentals
-====================
+.. There's a lot of overlap between these groups.  Most (perhaps all)
+   core-developers, component-developers, client-developers, and
+   re-implementers are also end-users.  Core-developers are also
+   client-developers, and may also be component-developers in other
+   projects.  Component-developers are also client-developers.
 
-These files are for all Docutils stakeholders.  They are kept at the
-top level of the Docutils project directory.
+これらのグループの間には重複する箇所がたくさんあります。ほとんど (おそらくすべて)
+のコア開発者、コンポーネント開発者、クライアント開発者、そして再実装者もエンド
+ユーザでもあります。
+コア開発者はクライアント開発者でもあり、他のプロジェクトではコンポーネントベースの
+開発者かも知れません。コンポーネント開発者は、クライアント開発者でもあります。
 
-:README.txt_: Project overview: quick-start, requirements,
-              installation, and usage.
-:COPYING.txt_: Conditions for Docutils redistribution, with links to
-               licenses.
-:FAQ.txt_: Docutils Frequently Asked Questions.  If you have a
-           question or issue, there's a good chance it's already
-           answered here.
-:BUGS.txt_: A list of known bugs, and how to report a bug.
-:RELEASE-NOTES.txt_: Summary of the major changes in recent releases.
-:HISTORY.txt_: Detailed change history log.
-:THANKS.txt_: Acknowledgements.
+
+.. Project Fundamentals
+   ====================
+
+プロジェクトの要旨
+==================
+
+.. These files are for all Docutils stakeholders.  They are kept at the
+   top level of the Docutils project directory.
+
+   :README.txt_: Project overview: quick-start, requirements,
+                 installation, and usage.
+   :COPYING.txt_: Conditions for Docutils redistribution, with links to
+                  licenses.
+   :FAQ.txt_: Docutils Frequently Asked Questions.  If you have a
+              question or issue, there's a good chance it's already
+              answered here.
+   :BUGS.txt_: A list of known bugs, and how to report a bug.
+   :RELEASE-NOTES.txt_: Summary of the major changes in recent releases.
+   :HISTORY.txt_: Detailed change history log.
+   :THANKS.txt_: Acknowledgements.
+
+これらのファイルは全てのプロジェクト関係者のためのものです。
+Docutils プロジェクトディレクトリのトップにあります。
+
+:README.txt_: プロジェクト概要: クイックスタート、要件、インストール方法、使い方です。
+:COPYING.txt_: Docutils の再配布の条件、およびライセンスへのリンクです。
+:FAQ.txt_: Docutils のよくある質問です。
+           もし疑問や問題がある場合、ここに既に答えがあるかも知れません。
+:BUGS.txt_: 既知のバグのリスト、およびバグレポートの仕方です。
+:RELEASE-NOTES.txt_: 最近のリリースの主要な変更点の概要です。
+:HISTORY.txt_: 詳細な変更履歴です。
+:THANKS.txt_: 謝辞です。
 
 .. _README.txt: ../README.html
 .. _BUGS.txt: ../BUGS.html
@@ -75,23 +124,32 @@ top level of the Docutils project directory.
 
 .. _user:
 
-``user/``: Introductory & Tutorial Material for End-Users
-=========================================================
+.. ``user/``: Introductory & Tutorial Material for End-Users
+   =========================================================
 
-Docutils-general:
+``user/``: エンドユーザ向け 紹介 & チュートリアル素材
+=====================================================
+
+.. Docutils-general:
+
+Docutils 一般:
 
 * `Docutils Front-End Tools <user/tools.html>`__
 * `Docutils Configuration <user/config.html>`__
 * `Docutils Mailing Lists <user/mailing-lists.html>`__
 * `Docutils Link List <user/links.html>`__
 
-Writer-specific:
+.. Writer-specific:
+
+特定の Writer について:
 
 * `Easy Slide Shows With reStructuredText & S5 <user/slide-shows.html>`__
 * `Docutils LaTeX Writer <user/latex.html>`__
 * `Docutils ODF/OpenOffice/odt Writer <user/odt.html>`__
 
-`reStructuredText <http://docutils.sourceforge.net/rst.html>`_:
+.. `reStructuredText <http://docutils.sourceforge.net/rst.html>`_:
+
+`reStructuredText <http://docutils.sourceforge.net/rst.html>`_ について:
 
 * `A ReStructuredText Primer (HTML) <user/rst/quickstart.html>`__ (or
   `text source <user/rst/quickstart.txt>`__)
@@ -102,21 +160,32 @@ Writer-specific:
   demonstration of most reStructuredText features; you can also have a
   look at the `text source <user/rst/demo.txt>`__)
 
-Editor support:
+.. Editor support:
+
+エディタサポート:
 
 * `Emacs support for reStructuredText <user/emacs.html>`_
 
 
 .. _ref:
 
-``ref/``: Reference Material for All Groups
-===========================================
+.. ``ref/``: Reference Material for All Groups
+   ===========================================
 
-Many of these files began as developer specifications, but now that
-they're mature and used by end-users and client-developers, they have
-become reference material.  Successful specs evolve into refs.
+``ref/``: 全ユーザ向け リファレンス素材
+=======================================
 
-Docutils-general:
+.. Many of these files began as developer specifications, but now that
+   they're mature and used by end-users and client-developers, they have
+   become reference material.  Successful specs evolve into refs.
+
+これらのファイルの多くは開発者の仕様として始まりましたが、いまは成熟し、
+エンドユーザやクライアント開発者に利用され、参考資料となっています。
+成功した仕様はリファレンスに進化します。
+
+.. Docutils-general:
+
+Docutils 一般:
 
 * `The Docutils Document Tree <ref/doctree.html>`__ (incomplete)
 * `Docutils Transforms <ref/transforms.html>`__
@@ -124,10 +193,15 @@ Docutils-general:
 * `OASIS XML Exchange Table Model Declaration Module
   <ref/soextblx.dtd>`__ (CALS tables DTD module)
 
-Although not in the "ref" directory, `PEP 258`_ is a must-read
-reference for any Docutils developer.
+.. Although not in the "ref" directory, `PEP 258`_ is a must-read
+   reference for any Docutils developer.
 
-reStructuredText_:
+"refs" ディレクトリにはありませんが、 `PEP 258`_ は あらゆる Docutils 開発者が
+必読のリファレンスです。
+
+.. reStructuredText_:
+
+reStructuredText_ について:
 
 * `An Introduction to reStructuredText <ref/rst/introduction.html>`__
   (includes the `Goals <ref/rst/introduction.html#goals>`__ and
@@ -138,7 +212,9 @@ reStructuredText_:
 * `reStructuredText Standard Definition Files
   <ref/rst/definitions.html>`_
 
-Prehistoric:
+.. Prehistoric:
+
+有史以前のもの:
 
 * `Setext Documents Mirror
   <http://docutils.sourceforge.net/mirror/setext.html>`__
@@ -146,8 +222,11 @@ Prehistoric:
 
 .. _peps:
 
-``peps/``: Python Enhancement Proposals
-=======================================
+.. ``peps/``: Python Enhancement Proposals
+   =======================================
+
+``peps/``: Python の拡張提案 (PEP)
+==================================
 
 * `PEP 256: Docstring Processing System Framework`__ is a high-level
   generic proposal.  [`PEP 256`__ in the `master repository`_]
@@ -159,8 +238,11 @@ Prehistoric:
 * `PEP 287: reStructuredText Docstring Format`__ proposes a standard
   markup syntax.  [`PEP 287`__ in the `master repository`_]
 
-Please note that PEPs in the `master repository`_ may not be current,
-whereas the local versions are.
+.. Please note that PEPs in the `master repository`_ may not be current,
+   whereas the local versions are.
+
+`master repository`_ にある PEP は最新ではなかったり、ローカルバージョンで
+あったりするので注意してください。
 
 __ peps/pep-0256.html
 __ http://www.python.org/peps/pep-0256.html
@@ -176,8 +258,11 @@ __ http://www.python.org/peps/pep-0287.html
 
 .. _api:
 
-``api/``: API Reference Material for Client-Developers
-======================================================
+.. ``api/``: API Reference Material for Client-Developers
+   ======================================================
+
+``api/``: クライアント開発者向け API リファレンス素材
+=====================================================
 
 * `The Docutils Publisher <api/publisher.html>`__
 * `Inside A Docutils Command-Line Front-End Tool <api/cmdline-tool.html>`__
@@ -189,8 +274,11 @@ __ http://www.python.org/peps/pep-0287.html
 
 .. _howto:
 
-``howto/``: Instructions for Developers
-=======================================
+.. ``howto/``: Instructions for Developers
+   =======================================
+
+``howto/``: 開発者の手引き
+==========================
 
 * **Security:** `Deploying Docutils Securely <howto/security.html>`__
 * `Writing HTML (CSS) Stylesheets for Docutils
@@ -203,8 +291,11 @@ __ http://www.python.org/peps/pep-0287.html
 
 .. _dev:
 
-``dev/``: Development Notes and Plans for Core-Developers
-=========================================================
+.. ``dev/``: Development Notes and Plans for Core-Developers
+   =========================================================
+
+``dev/``: コア開発者向け 開発ノートとプラン
+===========================================
 
 Docutils-general:
 
