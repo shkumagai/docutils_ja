@@ -45,6 +45,8 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	cp source/docs/user/rst/quickref.html $(BUILDDIR)/html/docs/user/rst/
+	cp source/docs/user/rst/cheatsheet.txt $(BUILDDIR)/html/docs/user/rst/
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
