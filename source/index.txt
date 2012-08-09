@@ -1,0 +1,3 @@
+.. coding: utf-8
+
+`ドキュメント トップへ <./docs/index.html>`_
