@@ -741,9 +741,8 @@ reStructuredText にはテーブルを記述する文法が 2 つあります。
    as a gap spanning one or more lines, marking text divisions
    or signaling changes in subject, time, point of view, or emphasis.
 
-区切り線は一般に小説や短編の中で、1 行または複数行の切れ目として現れ、
-文の区切りを示したり、主題や時間、視点の変化の合図であったり、強調を
-意味したりします。
+区切り線は一般に小説や短編の中で、1 行または複数行の切れ目をつかって、
+文の区切り、主題や時間、視点の変化の合図、強調などを表します。
 
 
 .. _explicit-markup:
