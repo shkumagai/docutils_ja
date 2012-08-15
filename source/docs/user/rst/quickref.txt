@@ -1,0 +1,966 @@
+.. created: 2012-08-09
+
+===========================
+ 早わかり reStructuredText
+===========================
+
+http://docutils.sourceforge.net/docs/user/rst/quickref.html
+
+Being a cheat-sheet for reStructuredText
+
+Updated: $Date$
+
+.. :copyright: This document has been placed in the public domain.
+
+:copyright: このドキュメントはパブリック・ドメインです。
+
+.. The full details of the markup may be found on the reStructuredText page.
+   This document is just intended as a reminder.
+
+マークアップの完全な詳細は `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ のページで
+見つけることができます。この文書は単なるリマインダを意図しています。
+
+.. Links that look like "(details)" point into the HTML version of the full reStructuredText
+   specification document. These are relative links; if they don't work, please use the master
+   "Quick reStructuredText" document.
+
+"(details)" というリンクは完全な `reStructuredText 仕様書`_ のHTML版を指しています。これらは相対リンクです;
+もしリンクが動作しない場合は、 `Quick reStructuredText`_ のマスタ文書を使ってください。
+
+.. _`reStructuredText 仕様書`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. _`Quick reStructuredText`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+
+.. contents::
+
+.. inline-markup:
+
+インラインマークアップ
+======================
+
+インラインマークアップは、文章中の単語や文節に文字スタイル（斜体や太字等）と機能（ハイパーリンク等）を与えます。
+
+.. list-table:: インラインマークアップ
+   :header-rows: 1
+   :widths: 20 20 50
+
+   * - プレーンテキスト
+     - 表示
+     - ノート
+
+   * - .. code-block:: none
+
+          *強調*
+     - *強調*
+     - イタリック（斜体）として表示されます
+
+   * - .. code-block:: none
+
+          **強い強調**
+     - **強い強調**
+     - ボールド（太字）として表示されます
+
+   * - .. code-block:: none
+
+          `用語テキスト`
+     - `用語テキスト`
+     - ドメイン又はアプリケーション固有の意味をもつテキストとして表示されます。
+       索引のエントリや（プログラム識別子のような）明示的記述的マークアップとして利用できます
+
+   * - .. code-block:: none
+
+          ``インラインリテラル``
+     - ``インラインリテラル``
+     - 等幅テキストとして表示されます。空白（スペース）は保持されますが、改行は保持されません
+
+   * - .. code-block:: none
+
+          reference_
+     - reference_
+     - シンプルな、１ワードのハイパーリンク参照です。 `ハイパーリンクターゲット`_ を参照して下さい
+
+   * - .. code-block:: none
+
+          `フレーズ参照`_
+     - `フレーズ参照`_
+     - 空白や記号を伴うハイパーリンク参照はバッククォートで括る必要があります。
+       `ハイパーリンクターゲット`_ を参照して下さい
+
+   * - .. code-block:: none
+
+          anonymous__
+     - anonymous__
+     - ハイパーリンク参照のアンダースコアが２つの場合は、匿名参照です。
+       `ハイパーリンクターゲット`_ を参照して下さい
+
+   * - .. code-block:: none
+
+          _`インライン内部ターゲット`
+     - _`インライン内部ターゲット`
+     - テキストの相互参照をします。
+       `ハイパーリンクターゲット`_ を参照して下さい
+
+   * - .. code-block:: none
+
+          |置換参照|
+     - (右のノート参照)
+     - 置換定義で定義された内容に置換されます。
+       テキスト、画像、ハイパーリンクもしくはそれらを組み合わせたものを
+       置き換えることができます
+
+   * - .. code-block:: none
+
+          脚注参照 [1]_
+     - `脚注参照`_
+     - `脚注参照`_ を参照してください
+
+   * - .. code-block:: none
+
+          引用参照 [CIT2002]_
+     - `引用参照`_
+     - `引用参照`_ を参照してください
+
+   * - .. code-block:: none
+
+          http://docutils.sf.net/
+     - http://docutils.sf.net/
+     - 一般的なハイパーリンクです
+
+アスタリスク ('\*') 、バッククォート ('\`') 、バーティカルバー ('\|') 及び
+アンダースコア ('\_') はインラインの区切り文字です。
+アスタリスク、バッククォート及びバーティカルバーは引用符のようにマークアップする
+単語やフレーズを対応する記号で囲みます。空白や他の引用符はそれらの外にある必要が
+あり、引用符の直ぐ内側に空白を含めることはできません。
+もし文字そのものとしてこれらインライン区切り文字を利用する場合には、
+エスケープする (バックスラッシュを用いる) か、それらを引用 (二重バッククォートを
+用いる、すなわちインラインリテラルを利用する) します。
+
+
+.. _escaping-with-backslashes:
+
+バックスラッシュによるエスケープ
+================================
+
+reStructuredText は特別な意味をもつマークアップ文字を上書きして、文字そのものを
+用いるためにバックスラッシュ ('\\') を使います。
+バックスラッシュそのものを使うには、バックスラッシュでエスケープします ('\\\\') 。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 100 100
+
+   * - 元のreStructuredText
+     - 表示結果
+
+   * - .. code-block:: none
+
+          *escape* ``with`` "\"
+     - *escape* ``with`` "\"
+
+   * - .. code-block:: none
+
+          \*escape* \``with`` "\\"
+     - \*escape* \``with`` "\\"
+
+もちろん、Pythonの文字列でも正しく reStructuredText になるように、
+全てのバックスラッシュをエスケープする必要があります。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 100 100
+
+   * - Pythonの文字列
+     - 表示結果
+
+   * - .. code-block:: none
+
+          r"""\*escape* \`with` "\\""""
+     - \*escape* \``with`` "\\"
+
+   * - .. code-block:: none
+
+          """\\*escape* \\`with` "\\\\""""
+     - \*escape* \``with`` "\\"
+
+   * - .. code-block:: none
+
+          """\*escape* \`with` "\\""""
+     - *escape* ``with`` "\"
+
+
+.. _section-structure:
+
+セクション構造
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         =====
+         Title
+         =====
+
+         Subtitle
+         --------
+
+         Titles are underlined (or over-
+         and underlined) with a printing
+         nonalphanumeric 7-bit ASCII
+         character. Recommended choices
+         are "``= - ` : ' " ~ ^ _ * + # < >``".
+         The underline/overline must be at
+         least as long as the title text.
+
+         A lone top-level (sub)section
+         is lifted up to be the document's
+         (sub)title.
+
+     - .. raw:: html
+
+          <p><font size="+2"><strong>Title</strong></font></p>
+          <p><font size="+1"><strong>Subtitle</strong></font></p>
+          <p>Titles are underlined (or over-
+            and underlined) with a printing
+            nonalphanumeric 7-bit ASCII
+            character. Recommended choices
+            are "<samp>= - ` : ' " ~ ^ _ * + # &lt; &gt;</samp>".
+            The underline/overline must be at
+            least as long as the title text.</p>
+          <p>A lone top-level (sub)section is
+            lifted up to be the document's
+            (sub)title.</p>
+
+.. _paragraphs:
+
+段落
+====
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         これは段落です。
+
+         段落は左端を揃え、通常は空白行で
+         区切ります。
+
+     - これは段落です。
+
+       段落は左端を揃え、通常は空白行で
+       区切ります。
+
+.. _bullet-lists:
+
+記号付きリスト
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         記号付きリスト:
+
+         - これは項目 1
+         - これは項目 2
+
+         - リストの記号は "-", "\*" または "+" が使えます。
+
+           複数行にわたるテキストは、リスト記号と空白文字の後ろに
+           左端を揃えて記述します。
+
+         リストの最初の前と、最後の項目の後ろには空白行が
+         必要ですが、各項目の間には任意です。
+
+     - 記号付きリスト:
+
+       - これは項目 1
+       - これは項目 2
+
+       - リストの記号は "-", "\*" または "+" が使えます。
+
+         複数行にわたるテキストは、リスト記号と空白文字の後ろに
+         左端を揃えて記述します。
+
+       リストの最初の前と、最後の項目の後ろには空白行が
+       必要ですが、各項目の間には任意です。
+
+
+.. _enumerated-lists:
+
+番号付きリスト
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         番号付きリスト:
+
+         3. これが最初の項目
+         4. これが二つ目の項目
+         5. 番号は、アラビア数字、
+            単一の文字、ローマ数字が使えます。
+         6. リストの項目は番号の順に揃えるべきですが、
+            必ずしも 1 で始まる必要はありません。
+            （ただし、フォーマッタによっては任意の番号
+            からの開始を適切に扱えないことがあります）。
+         #. この項目は自動で番号が振られます。
+
+     - 番号付きリスト:
+
+       3. これが最初の項目
+       4. これが二つ目の項目
+       5. 番号は、アラビア数字、
+          単一の文字、ローマ数字が使えます。
+       6. リストの項目は番号の順に揃えるべきですが、
+          必ずしも 1 で始まる必要はありません。
+          （ただし、フォーマッタによっては任意の番号
+          からの開始を適切に扱えないことがあります）。
+       #. この項目は自動で番号が振られます。
+
+
+.. _definition-lists:
+
+定義リスト
+==========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         定義リスト:
+
+         何を
+           定義リストは、用語と定義を関連付けします。
+
+         どうやって
+           用語は 1 行のフレーズ、定義は 1 行または
+           それ以上の段落または body 要素で、関連する
+           用語に対してインデントします。
+           用語の定義の間の空行を入れることはできません。
+
+     - 定義リスト:
+
+       何を
+         定義リストは、用語と定義を関連付けします。
+
+       どうやって
+         用語は 1 行のフレーズ、定義は 1 行または
+         それ以上の段落または body 要素で、関連する
+         用語に対してインデントします。
+         用語の定義の間の空行を入れることはできません。
+
+
+.. _field-lists:
+
+フィールドリスト
+================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         :著者:
+             Tony J. (Tibs) Ibbs,
+             David Goodger
+             (およびその他多くの親切な方々)
+
+         :版: 1.0 of 2001/08/08
+         :献辞: 父へ
+
+     - :著者:
+           Tony J. (Tibs) Ibbs,
+           David Goodger
+           (およびその他多くの親切な方々)
+
+       :版: 1.0 of 2001/08/08
+       :献辞: 父へ
+
+.. Field lists are used as part of an extension syntax, such as
+   options for `directives`_, or database-like records meant for
+   further processing. Field lists may also be used as generic
+   two-column table constructs in documents.
+
+フィールドリストは `ディレクティブ`_ のオプションやデータベースライクな
+レコードのような、さらなる処理を意図した拡張構文の一部として使われています。
+フィールドリストは、ドキュメント内の汎用的な 2 列の表構成要素としても
+使用できます。
+
+
+.. _option-lists:
+
+オプションリスト
+================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         -a            コマンドラインオプション "a" です。
+         -b file       オプションは引数および長い説明文を
+                       つけることもできます。
+         --long        ロングスタイルのオプションも可能です。
+         --input=file  ロングオプションも引数を
+                       持つことができます。
+         /V            DOS/VMS スタイルのオプションも可能です。
+
+     - -a            コマンドラインオプション "a" です。
+       -b file       オプションは引数および長い説明文を
+                     つけることもできます。
+       --long        ロングスタイルのオプションも可能です。
+       --input=file  ロングオプションも引数を
+                     持つことができます。
+       /V            DOS/VMS スタイルのオプションも可能です。
+
+
+.. _literal-blocks:
+
+整形済みブロック
+================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         コロン 2 つのみの段落は、それに続く
+         インデントまたはクオートされた文章が
+         整形済みブロックであることを示します。
+
+         ::
+
+           空白文字、改行、空行、および
+           あらゆる種類の ( *this* や \this のような)
+           マークアップはブロックによって保持されます。
+
+           '::' だけを含む段落は、結果には表示されません。
+
+         ``::`` は任意の段落の最も最後に追加することも
+         できます。 ``::`` は空白文字が前にある場合は
+         表示されません。 ``::`` の前にテキストがある
+         場合は、このように単一のコロンに変換されます::
+
+           この形式の便利な使い方です。
+
+         整形済みブロックはテキストのインデント位置が
+         先行する段落のインデント位置に戻ると終了します。
+         これは、以下のようなことが可能なことを意味します::
+
+               ここから始まり
+             ここへ続き
+           ここで終わる。
+
+         行ごとにクオートすることによって、インデントせずに
+         整形済みブロックを使うこともできます::
+
+         > メールの引用や
+         > Haskell のプログラムコードを書くのに便利です。
+
+     - コロン 2 つのみの段落は、それに続く
+       インデントまたはクオートされた文章が
+       整形済みブロックであることを示します。
+
+       ::
+
+         空白文字、改行、空行、および
+         あらゆる種類の ( *this* や \this のような)
+         マークアップはブロックによって保持されます。
+
+         '::' だけを含む段落は、結果には表示されません。
+
+       ``::`` は任意の段落の最も最後に追加することも
+       できます。 ``::`` は空白文字が前にある場合は
+       表示されません。 ``::`` の前にテキストがある
+       場合は、このように単一のコロンに変換されます::
+
+         この形式の便利な使い方です。
+
+       整形済みブロックはテキストのインデント位置が
+       先行する段落のインデント位置に戻ると終了します。
+       これは、以下のようなことが可能なことを意味します::
+
+             ここから始まり
+           ここへ続き
+         ここで終わる。
+
+       行ごとにクオートすることによって、インデントせずに
+       整形済みブロックを使うこともできます::
+
+       > メールの引用や
+       > Haskell のプログラムコードを書くのに便利です。
+
+
+.. _line-blocks:
+
+ラインブロック
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         | ラインブロックは演説、詩、および
+         | 修飾のないリストを書くために使います。
+         |
+         | 各行は縦棒 ("|") で始めます。
+         |     改行や行頭のインデントは保持されます。
+         | 縦棒の代わりに空白で始まる継続行は
+           長い文の一部としてまとめられます。
+
+     - | ラインブロックは演説、詩、および
+       | 修飾のないリストを書くために使います。
+       |
+       | 各行は縦棒 ("|") で始めます。
+       |     改行や行頭のインデントは保持されます。
+       | 縦棒の代わりに空白で始まる継続行は
+         長い文の一部としてまとめられます。
+
+
+.. _block-quotes:
+
+引用ブロック
+============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         引用ブロックは単に:
+
+             インデントされた段落で、
+
+                 入れ子にすることもできます。
+
+     - 引用ブロックは単に:
+
+           インデントされた段落で、
+
+               入れ子にすることもできます。
+
+.. Use empty comments to separate indentation contexts,
+   such as block quotes and directive contents.
+
+引用ブロックとディレクティブの内容、のようにインデントの文脈を
+分割するには `空白コメント`_ を使います。
+
+
+.. _doctest-blocks:
+
+Doctestブロック
+===============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         Doctest ブロックは Python の対話型セッションです。
+         これは "``>>>``" で始まり、空行で終わります。
+
+         >>> print "This is a doctest block."
+         This is a doctest block.
+
+     - Doctest ブロックは Python の対話型セッションです。
+       これは "``>>>``" で始まり、空行で終わります。
+
+       >>> print "This is a doctest block."
+       This is a doctest block.
+
+
+.. _tables:
+
+テーブル
+========
+
+.. There are two syntaxes for tables in reStructuredText.
+   Grid tables are complete but cumbersome to create.
+   Simple tables are easy to create but limited (no row spans, etc.).
+
+reStructuredText にはテーブルを記述する文法が 2 つあります。
+グリッドテーブルはよく出来ていますが、作るのが面倒です。
+シンプルテーブルは作り易いですが、制限があります (行跨ぎがない、など) 。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         グリッドテーブル:
+
+         +------------+------------+-------------+
+         | ヘッダ 1   | ヘッダ 2   | ヘッダ 3    |
+         +============+============+=============+
+         | 本体 行 1  | 列 2       | 列 3        |
+         +------------+------------+-------------+
+         | 本体 行 2  | セルは列を跨ぐことが     |
+         |            | できます。               |
+         +------------+------------+-------------+
+         | 本体 行 3  | セルは行を | - セルは    |
+         +------------+ 跨ぐことが | - ブロックを|
+         | 本体 行 4  | できます。 | - 含むことが|
+         |            |            | - できます。|
+         +------------+------------+-------------+
+
+     - グリッドテーブル:
+
+       +------------+------------+-------------+
+       | ヘッダ 1   | ヘッダ 2   | ヘッダ 3    |
+       +============+============+=============+
+       | 本体 行 1  | 列 2       | 列 3        |
+       +------------+------------+-------------+
+       | 本体 行 2  | セルは列を跨ぐことが     |
+       |            | できます。               |
+       +------------+------------+-------------+
+       | 本体 行 3  | セルは行を | - セルは    |
+       +------------+ 跨ぐことが | - ブロックを|
+       | 本体 行 4  | できます。 | - 含むことが|
+       |            |            | - できます。|
+       +------------+------------+-------------+
+
+   * - ::
+
+         シンプルテーブル:
+
+         =====  =====  ======
+             入力       出力
+         ------------  ------
+           A      B    A or B
+         =====  =====  ======
+         False  False  False
+         True   False  True
+         False  True   True
+         True   True   True
+         =====  =====  ======
+
+     - シンプルテーブル:
+
+       =====  =====  ======
+           入力       出力
+       ------------  ------
+         A      B    A or B
+       =====  =====  ======
+       False  False  False
+       True   False  True
+       False  True   True
+       True   True   True
+       =====  =====  ======
+
+
+.. _transitions:
+
+区切り線
+========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - ::
+
+         区切り線のマーカは、4 つまたはそれ以上の記号の
+         繰り返しからなる水平線です。
+
+         ------------
+
+         区切り線は、セクションや文書の最初や最後にするべきもの
+         ではありませんし、2 つの区切り線を続けて並べるべきでも
+         ありません。
+
+     - .. raw:: html
+
+          <p>区切り線のマーカは、4 つまたはそれ以上の記号の
+             繰り返しからなる水平線です。</p>
+
+          <hr>
+
+          <p>区切り線は、セクションや文書の最初や最後にするべきもの
+             ではありませんし、2 つの区切り線を続けて並べるべきでも
+             ありません。</P>
+
+.. Transitions are commonly seen in novels and short fiction,
+   as a gap spanning one or more lines, marking text divisions
+   or signaling changes in subject, time, point of view, or emphasis.
+
+区切り線は一般に小説や短編の中で、1 行または複数行の切れ目として現れ、
+文の区切りを示したり、主題や時間、視点の変化の合図であったり、強調を
+意味したりします。
+
+
+.. _explicit-markup:
+
+明示的マークアップ
+==================
+
+明示的マークアップブロックは注釈 (脚注)、直接的な紙媒体を持たないもの
+(ハイパーリンクターゲット、コメント)、特別な処理が必要なもの (ディレクティブ)を
+構成するために使います。これらはすべて２つのピリオドと空白、いわゆる
+"明示的なマークアップの開始" で始まります。
+
+.. _footnotes:
+
+脚注参照
+--------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: footnotes1.txt
+     - .. include:: footnotes1.txt
+
+   * - .. literalinclude:: footnotes2.txt
+     - .. include:: footnotes2.txt
+
+   * - .. literalinclude:: footnotes3.txt
+     - .. include:: footnotes3.txt
+
+自動採番の脚注の番号は、参照される順番ではなく脚注の (記述の) 順番で決まります。
+自動採番の脚注をラベルなしで使う場合、参照と脚注は相互に同じ順番になっている
+必要があります。自動シンボルの脚注の場合も同様です。
+
+
+.. _citations:
+
+引用参照
+--------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: citations.txt
+     - .. include:: citations.txt
+
+
+.. _reference:
+.. _`フレーズ参照`:
+.. _hyperlink-targets:
+
+ハイパーリンクターゲット
+------------------------
+
+.. _external-hyperlink-targets:
+
+外部ハイパーリンクターゲット
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: external-hyperlink-targets1.txt
+     - .. include:: external-hyperlink-targets1.txt
+
+`埋め込み形式` はHTMLドキュメントへの表示に適した表示方法で、 `呼び出し形式` は
+リンクが明示的に表示される必要がある印刷したドキュメントに適しています。
+"target-form" ディレクティブを使うことによって、 `呼び出し形式` を使うことができます。
+
+reStructuredText は高い可読性を保つためにURLの埋込む方法も提供しています。
+かぎ括弧を使って、対象のURLを直接埋め込むことができます。
+以下は、上述の例と全く同じです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: external-hyperlink-targets2.txt
+     - .. include:: external-hyperlink-targets2.txt
+
+.. _internal-hyperlink-targets:
+
+内部ハイパーリンクターゲット
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: internal-hyperlink-targets.txt
+     - .. include:: internal-hyperlink-targets.txt
+
+
+.. _indirect-hyperlink-targets:
+
+間接ハイパーリンクターゲット
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: indirect-hyperlink-targets.txt
+     - .. include:: indirect-hyperlink-targets.txt
+
+二つ目のハイパーリンクターゲット ("__"から始まっている行) は間接ハイパーリンク
+ターゲット ("Python_"を参照することで Python公式Webサイトを間接的に指している)
+であり、暗黙ハイパーリンクターゲットでもあります。
+テキストの中の２重アンダースコア接尾辞は、匿名ハイパーリンク参照であることを
+示します。匿名ハイパーリンクターゲットでは、参照テキストは再現されません。
+これは長いテキストや使い捨ての参照には便利ですが、同期が取れなくなってしまわない
+ように参照先の近くに保持しておくようにすべきです。
+
+
+.. _implicit-hyperlink-targets:
+
+暗黙的ハイパーリンクターゲット
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+セクションタイトル、脚注、引用は自動的にハイパーリンクが生成されます
+(タイトルテキストや脚注/引用ラベルをハイパーリンク名として使います) 。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. code-block:: none
+
+          Implicit references, like `reStructuredText`_.
+     - Implicit references, like `reStructuredText`_.
+
+
+.. _directives:
+
+ディレクティブ
+==============
+
+ディレクティブは汎用の拡張メカニズムで、新しい文法を追加することなく
+新しい構造のサポートを追加する方法です。
+標準のディレクティブの説明は `reStructuredText Derectives`_ を参照してください。
+
+.. _`reStructuredText Derectives`: http://docutils.sourceforge.net/docs/ref/rst/directives.html
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. code-block:: none
+
+          .. image:: ../_static/image/sphinx.png
+     - .. image:: ../_static/image/sphinx.png
+
+
+.. _substitution-references-and-definitions:
+
+置換参照と定義
+==============
+
+置換は画像や任意の構造物をテキストに埋め込む、インラインディレクティブのようなものです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: substitution-references-and-definitions.txt
+     - .. include:: substitution-references-and-definitions.txt
+
+.. _`空白コメント`:
+.. _comments:
+
+コメント
+========
+
+明示的マークアップで始まっていて上述のいずれの文法も使っていない構造体は
+全てコメントです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 80 100
+
+   * - プレーンテキスト
+     - 表示結果
+
+   * - .. literalinclude:: comment1.txt
+     - .. include:: comment1.txt
+
+   * - .. literalinclude:: comment2.txt
+     - .. include:: comment2.txt
+
+
+__ reference_
