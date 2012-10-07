@@ -1,3 +1,244 @@
-.. coding: utf-8
+.. ===================================
+    Docutils: Documentation Utilities
+   ===================================
 
-`ドキュメント トップへ <./docs/index.html>`_
+===============================================
+ Docutils: ドキュメンテーション ユーティリティ
+===============================================
+
+.. ---------------------------------------------------------
+    Written in Python, for General- and Special-Purpose Use
+   ---------------------------------------------------------
+
+---------------------------------
+ Python 製、汎用および特殊目的用
+---------------------------------
+
+.. Docutils is an open-source text processing system for processing
+   plaintext documentation into useful formats, such as HTML, LaTeX,
+   man-pages, open-document or XML.
+   It includes reStructuredText_, the easy to read, easy to use,
+   what-you-see-is-what-you-get plaintext markup language.
+
+Docutils はオープンソースのプレーンテキスト文書を HTML や LaTeX、manページ、\
+オープンドキュメントもしくは XML のような便利なフォーマットに変換するための\
+テキスト処理システムです。
+読み易く、使い易い、 *見たままのものが得られる* プレーンテキストの\
+マークアップ言語 reStructuredText_ を含みます。
+
+----------------------------------------------------------------------
+
+.. Overview
+   ========
+
+概要
+====
+
+.. **To get up & running quickly**, see the Quick-Start_ section of the
+   README_ file.
+
+**とりあえず始める & 実行してみる** には、README_ ファイルの クイックスタート_ の\
+節を見てください。
+
+.. All **documentation** can be reached from the `Docutils Project
+   Documentation Overview`_.
+
+全ての **ドキュメント** は `Docutils プロジェクト ドキュメント 概要`_ から\
+辿ることができます。
+
+.. To the developers of an open source project, **feedback** is a great
+   motivator and is very welcome.  We also rely on feedback for
+   determining what features to implement.  Thus, if you tell us what you
+   need, you may just get it!  Please post any feedback to the
+   Docutils-users_ mailing list.
+
+オープンソースプロジェクトの開発者にとって、 **フィードバック** は大きな\
+動機付けになりますし、おおいに歓迎します。私たちはどの機能を実装するのかを\
+決定するのも、フィードバックに依存しています。
+したがって、あなたが必要なモノを教えてくれれば、手に入れることができるかも\
+しれません！
+Docutils-users のメーリングリストにフィードバックを投稿してください。
+
+.. All **discussion** about Docutils takes place on the `mailing lists`_.
+
+全ての Docutils に関する **議論** は `メーリングリスト`_ で行われています。
+
+.. If you find a **bug**, please file a `bug report`_ or send email to
+   the Docutils-users_ mailing list.  **Patch** submissions should be
+   filed in the `patch tracker`_ (preferred) or sent to Docutils-develop_
+   (where you will be asked to send them to the `patch tracker`_).
+
+もしも **バグ** を見つけた場合は、 `バグレポート`_ を書くか、 Docutils-users_ \
+メーリングリストにメールを送ってください。
+**パッチ** の提出は `パッチトラッカー`_ (こちらの方が好ましい) に提出するか、\
+Docutils-develop_ （\ `パッチトラッカー`_ に送るように指示されるでしょう）に\
+送付すべきです。
+
+.. We welcome all kinds of **contributions**.  There's a `To Do list`_
+   full of interesting ideas awaiting a champion.  If you have any
+   questions regarding how to extend Docutils, please feel free to ask on
+   the Docutils-develop_ mailing list.  Please also consider **donating**
+   to Docutils: |donate|.
+
+私たちは、あらゆる種類の **貢献** でも歓迎します。
+面白いアイデアのチャンピオンを待っている、 `To Do リスト`_ があります。
+Docutils を拡張する方法についての質問があれば、 Docutils-develop_ メーリングリストに
+お気軽にお尋ねください。
+また、 Docutils への寄付も考慮してください: |donate|
+
+.. The only **requirement** for running Docutils is Python_ 2.3 or later.
+   (For Docutils 0.5, Python 2.2.1+ is required.
+   Up to Docutils 0.4, Python 2.1 is required.)
+   From version 0.6, Docutils is compatible with Python 3 (see README_ for
+   details).
+
+Docutils を実行するための **要件** は、 Python 2.3 またはそれ以降であることのみです。\
+（Docutils 0.5 は Python 2.2.1 以上が必要です。Docutils 0.4 以降は Python 2.1 が必要です。）\
+バージョン 0.6 から、 Docutils は Python 3 と互換性があります（詳しくは README_ を\
+参照してください）。
+
+.. Docutils is in active development and APIs should be considered
+   **experimental** subject to change at any time.  Although *any time* is a time
+   after serious thought and discussion.
+
+Docutils は開発が活発であり、API は **実験的** でいつでも変更される可能性があることを\
+考慮する必要があります。
+
+*いつでも* は真剣な考慮や議論の後の話ですが。
+
+.. Download
+   ========
+
+ダウンロード
+============
+
+.. We recommend that you use a snapshot_ from `Docutils' Subversion
+   repository`_. The snapshots usually contain *more features* and *fewer bugs*
+   than the "official" releases |---| they're not only for developers!
+
+私たちは `Docutils' Subversion repository`_ から `スナップショット`_ を使うことを推奨します。
+snapshot は通常、公式リリースよりも *より多くの機能* を含み *バグが少ない* からです。
+|---| これらは開発者のためだけではありません！
+
+.. The latest **release package** is `docutils-0.9.1.tgz`__.  It was
+   released on 2012-06-17 and is mostly intended for distributors.  See
+   the `release notes`_ for a list of changes since the previous release
+   (0.8.1).
+
+最新の **リリースパッケージ** は `docutils-0.9.1.tgz`__ です。
+これは 2012-06-17 にリリースされたもので、主にディストリビュータを対象としています。
+前回のリリース（0.8.1）からの変更点の一覧は、 `リリースノート`_ を参照してください。
+
+__ http://prdownloads.sourceforge.net/docutils/docutils-0.9.1.tar.gz?download
+.. _release notes: RELEASE-NOTES.html#release-0-9-1-2012-06-17
+.. _`リリースノート`: RELEASE-NOTES.html#release-0-9-1-2012-06-17
+
+.. The Sandbox_ contains experimental, contributed code. You can download a
+   complete `snapshot of the Sandbox`_ or `browse the Sandbox`_ to download a
+   subset.
+
+Sandbox_ は実験的なコントリビューションのコードを含んでいます。\
+完全な `Sandbox のスナップショット`_ をダウンロードしたり、そのサブセットを\
+ダウンロードするために `Sandbox をブラウズ`_ することができます。
+
+..
+   .. attention:: The repository was moved on 2011-12-02 at revision 7232
+      from BerliOS to |SourceForge|_.
+
+      Subversion repository was hosted by |BerliOS|_ for years,
+      *many thanks for the support*.
+
+.. attention:: リポジトリは 2011-12-02 にリビジョン 7232 の時点で、BerliOS から
+   |SourceForge|_ に移動しました。
+
+   Subversion リポジトリを BerliOS でホストして頂いた数年間、**ご協力に感謝致します。**
+
+.. class:: credits
+
+   Web site, tracker and mailing lists and subversion repository hosted by |SourceForge|_.
+   Powered by |Python|_.
+
+.. class:: hidden
+
+   Google should index the mailing lists: `Docutils-users
+   <http://news.gmane.org/group/gmane.text.docutils.user/last=/force_load=t>`__,
+   `Docutils-develop
+   <http://news.gmane.org/group/gmane.text.docutils.devel/last=/force_load=t>`__,
+   and `Docutils-checkins
+   <http://news.gmane.org/group/gmane.text.docutils.cvs/last=/force_load=t>`__.
+
+.. |---| unicode:: U+02014 .. em dash
+   :trim:
+.. _Deploying Docutils Securely: docs/howto/security.html
+.. _Docutils sprint:
+   http://wiki.python.org/moin/PyCon2006/Sprints/DocutilsSprint
+.. _PyCon 2006: http://us.pycon.org/TX2006/HomePage
+.. _dugui: http://docutils.sourceforge.net/sandbox/dugui/
+.. _LaTeX math support:
+   http://docutils.sourceforge.net/sandbox/latex_directive/
+.. _`スナップショット`:
+.. _snapshot:
+   http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/docutils/?view=tar
+.. _`Sandbox のスナップショット`:
+.. _Snapshot of the Sandbox:
+   http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/sandbox/?view=tar
+.. _`Sandbox をブラウズ`:
+.. _browse the Sandbox:
+   http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/sandbox/
+.. _`バグレポート`:
+.. _bug report: http://sourceforge.net/tracker/?group_id=38414&atid=422030
+.. _`パッチトラッカー`:
+.. _patch tracker: http://sourceforge.net/tracker/?group_id=38414&atid=422032
+.. _`メーリングリスト`:
+.. _mailing lists: docs/user/mailing-lists.html
+.. _Docutils-users: docs/user/mailing-lists.html#docutils-users
+.. _Docutils-develop: docs/user/mailing-lists.html#docutils-develop
+.. _sandbox: sandbox/README.html
+.. _reStructuredText: rst.html
+.. _project files page:
+   http://sourceforge.net/project/showfiles.php?group_id=38414
+.. _`To Do リスト`:
+.. _To Do list: docs/dev/todo.html
+.. _README: README.html
+.. _Quick-Start: README.html#quick-start
+.. _Docutils Project Documentation Overview: docs/index.html
+.. _Docutils' Subversion repository: docs/dev/repository.html
+.. |donate| image:: http://images.sourceforge.net/images/project-support.jpg
+   :target: http://sourceforge.net/donate/index.php?group_id=38414
+   :align: middle
+   :width: 88
+   :height: 32
+   :alt: Support the Docutils project!
+.. |SourceForge| image::
+   http://sourceforge.net/sflogo.php?group_id=38414
+   :alt: SourceForge Logo
+   :align: middle
+   :class: borderless
+   :width: 88
+   :height: 31
+.. |BerliOS| image::
+   http://developer.berlios.de/sflogo.php?group_id=2920
+   :alt: BerliOS Logo
+   :align: middle
+   :class: borderless
+   :width: 124
+   :height: 32
+.. |Python| image:: python.png
+   :alt: Python Logo
+   :align: middle
+   :class: borderless
+   :width: 193
+   :height: 32
+.. _BerliOS: http://developer.berlios.de/
+.. _SourceForge: http://sourceforge.net/
+.. _Python: http://www.python.org/
+
+
+
+..
+   Local Variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   End:
