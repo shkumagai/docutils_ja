@@ -199,11 +199,16 @@ Docutils 一般:
 
 Docutils 一般:
 
-* `The Docutils Document Tree <ref/doctree.html>`__ (incomplete)
-* `Docutils Transforms <ref/transforms.html>`__
-* `Docutils Generic DTD <ref/docutils.dtd>`__
-* `OASIS XML Exchange Table Model Declaration Module
-  <ref/soextblx.dtd>`__ (CALS tables DTD module)
+.. * `The Docutils Document Tree <ref/doctree.html>`__ (incomplete)
+   * `Docutils Transforms <ref/transforms.html>`__
+   * `Docutils Generic DTD <ref/docutils.dtd>`__
+   * `OASIS XML Exchange Table Model Declaration Module
+     <ref/soextblx.dtd>`__ (CALS tables DTD module)
+
+* `Docutils ドキュメントツリー <ref/doctree.html>`__ (不完全)
+* `Docutils 変換 <ref/transforms.html>`__
+* `Docutils 汎用 DTD <ref/docutils.dtd>`__
+* `OASIS XML 互換 テーブルモデル宣言モジュール <ref/soextblx.dtd>`__
 
 .. Although not in the "ref" directory, `PEP 258`_ is a must-read
    reference for any Docutils developer.
