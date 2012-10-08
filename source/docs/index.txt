@@ -149,7 +149,7 @@ Docutils 一般:
 
 .. `reStructuredText <http://docutils.sourceforge.net/rst.html>`_:
 
-`reStructuredText <http://docutils.sourceforge.net/rst.html>`_ について:
+`reStructuredText <../rst.html>`_ について:
 
 .. * `A ReStructuredText Primer (HTML) <user/rst/quickstart.html>`__ (or
      `text source <user/rst/quickstart.txt>`__)

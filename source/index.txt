@@ -37,13 +37,13 @@ Docutils はオープンソースのプレーンテキスト文書を HTML や L
 .. **To get up & running quickly**, see the Quick-Start_ section of the
    README_ file.
 
-**とりあえず始める & 実行してみる** には、README_ ファイルの クイックスタート_ の\
+**とりあえず始める & 実行してみる** には、README_ ファイルの Quick-Start_ の\
 節を見てください。
 
 .. All **documentation** can be reached from the `Docutils Project
    Documentation Overview`_.
 
-全ての **ドキュメント** は `Docutils プロジェクト ドキュメント 概要`_ から\
+全ての **ドキュメント** は `Docutils Project Documentation Overview`_ から\
 辿ることができます。
 
 .. To the developers of an open source project, **feedback** is a great

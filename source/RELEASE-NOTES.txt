@@ -1,6 +1,10 @@
-========================
- Docutils Release Notes
-========================
+.. ========================
+    Docutils Release Notes
+   ========================
+
+=========================
+ Docutils リリースノート
+=========================
 
 :Contact: grubert@users.sourceforge.net
 :Date: $Date$
@@ -9,95 +13,174 @@
 :Copyright: This document has been placed in the public domain.
 
 
-This document summarizes the major changes in recent releases.  For a
-more detailed list of changes, please see the `Docutils History`_.
+.. This document summarizes the major changes in recent releases.  For a
+   more detailed list of changes, please see the `Docutils History`_.
+
+このドキュメントは最近のリリースに含まれる主な変更をまとめたものです。
+変更の一覧の詳細については、 `Docutils History`_ を参照してください。
 
 .. _Docutils History: HISTORY.html
 
 .. contents::
 
-Future changes
-==============
+.. Future changes
+   ==============
 
-* Support for Python 2.3 will be dropped in version 0.10.
+予定している変更
+================
 
-* docutils/math, docutils/error_reporting.py, and
-  docutils/urischemes.py will move to the utils package
-  Code importing these modules needs to adapt, e.g.::
+.. * Support for Python 2.3 will be dropped in version 0.10.
+
+* version 0.10 において、Python 2.3 のサポートを外す。
+
+.. * docutils/math, docutils/error_reporting.py, and
+     docutils/urischemes.py will move to the utils package
+     Code importing these modules needs to adapt, e.g.::
+
+       try:
+           import docutils.math as math
+       except ImportError:
+           import docutils.utils.math as math
+
+* docutils/math, docutils/error_reporting.py, および
+  docutils/urischemes.py を utils パッケージに移動する。
+  これらのモジュールのインポートするコードは対応が必要。例えば ::
 
     try:
         import docutils.math as math
-    except ImportError:
+    except: ImportError:
         import docutils.utils.math as math
 
-* docutils.io.FileInput/FileOutput will no longer do a
-  system-exit on IOError by default.
+.. * docutils.io.FileInput/FileOutput will no longer do a
+     system-exit on IOError by default.
 
-  Roadmap:
+     Roadmap:
 
-  :0.10: change of default behaviour to the equivalent of
-         ``handle_io_errors=False``,
-         ignore and deprecate the `handle_io_errors` option.
-         (allows us to clean up Docutils code and remove the error handling
-         code from the FileInput/FileOutput classes)
-  :0.10 + n:   deprecation warning to stderr if FileInput/FileOutput
-               is called with `handle_io_errors`,
-  :0.10 + n+1: remove the `handle_io_errors` option.
+     :0.10: change of default behaviour to the equivalent of
+            ``handle_io_errors=False``,
+            ignore and deprecate the `handle_io_errors` option.
+            (allows us to clean up Docutils code and remove the error handling
+            code from the FileInput/FileOutput classes)
+     :0.10 + n:   deprecation warning to stderr if FileInput/FileOutput
+                  is called with `handle_io_errors`,
+     :0.10 + n+1: remove the `handle_io_errors` option.
+
+* docutils.io.FileInput/FileOutput がデフォルトで IOError の際に
+  system-exit しないようにする。
+
+  ロードマップ:
+
+  :0.10: デフォルトの振る舞いを ``handle_io_errors=False`` 相当に
+         変更し、 `handle_io_errors` オプションを無視、非推奨とする。
+         （これで FileInput/FileOutput クラスからエラー処理コードを
+         削除し、Docutils コードを掃除することができます）
+  :0.10 + n:   `handle_io_errors` と共に FileInput/FileOutput が
+               呼び出された際に、非推奨の警告を標準出力に出し、
+  :0.10 + n+1: `handle_io_errors` オプションを削除する。
 
 
 Release 0.9.1 (2012-06-17)
 ==========================
 
-* General:
+.. * General:
 
-  Several fixes for Python 3 usage.
+     Several fixes for Python 3 usage.
+
+* 全般:
+
+  Python 3 で利用するためのいくつかの修正。
+
+.. * docutils/setup.py
+
+     - Fix [ 3527842 ]. Under Python_3, converted tests and tools were
+       installed in the PYTHONPATH. Converted tests are now
+       stored in ``docutils/test3/``, tools no longer need conversion.
+
+       If you installed one of Docutils versions 0.7 ... 0.9 with
+       ``setup.py install`` under Python_3, remove the spurious
+       ``test/`` and ``tools/`` directories in the site library root.
 
 * docutils/setup.py
 
-  - Fix [ 3527842 ]. Under Python 3, converted tests and tools were
-    installed in the PYTHONPATH. Converted tests are now
-    stored in ``docutils/test3/``, tools no longer need conversion.
+  - [ 3527842 ] を修正。 Python_3 環境下では、変換された test と
+    tools は PYTHONPATH にインストールされていました。
+    変換された test は今後 ``docutils/test3/`` に格納され、tools は
+    変換が不要になります。
 
-    If you installed one of Docutils versions 0.7 ... 0.9 with
-    ``setup.py install`` under Python 3, remove the spurious
-    ``test/`` and ``tools/`` directories in the site library root.
+    もし Python_3 で Docutils バージョン 0.7 から 0.9 のいずれかを
+    ``setup.py install`` でインストールしている場合は、site ライブラリの
+    ルートディレクトリにある ``test/`` と ``tools/`` ディレクトリを
+    削除してください。
 
 
 Release 0.9 (2012-05-02)
 =========================
 
-* General:
+.. * General:
 
-  - reStructuredText "code" role and directive with syntax highlighting
-    by Pygments_.
-  - "code" option of the "include" directive.
+     - reStructuredText "code" role and directive with syntax highlighting
+       by Pygments_.
+     - "code" option of the "include" directive.
+
+     .. _Pygments: http://pygments.org/
+
+     - Fix [ 3402314 ] allow non-ASCII whitespace, punctuation
+       characters and "international" quotes around inline markup.
+
+     - Fix handling of missing stylesheets.
+
+* 全般:
+
+  - Pygments_ によってシンタックスハイライトされる reStructuredText "code" ロールとディレクティブ。
+
+  - "include" ディレクティブの "code" オプション。
 
   .. _Pygments: http://pygments.org/
 
-  - Fix [ 3402314 ] allow non-ASCII whitespace, punctuation
-    characters and "international" quotes around inline markup.
+  - [ 3402314 ] を修正し、インラインマークアップの前後に 非 ASCII の空白、
+    記号文字および "国際的な" クオートが出来るようになりました。
 
-  - Fix handling of missing stylesheets.
+  - スタイルシートが見つからない場合のハンドリングを修正。
+
+.. * setup.py
+
+     - Fix [ 2971827 ] and [ 3442827 ]
+       extras/roman.py moved to docutils/utils/roman.py
 
 * setup.py
 
-  - Fix [ 2971827 ] and [ 3442827 ]
-    extras/roman.py moved to docutils/utils/roman.py
+  - [ 2971827 ] と [ 3442827 ] を修正。
+    extras/roman.py を docutils/utils/roman.py に移動。
+
+.. * docutils/utils.py -> docutils/utils/__init__.py
+
+     - docutils.utils is now a package (providing a place for sub-modules)
 
 * docutils/utils.py -> docutils/utils/__init__.py
 
-  - docutils.utils is now a package (providing a place for sub-modules)
+  - docutils.utils をパッケージ化（サブモジュールのための場所を提供）
+
+.. * docutils/writers/html4css1/__init__.py
+
+     - change default for `math-output` setting to MathJax
 
 * docutils/writers/html4css1/__init__.py
 
-  - change default for `math-output` setting to MathJax
+  - `math-output` のデフォルト設定を MathJax に変更。
+
+.. * docutils/writers/latex2e/__init__.py
+
+     - Support the `abbreviation` and `acronym` standard roles.
+     - Record only files required to generate the LaTeX source as dependencies.
+     - Use ``\setcounter{secnumdepth}{0}`` instead of ``*``-versions
+       when suppressing LaTeX section numbering.
 
 * docutils/writers/latex2e/__init__.py
 
-  - Support the `abbreviation` and `acronym` standard roles.
-  - Record only files required to generate the LaTeX source as dependencies.
-  - Use ``\setcounter{secnumdepth}{0}`` instead of ``*``-versions
-    when suppressing LaTeX section numbering.
+  - `abbreviation` と `acronym` の標準ロールをサポート。
+  - 依存関係として LaTeX ソースの生成に必要なファイルのみを記録。
+  - LaTeX セクションナンバリング抑制時に ``*``-versions の代わりに
+    ``\setcounter{secnumdepth}{0}`` を使用。
 
 
 Release 0.8.1 (2011-08-30)
