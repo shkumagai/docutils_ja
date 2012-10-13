@@ -50,6 +50,7 @@ html:
 	cp source/docs/ref/soextblx.dtd $(BUILDDIR)/html/docs/ref/
 	# cp source/docs/user/rst/quickref.html $(BUILDDIR)/html/docs/user/rst/
 	cp source/docs/user/rst/cheatsheet.txt $(BUILDDIR)/html/docs/user/rst/
+	cp source/docs/user/rst/demo.txt $(BUILDDIR)/html/docs/user/rst/
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
