@@ -43,7 +43,7 @@ Docutils はオープンソースのプレーンテキスト文書を HTML や L
 .. All **documentation** can be reached from the `Docutils Project
    Documentation Overview`_.
 
-全ての **ドキュメント** は `Docutils Project Documentation Overview`_ から\
+全ての **ドキュメント** は `Docutils プロジェクト ドキュメント概要`_ から\
 辿ることができます。
 
 .. To the developers of an open source project, **feedback** is a great
@@ -116,7 +116,7 @@ Docutils は開発が活発であり、API は **実験的** でいつでも変�
    repository`_. The snapshots usually contain *more features* and *fewer bugs*
    than the "official" releases |---| they're not only for developers!
 
-私たちは `Docutils' Subversion repository`_ から `スナップショット`_ を使うことを推奨します。
+私たちは `Docutils の Subversion リポジトリ`_ から `スナップショット`_ を使うことを推奨します。
 snapshot は通常、公式リリースよりも *より多くの機能* を含み *バグが少ない* からです。
 |---| これらは開発者のためだけではありません！
 
@@ -200,8 +200,11 @@ Sandbox_ は実験的なコントリビューションのコードを含んで�
 .. _`To Do リスト`:
 .. _To Do list: docs/dev/todo.html
 .. _README: README.html
+.. _クイックスタート:
 .. _Quick-Start: README.html#quick-start
+.. _`Docutils プロジェクト ドキュメント概要`:
 .. _Docutils Project Documentation Overview: docs/index.html
+.. _`Docutils の Subversion リポジトリ`:
 .. _Docutils' Subversion repository: docs/dev/repository.html
 .. |donate| image:: http://images.sourceforge.net/images/project-support.jpg
    :target: http://sourceforge.net/donate/index.php?group_id=38414
