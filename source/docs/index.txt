@@ -165,9 +165,9 @@ Docutils 一般:
 * `早わかり reStructuredText <user/rst/quickref.html>`__ (user reference)
 * `reStructuredText チートシート <user/rst/cheatsheet.txt>`__ (テキストのみ;
   1 ページは構文の, 1 ページはディレクティブとロールのリファレンス)
-* `reStructuredText Demonstration <user/rst/demo.html>`_ (a
-  demonstration of most reStructuredText features; you can also have a
-  look at the `text source <user/rst/demo.txt>`__)
+* `reStructuredText デモンストレーション <user/rst/demo.html>`_ （
+  reStructuredText の主な特徴のデモです; `text ソース <user/rst/demo.txt>`__
+  を見ることもできます。）
 
 
 .. Editor support:
@@ -205,7 +205,7 @@ Docutils 一般:
    * `OASIS XML Exchange Table Model Declaration Module
      <ref/soextblx.dtd>`__ (CALS tables DTD module)
 
-* `Docutils ドキュメントツリー <ref/doctree.html>`__ (不完全)
+* `Docutils ドキュメントツリー <ref/doctree.html>`__ (未完成)
 * `Docutils 変換 <ref/transforms.html>`__
 * `Docutils 汎用 DTD <ref/docutils.dtd>`__
 * `OASIS XML 互換 テーブルモデル宣言モジュール <ref/soextblx.dtd>`__
@@ -220,20 +220,32 @@ Docutils 一般:
 
 reStructuredText_ について:
 
-* `An Introduction to reStructuredText <ref/rst/introduction.html>`__
-  (includes the `Goals <ref/rst/introduction.html#goals>`__ and
-  `History <ref/rst/introduction.html#history>`__ of reStructuredText)
-* `reStructuredText Markup Specification <ref/rst/restructuredtext.html>`__
-* `reStructuredText Directives <ref/rst/directives.html>`__
-* `reStructuredText Interpreted Text Roles <ref/rst/roles.html>`__
-* `reStructuredText Standard Definition Files
+.. * `An Introduction to reStructuredText <ref/rst/introduction.html>`__
+     (includes the `Goals <ref/rst/introduction.html#goals>`__ and
+     `History <ref/rst/introduction.html#history>`__ of reStructuredText)
+   * `reStructuredText Markup Specification <ref/rst/restructuredtext.html>`__
+   * `reStructuredText Directives <ref/rst/directives.html>`__
+   * `reStructuredText Interpreted Text Roles <ref/rst/roles.html>`__
+   * `reStructuredText Standard Definition Files
+     <ref/rst/definitions.html>`_
+
+* `reStructuredText 入門 <ref/rst/introduction.html>`__
+  (reStructuredText の `ゴール <ref/rst/introduction.html#goals>`__ と
+  `歴史 <ref/rst/introduction.html#history>`__ を含みます)
+* `reStructuredText マークアップ仕様 <ref/rst/restructuredtext.html>`__
+* `reStructuredText ディレクティブ <ref/rst/directives.html>`__
+* `reStructuredText 解釈済みテキストロール <ref/rst/roles.html>`__
+* `reStructuredText 標準定義ファイル
   <ref/rst/definitions.html>`_
 
 .. Prehistoric:
 
 有史以前のもの:
 
-* `Setext Documents Mirror
+.. * `Setext Documents Mirror
+     <http://docutils.sourceforge.net/mirror/setext.html>`__
+
+* `Setext ドキュメント ミラー
   <http://docutils.sourceforge.net/mirror/setext.html>`__
 
 
@@ -245,15 +257,24 @@ reStructuredText_ について:
 ``peps/``: Python の拡張提案 (PEP)
 ==================================
 
-* `PEP 256: Docstring Processing System Framework`__ is a high-level
-  generic proposal.  [`PEP 256`__ in the `master repository`_]
-* `PEP 257: Docstring Conventions`__ addresses docstring style and
-  touches on content.  [`PEP 257`__ in the `master repository`_]
-* `PEP 258: Docutils Design Specification`__ is an overview of the
-  architecture of Docutils.  It documents design issues and
-  implementation details.  [`PEP 258`__ in the `master repository`_]
-* `PEP 287: reStructuredText Docstring Format`__ proposes a standard
-  markup syntax.  [`PEP 287`__ in the `master repository`_]
+.. * `PEP 256: Docstring Processing System Framework`__ is a high-level
+     generic proposal.  [`PEP 256`__ in the `master repository`_]
+   * `PEP 257: Docstring Conventions`__ addresses docstring style and
+     touches on content.  [`PEP 257`__ in the `master repository`_]
+   * `PEP 258: Docutils Design Specification`__ is an overview of the
+     architecture of Docutils.  It documents design issues and
+     implementation details.  [`PEP 258`__ in the `master repository`_]
+   * `PEP 287: reStructuredText Docstring Format`__ proposes a standard
+     markup syntax.  [`PEP 287`__ in the `master repository`_]
+
+* `PEP 256: Docstring Processing System Framework`__ は高レベルの
+  汎用的なプロポーザルです。 [`PEP 256`__ in the `master repository`_]
+* `PEP 257: Docstring Conventions`__ は docstring のスタイルについて述べ、
+  コンテンツについて触れています。 [`PEP 257`__ in the `master repository`_]
+* `PEP 258: Docutils Design Specification`__ は Docutils の構成の概観です。
+  設計上の論点や実装の詳細について書かれています。 [`PEP 258`__ in the `master repository`_]
+* `PEP 287: reStructuredText Docstring Format`__ は標準的なマークアップ
+  書式を提案しています。 [`PEP 287`__ in the `master repository`_]
 
 .. Please note that PEPs in the `master repository`_ may not be current,
    whereas the local versions are.
@@ -281,10 +302,15 @@ __ http://www.python.org/peps/pep-0287.html
 ``api/``: クライアント開発者向け API リファレンス素材
 =====================================================
 
-* `The Docutils Publisher <api/publisher.html>`__
-* `Inside A Docutils Command-Line Front-End Tool <api/cmdline-tool.html>`__
-* `Docutils Runtime Settings <api/runtime-settings.html>`__
-* (`Docutils Transforms <ref/transforms.html>`__ should be moved here)
+.. * `The Docutils Publisher <api/publisher.html>`__
+   * `Inside A Docutils Command-Line Front-End Tool <api/cmdline-tool.html>`__
+   * `Docutils Runtime Settings <api/runtime-settings.html>`__
+   * (`Docutils Transforms <ref/transforms.html>`__ should be moved here)
+
+* `Docutils パブリッシャ <api/publisher.html>`__
+* `Docutils コマンドライン フロントエンドツール <api/cmdline-tool.html>`__
+* `Docutils 実行時設定 <api/runtime-settings.html>`__
+* (`Docutils 変換 <ref/transforms.html>`__ はここに移動されるべき)
 
 .. `PEP 258`_ is an overview of the architecture of Docutils.
 
@@ -299,12 +325,20 @@ __ http://www.python.org/peps/pep-0287.html
 ``howto/``: 開発者の手引き
 ==========================
 
-* **Security:** `Deploying Docutils Securely <howto/security.html>`__
-* `Writing HTML (CSS) Stylesheets for Docutils
+.. * **Security:** `Deploying Docutils Securely <howto/security.html>`__
+   * `Writing HTML (CSS) Stylesheets for Docutils
+     <howto/html-stylesheets.html>`__
+   * `Docutils Internationalization <howto/i18n.html>`__
+   * `Creating reStructuredText Directives <howto/rst-directives.html>`__
+   * `Creating reStructuredText Interpreted Text Roles
+     <howto/rst-roles.html>`__
+
+* **セキュリティ:** `Docutils の安全な配備について <howto/security.html>`__
+* `Docutils のための HTML (CSS) スタイルシートの書き方
   <howto/html-stylesheets.html>`__
-* `Docutils Internationalization <howto/i18n.html>`__
-* `Creating reStructuredText Directives <howto/rst-directives.html>`__
-* `Creating reStructuredText Interpreted Text Roles
+* `Docutils の国際化 <howto/i18n.html>`__
+* `reStructuredText ディレクティブの作り方 <howto/rst-directives.html>`__
+* `reStructuredText 解釈済みテキストロールの作り方
   <howto/rst-roles.html>`__
 
 
@@ -320,27 +354,45 @@ __ http://www.python.org/peps/pep-0287.html
 
 Docutils 一般:
 
-* `Docutils Hacker's Guide <dev/hacking.html>`__
-* `Docutils Distributor's Guide <dev/distributing.html>`__
-* `Docutils To Do List <dev/todo.html>`__
-* `Docutils Project Policies <dev/policies.html>`__
-* `Docutils Web Site <dev/website.html>`__
-* `Docutils Release Procedure <dev/release.html>`__
-* `The Docutils Subversion Repository <dev/repository.html>`__
-* `Docutils Testing <dev/testing.html>`__
-* `Docstring Semantics <dev/semantics.html>`__ (incomplete)
-* `Python Source Reader <dev/pysource.html>`_ (incomplete)
+.. * `Docutils Hacker's Guide <dev/hacking.html>`__
+   * `Docutils Distributor's Guide <dev/distributing.html>`__
+   * `Docutils To Do List <dev/todo.html>`__
+   * `Docutils Project Policies <dev/policies.html>`__
+   * `Docutils Web Site <dev/website.html>`__
+   * `Docutils Release Procedure <dev/release.html>`__
+   * `The Docutils Subversion Repository <dev/repository.html>`__
+   * `Docutils Testing <dev/testing.html>`__
+   * `Docstring Semantics <dev/semantics.html>`__ (incomplete)
+   * `Python Source Reader <dev/pysource.html>`_ (incomplete)
+   * `Docutils Python DTD <dev/pysource.dtd>`_ (experimental)
+   * `Plan for Enthought API Documentation Tool <dev/enthought-plan.html>`_
+   * `Enthought API Documentation Tool RFP <dev/enthought-rfp.html>`_
+
+* `Docutils ハッカーズガイド <dev/hacking.html>`__
+* `Docutils ディストリビューターズガイド <dev/distributing.html>`__
+* `Docutils To Do リスト <dev/todo.html>`__
+* `Docutils プロジェクトポリシー <dev/policies.html>`__
+* `Docutils Web サイト <dev/website.html>`__
+* `Docutils リリース手順 <dev/release.html>`__
+* `Docutils Subversion リポジトリ <dev/repository.html>`__
+* `Docutils をテストする <dev/testing.html>`__
+* `Docstring セマンティクス <dev/semantics.html>`__ (未完成)
+* `Python ソースリーダ <dev/pysource.html>`_ (未完成)
 * `Docutils Python DTD <dev/pysource.dtd>`_ (experimental)
-* `Plan for Enthought API Documentation Tool <dev/enthought-plan.html>`_
-* `Enthought API Documentation Tool RFP <dev/enthought-rfp.html>`_
+* `Enthought API ドキュメンテーションツールのプラン <dev/enthought-plan.html>`_
+* `Enthought API ドキュメンテーションツール RFP <dev/enthought-rfp.html>`_
 
 .. reStructuredText_:
 
 reStructuredText_ について:
 
-* `A Record of reStructuredText Syntax Alternatives
+.. * `A Record of reStructuredText Syntax Alternatives
+     <dev/rst/alternatives.html>`__
+   * `Problems With StructuredText <dev/rst/problems.html>`__
+
+* `reStructuredText シンタックスの代替案の記録
   <dev/rst/alternatives.html>`__
-* `Problems With StructuredText <dev/rst/problems.html>`__
+* `StructuredText における問題点 <dev/rst/problems.html>`__
 
 
 ..
