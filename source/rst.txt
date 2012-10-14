@@ -113,49 +113,75 @@ __ docs/ref/rst/directives.html
 __ docs/ref/rst/roles.html
 
 
-Developer Documentation
-=======================
+.. Developer Documentation
+   =======================
 
-- `A Record of reStructuredText Syntax Alternatives`__
-- `Problems With StructuredText`__
+開発者 ドキュメント
+===================
+
+.. - `A Record of reStructuredText Syntax Alternatives`__
+   - `Problems With StructuredText`__
+
+- `reStructuredText シンタックスの代替案の記録`__
+- `StructuredText における問題点`__
 
 __ docs/dev/rst/alternatives.html
 __ docs/dev/rst/problems.html
 
 
-How-To's
+.. How-To's
+   --------
+
+ハウツー
 --------
 
-- `Creating reStructuredText Directives`__
-- `Creating reStructuredText Interpreted Text Roles`__
+.. - `Creating reStructuredText Directives`__
+   - `Creating reStructuredText Interpreted Text Roles`__
+
+- `reStructuredText ディレクティブの作り方`__
+- `reStructuredText 解釈済みテキストロールの作り方`__
 
 __ docs/howto/rst-directives.html
 __ docs/howto/rst-roles.html
 
 
-Try it Online
-=============
+.. Try it Online
+   =============
 
-If you want to try reStructuredText out without downloading Docutils,
-you can use the `reStructuredText online renderer`__.  Thanks to Jiri
-Barton for `setting it up`__!
+オンラインで挑戦
+================
+
+.. If you want to try reStructuredText out without downloading Docutils,
+   you can use the `reStructuredText online renderer`__.  Thanks to Jiri
+   Barton for `setting it up`__!
+
+Docutils をダウンロードせずに reStructuredText を試してみたいなら、
+`reStructuredText オンラインレンダラー`__ が使えます 。
+`設定してくれた`__ Jiri Barton に感謝します！
 
 __ http://www.hosting4u.cz/jbar/rest/rest.html
 __ http://www.hosting4u.cz/jbar/rest/about.html
 
 
-Testimonials
-============
+.. Testimonials
+   ============
 
-The following testimonials are excerpts from unsolicited posts to
-mailing lists and the comp.lang.python newsgroup.  Being excerpts,
-there's often context missing, which sometimes tones down the message.
+喜びの声
+========
+
+.. The following testimonials are excerpts from unsolicited posts to
+   mailing lists and the comp.lang.python newsgroup.  Being excerpts,
+   there's often context missing, which sometimes tones down the message.
+
+次の反響はメーリングリストや comp.lang.python ニュースグループへの
+未承諾のポストからの抜粋です。抜粋なので、しばしば文脈が失われたり、
+時にはメッセージがトーンダウンしています。
 
 `Ueli Schlaepfer on Doc-SIG, 2002-03-28`__:
 
 __ http://mail.python.org/pipermail/doc-sig/2002-March/002526.html
 
-    I have adopted reST as my tool of choice for producing notes while
+..  I have adopted reST as my tool of choice for producing notes while
     doing lab work (mostly in a matlab environment).  Since then, the
     quality of such documentation has increased noticeably, mostly for
     two reasons:
@@ -173,21 +199,45 @@ __ http://mail.python.org/pipermail/doc-sig/2002-March/002526.html
 
     ... All essential constructs for everyday use are there, and much
     more if needed. ...
+..
+
+    僕はラボの（主に matlab環境の）仕事をやりながらノートを作成するための\
+    ツールとして reST を選択した。それ以来、それらのドキュメントの品質は\
+    主に次の二つの理由から著しく向上したよ:
+
+    - 僕はもはや他のツールに切り換える必要がなくなり、ドキュメントを書くこと\
+      への敷居がとても低くなったんだ。 "他のツール" というのは WinWord の\
+      ことね…
+    - その上僕は、自分が考え得る他のどのツールよりも簡単にこれらのドキュメントを\
+      作れる強力なマークアップ構造のセットを手にしている。
+
+    自分の Python コードからドキュメントを抽出するために、同じツールを適用して\
+    すぐに仕事を進めることが出来るから、 reST/DPS [今は Docutils だね] には\
+    感謝してるよ。なあ、それの印刷やブラウズ可能なバージョンが *無料* なんだぜ！
+    個人的に、このことは大きな利益だと思っているんだ。
+
+    ... 毎日使う重要な構成要素、そして必要であればさらに多くのものが全て\
+    そこにあるんだ。 ...
 
 `Guido van Rossum, enthusiastic about PEP 287 but a bit hasty (see the
 follow-ups) on Python-Dev, 2002-04-02`__:
 
 __ http://mail.python.org/pipermail/python-dev/2002-April/022131.html
 
-    Good PEP, David!  What's the next step?  Should the processing
+..  Good PEP, David!  What's the next step?  Should the processing
     code be incorporated in the standard library?  Should we start
     converting the standard library docs to reStructuredText?
+..
+
+    いい PEP だ、David！ 次のステップは何？ このコードは標準ライブラリに
+    組み込まれるべきかな？
+    我々は標準ライブラリのドキュメントを reStructuredText に変換するべきかな？
 
 `Timothy Delaney on comp.lang.python, 2002-04-03`__:
 
 __ http://mail.python.org/pipermail/python-list/2002-April/096013.html
 
-    I read through all the reStructuredText docs, comparing the text
+..  I read through all the reStructuredText docs, comparing the text
     versions to the html versions.  I found the text versions to be
     *very* easy to read, whilst making it obvious in most cases when
     something was "special".
@@ -197,15 +247,32 @@ __ http://mail.python.org/pipermail/python-list/2002-April/096013.html
     Definitely +1 from me ... I would really like a standard, clean
     docstring format.  Might make it easier to get my next project
     done in Python...
+..
+
+    自分は reStructuredText のドキュメントをすべて読んでテキスト版とHTML版を\
+    比較してみた。テキスト版は何か "特別" だったときに、ほとんどの場合にそれを\
+    明示的に作るんだけど、 *非常に* 読み易いということが分かったよ。
+
+    特にハイパーリンクを行う仕組みが特に気に入った。
+
+    自分からは間違いなく +1... 自分は本当に標準の、きれいな docstring 用\
+    フォーマットにしたいよ。
+
+    自分の次の Python のプロジェクトが簡単に終わらせられるかも知れないな...
 
 `Guido van Rossum on Python-Dev, 2002-04-03`__:
 
 __ http://mail.python.org/pipermail/python-dev/2002-April/022212.html
 
-    I think that reStructuredText is a good format for marking up
+..  I think that reStructuredText is a good format for marking up
     docstrings; it's probably as good as it gets given the
     requirements (a fairly elaborate feature set, yet more readable
     "in the raw" than HTML).
+..
+
+    reStructuredText は docstring をマークアップするのにいい形式だと思う; \
+    おそらく与えられた条件に見合う（かなり手の込んだことができる機能セット\
+    にも関わらず、"生で" HTML よりも読みやすい）。
 
 `Richard Jones on comp.lang.python, 2002-04-03`__:
 
