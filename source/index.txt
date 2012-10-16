@@ -37,7 +37,7 @@ Docutils はオープンソースのプレーンテキスト文書を HTML や L
 .. **To get up & running quickly**, see the Quick-Start_ section of the
    README_ file.
 
-**とりあえず始める & 実行してみる** には、README_ ファイルの Quick-Start_ の\
+**とりあえず始める & 実行してみる** には、README_ ファイルの `クイックスタート`_ の\
 節を見てください。
 
 .. All **documentation** can be reached from the `Docutils Project
@@ -200,7 +200,7 @@ Sandbox_ は実験的なコントリビューションのコードを含んで�
 .. _`To Do リスト`:
 .. _To Do list: docs/dev/todo.html
 .. _README: README.html
-.. _クイックスタート:
+.. _`クイックスタート`:
 .. _Quick-Start: README.html#quick-start
 .. _`Docutils プロジェクト ドキュメント概要`:
 .. _Docutils Project Documentation Overview: docs/index.html

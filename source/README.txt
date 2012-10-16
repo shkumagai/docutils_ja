@@ -14,6 +14,8 @@
 .. Quick-Start
    ===========
 
+.. _Quick-Start:
+
 クイックスタート
 ================
 
@@ -55,9 +57,9 @@
 
    から入手出来る Python （バージョン 2.3 またはそれ以降）が必要です。
 
-   詳細については下記の Requirements_ を参照してください。
+   詳細については下記の `必要条件`_ を参照してください。
 
-2. 最新の Docutils コードを使ってください。 `Sunversion リポジトリ`_
+2. 最新の Docutils コードを使ってください。 `Subversion リポジトリ`_
    またはスナップショットからコードを入手します:
 
      http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/docutils/?view=tar
