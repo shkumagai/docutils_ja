@@ -532,9 +532,9 @@ Unix 環境でのインストレーションでは PATH 上にコピーを配置
 すべてのドキュメントは Docutils フロントエンドツール（ ``docs/user/tools.txt`` ）\
 を参照してください。
 
-The package modules are continually growing and evolving.  The
-``docutils.statemachine`` module is usable independently.  It contains
-extensive inline documentation (in reStructuredText format of course).
+.. The package modules are continually growing and evolving.  The
+   ``docutils.statemachine`` module is usable independently.  It contains
+   extensive inline documentation (in reStructuredText format of course).
 
 パッケージモジュールは継続的に成長し、進化しています。\
 ``docutils.statemachine`` モジュールは独立して使用可能で、大規模なインラインの
