@@ -17,7 +17,7 @@ Updated: $Date$
 .. The full details of the markup may be found on the reStructuredText page.
    This document is just intended as a reminder.
 
-マークアップの完全な詳細は `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ のページで
+マークアップの完全な詳細は `reStructuredText`_ のページで
 見つけることができます。この文書は単なるリマインダを意図しています。
 
 .. Links that look like "(details)" point into the HTML version of the full reStructuredText
@@ -27,8 +27,9 @@ Updated: $Date$
 "(details)" というリンクは完全な `reStructuredText 仕様書`_ のHTML版を指しています。これらは相対リンクです;
 もしリンクが動作しない場合は、 `Quick reStructuredText`_ のマスタ文書を使ってください。
 
-.. _`reStructuredText 仕様書`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
-.. _`Quick reStructuredText`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _reStructuredText: ../../../rst.html
+.. _`reStructuredText 仕様書`: ../../ref/rst/restructuredtext.html
+.. _`Quick reStructuredText`: ../../user/rst/quickref.html
 
 .. contents::
 
@@ -767,14 +768,65 @@ reStructuredText にはテーブルを記述する文法が 2 つあります。
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: footnotes1.txt
-     - .. include:: footnotes1.txt
+   * - ::
 
-   * - .. literalinclude:: footnotes2.txt
-     - .. include:: footnotes2.txt
+         Footnote references, like [5]_.
+         Note that footnotes may get
+         rearranged, e.g., to the bottom of
+         the "page".
 
-   * - .. literalinclude:: footnotes3.txt
-     - .. include:: footnotes3.txt
+         .. [5] A numerical footnote. Note
+            there's no colon after the ``]``.
+
+     - Footnote references, like [5]_.
+       Note that footnotes may get
+       rearranged, e.g., to the bottom of
+       the "page".
+
+       .. [5] A numerical footnote. Note
+          there's no colon after the ``]``.
+
+   * - ::
+
+         Autonumbered footnotes are
+         possible, like using [#]_ and [#]_.
+
+         They may be assigned 'autonumber
+         labels' - for instance,
+         [#fourth]_ and [#third]_.
+
+
+         .. [#] This is the first one.
+         .. [#] This is the second one.
+         .. [#third] a.k.a. third_
+         .. [#fourth] a.k.a. fourth_
+
+     - Autonumbered footnotes are
+       possible, like using [#]_ and [#]_.
+
+       They may be assigned 'autonumber
+       labels' - for instance,
+       [#fourth]_ and [#third]_.
+
+
+       .. [#] This is the first one.
+       .. [#] This is the second one.
+       .. [#third] a.k.a. third_
+       .. [#fourth] a.k.a. fourth_
+
+   * - ::
+
+         Auto-symbol footnotes are also
+         possible, like this: [*]_ and [*]_.
+
+         .. [*] This is the first one.
+         .. [*] This is the second one.
+
+     - Auto-symbol footnotes are also
+       possible, like this: [*]_ and [*]_.
+
+       .. [*] This is the first one.
+       .. [*] This is the second one.
 
 自動採番の脚注の番号は、参照される順番ではなく脚注の (記述の) 順番で決まります。
 自動採番の脚注をラベルなしで使う場合、参照と脚注は相互に同じ順番になっている
@@ -793,9 +845,41 @@ reStructuredText にはテーブルを記述する文法が 2 つあります。
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: citations.txt
-     - .. include:: citations.txt
+   * - ::
 
+         Citation references, like [CIT2002]_.
+         Note that citations may get
+         rearranged, e.g., to the bottom of
+         the "page".
+
+         .. [CIT2002] A citation
+            (as often used in journals).
+
+         Citation labels contain alphanumerics,
+         underlines, hyphens and fullstops.
+         Case is not significant.
+
+         Given a citation like [this]_, one
+         can also refer to it like this_.
+
+         .. [this] here.
+
+     - Citation references, like [CIT2002]_.
+       Note that citations may get
+       rearranged, e.g., to the bottom of
+       the "page".
+
+       .. [CIT2002] A citation
+          (as often used in journals).
+
+       Citation labels contain alphanumerics,
+       underlines, hyphens and fullstops.
+       Case is not significant.
+
+       Given a citation like [this]_, one
+       can also refer to it like this_.
+
+       .. [this] here.
 
 .. _reference:
 .. _`フレーズ参照`:
@@ -816,8 +900,15 @@ reStructuredText にはテーブルを記述する文法が 2 つあります。
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: external-hyperlink-targets1.txt
-     - .. include:: external-hyperlink-targets1.txt
+   * - ::
+
+         External hyperlinks, like Python_.
+
+         .. _Python: http://www.python.org/
+
+     - External hyperlinks, like Python_.
+
+       .. _Python: http://www.python.org/
 
 `埋め込み形式` はHTMLドキュメントへの表示に適した表示方法で、 `呼び出し形式` は
 リンクが明示的に表示される必要がある印刷したドキュメントに適しています。
@@ -834,8 +925,13 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: external-hyperlink-targets2.txt
-     - .. include:: external-hyperlink-targets2.txt
+   * - ::
+
+         External hyperlinks, like `Python
+         <http://www.python.org/>`_.
+
+     - External hyperlinks, like `Python
+       <http://www.python.org/>`_.
 
 .. _internal-hyperlink-targets:
 
@@ -849,9 +945,19 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: internal-hyperlink-targets.txt
-     - .. include:: internal-hyperlink-targets.txt
+   * - ::
 
+         Internal crossreferences, like example_.
+
+         .. _example:
+
+         This is an example crossreference target.
+
+     - Internal crossreferences, like example_.
+
+       .. _example:
+
+       This is an example crossreference target.
 
 .. _indirect-hyperlink-targets:
 
@@ -865,8 +971,21 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: indirect-hyperlink-targets.txt
-     - .. include:: indirect-hyperlink-targets.txt
+   * - ::
+
+         Python_ is `my favourite
+         programming language`__.
+
+         .. _Python: http://www.python.org/
+
+         __ Python_
+
+     - Python_ is `my favourite
+       programming language`__.
+
+       .. _Python: http://www.python.org/
+
+       __ Python_
 
 二つ目のハイパーリンクターゲット ("__"から始まっている行) は間接ハイパーリンク
 ターゲット ("Python_"を参照することで Python公式Webサイトを間接的に指している)
@@ -918,8 +1037,8 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
 
    * - .. code-block:: none
 
-          .. image:: ../_static/image/sphinx.png
-     - .. image:: ../_static/image/sphinx.png
+          .. image:: images/ball1.gif
+     - .. image:: images/ball1.gif
 
 
 .. _substitution-references-and-definitions:
@@ -936,8 +1055,15 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: substitution-references-and-definitions.txt
-     - .. include:: substitution-references-and-definitions.txt
+   * - ::
+
+         The |biohazard| symbol must be used on containers used to dispose of medical waste.
+
+         .. |biohazard| image:: images/biohazard.png
+
+     - The |biohazard| symbol must be used on containers used to dispose of medical waste.
+
+       .. |biohazard| image:: images/biohazard.png
 
 .. _`空白コメント`:
 .. _comments:
@@ -955,11 +1081,37 @@ reStructuredText は高い可読性を保つためにURLの埋込む方法も提
    * - プレーンテキスト
      - 表示結果
 
-   * - .. literalinclude:: comment1.txt
-     - .. include:: comment1.txt
+   * - ::
 
-   * - .. literalinclude:: comment2.txt
-     - .. include:: comment2.txt
+         .. This text will not be shown
+            (but, for instance, in HTML might be
+            rendered as an HTML comment)
+
+     - .. This text will not be shown
+          (but, for instance, in HTML might be
+          rendered as an HTML comment)
+
+   * - ::
+
+         An "empty comment" does not
+         consume following blocks.
+         (An empty comment is ".." with
+         blank lines before and after.)
+
+         ..
+
+                 So this block is not "lost",
+                 despite its indentation.
+
+     - An "empty comment" does not
+       consume following blocks.
+       (An empty comment is ".." with
+       blank lines before and after.)
+
+       ..
+
+               So this block is not "lost",
+               despite its indentation.
 
 
 __ reference_
