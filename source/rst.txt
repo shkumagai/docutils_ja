@@ -43,11 +43,10 @@ reStructuredText は StructuredText_ や Setext_ 軽量マークアップシス�
    non-trivial use.  The intended purpose of the markup is the conversion
    of reStructuredText documents into useful structured data formats.
 
-reStructuredText の第一のゴールは、Python の docstring およびその他の
-ドキュメントのドメインで使用するための、非自明な使い方であっても十分に
-強力でありながら、読み易くてシンプルなマークアップ文法を定義して、
-実装することです。
-マークアップの所期の目的は、reStructuredText ドキュメントを、使いやすい、
+reStructuredText の第一のゴールは、Python docstring およびその他の
+ドキュメントのドメインで使用するために、大掛かりな使い方も十分に強力で\
+ありながら、読み易くてシンプルなマークアップ文法を定義して実装することです。
+マークアップが意図する目的は、reStructuredText ドキュメントを、使いやすい、
 構造化されたデータフォーマットに変換することです。
 
 .. See statemachine.py_ for an example of a Python module fully
