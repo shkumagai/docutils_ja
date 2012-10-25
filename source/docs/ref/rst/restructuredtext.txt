@@ -1,8 +1,13 @@
 .. -*- coding: utf-8 -*-
 
-=======================================
- reStructuredText Markup Specification
-=======================================
+.. =======================================
+    reStructuredText Markup Specification
+   =======================================
+.. _restructuredtest markup specifitation:
+
+===================================
+ reStructuredText マークアップ仕様
+===================================
 
 :Author: David Goodger
 :Contact: docutils-develop@lists.sourceforge.net
@@ -12,880 +17,1773 @@
 
 .. Note::
 
-   This document is a detailed technical specification; it is not a
-   tutorial or a primer.  If this is your first exposure to
-   reStructuredText, please read `A ReStructuredText Primer`_ and the
-   `Quick reStructuredText`_ user reference first.
+   .. This document is a detailed technical specification; it is not a
+      tutorial or a primer.  If this is your first exposure to
+      reStructuredText, please read `A ReStructuredText Primer`_ and the
+      `Quick reStructuredText`_ user reference first.
 
+   この文書は詳細な技術仕様書であり、チュートリアルや入門書ではありません。
+   これがあなたのreStructuredTextとの最初の接点であれば、まず最初に\
+   `reStructuredText入門`_ や `早わかりreStructuredText`_ ユーザーリファレンスを\
+   読んでください。
+
+.. _`reStructuredText 入門書`:
 .. _A ReStructuredText Primer: ../../user/rst/quickstart.html
+.. _`早わかり reStructuredText`:
 .. _Quick reStructuredText: ../../user/rst/quickref.html
 
+.. reStructuredText_ is plaintext that uses simple and intuitive
+   constructs to indicate the structure of a document.  These constructs
+   are equally easy to read in raw and processed forms.  This document is
+   itself an example of reStructuredText (raw, if you are reading the
+   text file, or processed, if you are reading an HTML document, for
+   example).  The reStructuredText parser is a component of Docutils_.
 
-reStructuredText_ is plaintext that uses simple and intuitive
-constructs to indicate the structure of a document.  These constructs
-are equally easy to read in raw and processed forms.  This document is
-itself an example of reStructuredText (raw, if you are reading the
-text file, or processed, if you are reading an HTML document, for
-example).  The reStructuredText parser is a component of Docutils_.
+reStructuredText は文書の構造を示すために、シンプルかつ直感的な構文を使用した\
+プレーンテキストです。これらの構造は生のままでも加工された形態でも、同様の\
+読みやすさです。このドキュメントが reStructuredText の（例えば、あなたが\
+テキストファイルを読んでいるのであれば生の、HTML ドキュメントを読んでいる\
+のであれば、加工されたドキュメントの）例そのものなのです。\
+reStructuredText のパーサは Docutils のコンポーネントです。
 
-Simple, implicit markup is used to indicate special constructs, such
-as section headings, bullet lists, and emphasis.  The markup used is
-as minimal and unobtrusive as possible.  Less often-used constructs
-and extensions to the basic reStructuredText syntax may have more
-elaborate or explicit markup.
+.. Simple, implicit markup is used to indicate special constructs, such
+   as section headings, bullet lists, and emphasis.  The markup used is
+   as minimal and unobtrusive as possible.  Less often-used constructs
+   and extensions to the basic reStructuredText syntax may have more
+   elaborate or explicit markup.
 
-reStructuredText is applicable to documents of any length, from the
-very small (such as inline program documentation fragments, e.g.
-Python docstrings) to the quite large (this document).
+シンプルで、暗黙的なマークアップはセクションの見出しや箇条書きのリスト、\
+強調等の特殊な構造を表すために使われます。使用されるマークアップは可能な\
+限り最小限であり、控えめです。あまり頻繁に使われない構造や、基本的な\
+reStructuredTextの拡張構文には、より手が込んだり明示的なマークアップが\
+あります。
 
-The first section gives a quick overview of the syntax of the
-reStructuredText markup by example.  A complete specification is given
-in the `Syntax Details`_ section.
+.. reStructuredText is applicable to documents of any length, from the
+   very small (such as inline program documentation fragments, e.g.
+   Python docstrings) to the quite large (this document).
 
-`Literal blocks`_ (in which no markup processing is done) are used for
-examples throughout this document, to illustrate the plaintext markup.
+reStructuredText は、とても小さいもの（例えば Python の docstring のような\
+インラインのプログラムドキュメントの断片）から、とても大きなもの（この文書）\
+まで、あらゆる長さのドキュメントに適用できます。
 
+.. The first section gives a quick overview of the syntax of the
+   reStructuredText markup by example.  A complete specification is given
+   in the `Syntax Details`_ section.
+
+最初のセクションでは例を使って reStructuredText のマークアップシンタックスの\
+概要を簡単に説明します。仕様の全容は `構文詳細`_ のセクションに記載されています。
+
+.. `Literal blocks`_ (in which no markup processing is done) are used for
+   examples throughout this document, to illustrate the plaintext markup.
+
+リテラルブロック（マークアップの処理が実行されない）は、プレーンテキストの\
+マークアップを説明するために、このドキュメント全体の例に利用されています。
 
 .. contents::
 
 
------------------------
- Quick Syntax Overview
------------------------
+.. -----------------------
+    Quick Syntax Overview
+   -----------------------
+.. _Quick Syntax Overview:
 
-A reStructuredText document is made up of body or block-level
-elements, and may be structured into sections.  Sections_ are
-indicated through title style (underlines & optional overlines).
-Sections contain body elements and/or subsections.  Some body elements
-contain further elements, such as lists containing list items, which
-in turn may contain paragraphs and other body elements.  Others, such
-as paragraphs, contain text and `inline markup`_ elements.
+----------
+ 構文概要
+----------
 
-Here are examples of `body elements`_:
+.. A reStructuredText document is made up of body or block-level
+   elements, and may be structured into sections.  Sections_ are
+   indicated through title style (underlines & optional overlines).
+   Sections contain body elements and/or subsections.  Some body elements
+   contain further elements, such as lists containing list items, which
+   in turn may contain paragraphs and other body elements.  Others, such
+   as paragraphs, contain text and `inline markup`_ elements.
 
-- Paragraphs_ (and `inline markup`_)::
+reStructuredText ドキュメントは body 要素またはブロックレベル要素によって\
+構成されていて、セクションも構成できます。\ セクション_\ はタイトル\
+（アンダーラインとオプションのオーバーライン）によって示されます。\
+セクションは body 要素および / または子のセクションを含みます。body 要素は\
+さらにリストアイテムを持つリストのように、段落や他の body 要素を順番に持つ\
+ことができます。\
+その他、段落などにはテキストと\ インラインマークアップ_\ が含まれています。
 
-      Paragraphs contain text and may contain inline markup:
-      *emphasis*, **strong emphasis**, `interpreted text`, ``inline
-      literals``, standalone hyperlinks (http://www.python.org),
-      external hyperlinks (Python_), internal cross-references
-      (example_), footnote references ([1]_), citation references
-      ([CIT2002]_), substitution references (|example|), and _`inline
-      internal targets`.
+.. Here are examples of `body elements`_:
 
-      Paragraphs are separated by blank lines and are left-aligned.
+これは\ `body 要素`_\ の例です:
 
-- Five types of lists:
+..
+   - Paragraphs_ (and `inline markup`_)::
 
-  1. `Bullet lists`_::
+         Paragraphs contain text and may contain inline markup:
+         *emphasis*, **strong emphasis**, `interpreted text`, ``inline
+         literals``, standalone hyperlinks (http://www.python.org),
+         external hyperlinks (Python_), internal cross-references
+         (example_), footnote references ([1]_), citation references
+         ([CIT2002]_), substitution references (|example|), and _`inline
+         internal targets`.
 
-         - This is a bullet list.
+         Paragraphs are separated by blank lines and are left-aligned.
 
-         - Bullets can be "*", "+", or "-".
+- 段落_\ （と\ インラインマークアップ_ ）::
 
-  2. `Enumerated lists`_::
+     段落はテキストとインラインマークアップを含みます:
+     *強調*, **強い強調**, `解釈済みテキスト`, ``インラインリテラル``,
+     独立したハイパーリンク (http://www.python.org), 外部ハイパーリンク
+     (Python_), 内部クロスリファレンス (example_), 脚注参照 ([1]_),
+     引用参照 ([CIT2002]_), 置換参照 (|example|),
+     そして _`インライン内部ターゲット` です。
 
-         1. This is an enumerated list.
+     段落は空行で区切り、左側を揃えます。
 
-         2. Enumerators may be arabic numbers, letters, or roman
-            numerals.
+..
+   - Five types of lists:
 
-  3. `Definition lists`_::
+     1. `Bullet lists`_::
 
-         what
-             Definition lists associate a term with a definition.
+            - This is a bullet list.
 
-         how
-             The term is a one-line phrase, and the definition is one
-             or more paragraphs or body elements, indented relative to
-             the term.
+            - Bullets can be "*", "+", or "-".
 
-  4. `Field lists`_::
+     2. `Enumerated lists`_::
 
-         :what: Field lists map field names to field bodies, like
-                database records.  They are often part of an extension
-                syntax.
+            1. This is an enumerated list.
 
-         :how: The field marker is a colon, the field name, and a
-               colon.
+            2. Enumerators may be arabic numbers, letters, or roman
+               numerals.
 
-               The field body may contain one or more body elements,
-               indented relative to the field marker.
+     3. `Definition lists`_::
 
-  5. `Option lists`_, for listing command-line options::
+            what
+                Definition lists associate a term with a definition.
 
-         -a            command-line option "a"
-         -b file       options can have arguments
-                       and long descriptions
-         --long        options can be long also
-         --input=file  long options can also have
-                       arguments
-         /V            DOS/VMS-style options too
+            how
+                The term is a one-line phrase, and the definition is one
+                or more paragraphs or body elements, indented relative to
+                the term.
 
-     There must be at least two spaces between the option and the
-     description.
+     4. `Field lists`_::
 
-- `Literal blocks`_::
+            :what: Field lists map field names to field bodies, like
+                   database records.  They are often part of an extension
+                   syntax.
 
-      Literal blocks are either indented or line-prefix-quoted blocks,
-      and indicated with a double-colon ("::") at the end of the
-      preceding paragraph (right here -->)::
+            :how: The field marker is a colon, the field name, and a
+                  colon.
 
-          if literal_block:
-              text = 'is left as-is'
-              spaces_and_linebreaks = 'are preserved'
-              markup_processing = None
+                  The field body may contain one or more body elements,
+                  indented relative to the field marker.
 
-- `Block quotes`_::
+     5. `Option lists`_, for listing command-line options::
 
-      Block quotes consist of indented body elements:
+            -a            command-line option "a"
+            -b file       options can have arguments
+                          and long descriptions
+            --long        options can be long also
+            --input=file  long options can also have
+                          arguments
+            /V            DOS/VMS-style options too
 
-          This theory, that is mine, is mine.
+        There must be at least two spaces between the option and the
+        description.
 
-          -- Anne Elk (Miss)
+- ５つのリストタイプ:
 
-- `Doctest blocks`_::
+  1. 箇条書きリスト_::
 
-      >>> print 'Python-specific usage examples; begun with ">>>"'
-      Python-specific usage examples; begun with ">>>"
-      >>> print '(cut and pasted from interactive Python sessions)'
-      (cut and pasted from interactive Python sessions)
+        - これは箇条書きリストです
+        - 箇条書きには "*", "+", または "-" が使えます
 
-- Two syntaxes for tables_:
+  2. 列挙リスト_::
 
-  1. `Grid tables`_; complete, but complex and verbose::
+        - これは列挙リストです
+        - 番号はアラビア数字, 文字, ローマ数字になります
 
-         +------------------------+------------+----------+
-         | Header row, column 1   | Header 2   | Header 3 |
-         +========================+============+==========+
-         | body row 1, column 1   | column 2   | column 3 |
-         +------------------------+------------+----------+
-         | body row 2             | Cells may span        |
-         +------------------------+-----------------------+
+  3. 定義リスト_::
 
-  2. `Simple tables`_; easy and compact, but limited::
+        なに
+            定義リストは、用語と定義を関連付けます
 
-         ====================  ==========  ==========
-         Header row, column 1  Header 2    Header 3
-         ====================  ==========  ==========
-         body row 1, column 1  column 2    column 3
-         body row 2            Cells may span columns
-         ====================  ======================
+        どのように
+            用語は１行のフレーズで、定義は関連する用語に対してインデントされた
+            １つまたはそれ以上の段落、または body 要素です
 
-- `Explicit markup blocks`_ all begin with an explicit block marker,
-  two periods and a space:
+  4. フィールドリスト_::
 
-  - Footnotes_::
+        :なに:       フィールドリストはフィールド名とフィールドの内容を,
+                     データベースのレコードのように対応付けします。
+                     これらはしばしば拡張構文の一部として使われます
 
-        .. [1] A footnote contains body elements, consistently
-           indented by at least 3 spaces.
+        :どのように: フィールドのマーカーはコロンで始まり, フィールド名,
+                     そしてコロンです
 
-  - Citations_::
+  5. オプションリスト_::
 
-        .. [CIT2002] Just like a footnote, except the label is
-           textual.
+        -a            コマンドラインオプション "a"
+        -b file       オプションは引数および長い説明文を
+                      付けられます
+        --long        ロングタイプのオプションもできます
+        --input=file  ロングオプションも引数を
+                      取れます
+        /V            DOS/VM スタイルのオプションも可能です
 
-  - `Hyperlink targets`_::
+     オプションと詳細の間は少なくともスペース２つ分なければいけません。
 
-        .. _Python: http://www.python.org
+..
+   - `Literal blocks`_::
 
-        .. _example:
+         Literal blocks are either indented or line-prefix-quoted blocks,
+         and indicated with a double-colon ("::") at the end of the
+         preceding paragraph (right here -->)::
 
-        The "_example" target above points to this paragraph.
+             if literal_block:
+                 text = 'is left as-is'
+                 spaces_and_linebreaks = 'are preserved'
+                 markup_processing = None
 
-  - Directives_::
+- リテラルブロック_::
 
-        .. image:: mylogo.png
+    リテラルブロックはインデントまたは行の接頭辞引用符で括られたブロックの
+    いずれかと、前項の最後にあるダブルコロン("::")で表します(ここ-->)::
 
-  - `Substitution definitions`_::
+       if リテラルブロック:
+          テキスト = 'そのまま残ります'
+          スペースと改行 = '保持します'
+          マークアップの処理 = 'なし'
 
-        .. |symbol here| image:: symbol.png
+..
+   - `Block quotes`_::
 
-  - Comments_::
+         Block quotes consist of indented body elements:
 
-        .. Comments begin with two dots and a space.  Anything may
-           follow, except for the syntax of footnotes/citations,
-           hyperlink targets, directives, or substitution definitions.
+             This theory, that is mine, is mine.
 
+             -- Anne Elk (Miss)
 
-----------------
- Syntax Details
-----------------
+- 引用ブロック_::
 
-Descriptions below list "doctree elements" (document tree element
-names; XML DTD generic identifiers) corresponding to syntax
-constructs.  For details on the hierarchy of elements, please see `The
-Docutils Document Tree`_ and the `Docutils Generic DTD`_ XML document
-type definition.
+    引用ブロックはインデントされたbody要素で構成されます:
 
+       私のこの理論は、私のものです
 
-Whitespace
-==========
+       -- アン エルク (ミス)
 
-Spaces are recommended for indentation_, but tabs may also be used.
-Tabs will be converted to spaces.  Tab stops are at every 8th column.
+..
+   - `Doctest blocks`_::
 
-Other whitespace characters (form feeds [chr(12)] and vertical tabs
-[chr(11)]) are converted to single spaces before processing.
+         >>> print 'Python-specific usage examples; begun with ">>>"'
+         Python-specific usage examples; begun with ">>>"
+         >>> print '(cut and pasted from interactive Python sessions)'
+         (cut and pasted from interactive Python sessions)
 
+- Doctestブロック_::
 
-Blank Lines
------------
+     >>> print 'Python-specific usage examples; begun with ">>>"'
+     Python-specific usage example; begun with ">>>"
+     >>> print '(cut and pasted from interactive Python sessions)'
+     (cut and pasted from interactive Python sessions)
 
-Blank lines are used to separate paragraphs and other elements.
-Multiple successive blank lines are equivalent to a single blank line,
-except within literal blocks (where all whitespace is preserved).
-Blank lines may be omitted when the markup makes element separation
-unambiguous, in conjunction with indentation.  The first line of a
-document is treated as if it is preceded by a blank line, and the last
-line of a document is treated as if it is followed by a blank line.
+..
+   - Two syntaxes for tables_:
 
+     1. `Grid tables`_; complete, but complex and verbose::
 
-Indentation
------------
+            +------------------------+------------+----------+
+            | Header row, column 1   | Header 2   | Header 3 |
+            +========================+============+==========+
+            | body row 1, column 1   | column 2   | column 3 |
+            +------------------------+------------+----------+
+            | body row 2             | Cells may span        |
+            +------------------------+-----------------------+
 
-Indentation is used to indicate -- and is only significant in
-indicating -- block quotes, definitions (in definition list items),
-and local nested content:
+     2. `Simple tables`_; easy and compact, but limited::
 
-- list item content (multi-line contents of list items, and multiple
-  body elements within a list item, including nested lists),
-- the content of literal blocks, and
-- the content of explicit markup blocks.
+            ====================  ==========  ==========
+            Header row, column 1  Header 2    Header 3
+            ====================  ==========  ==========
+            body row 1, column 1  column 2    column 3
+            body row 2            Cells may span columns
+            ====================  ======================
 
-Any text whose indentation is less than that of the current level
-(i.e., unindented text or "dedents") ends the current level of
-indentation.
+- ２つの\ テーブル_\ 記法:
 
-Since all indentation is significant, the level of indentation must be
-consistent.  For example, indentation is the sole markup indicator for
-`block quotes`_::
+    1. グリッドテーブル_; 完全だが、複雑で冗長::
 
-    This is a top-level paragraph.
+        +------------------------+------------+-----------+
+        | ヘッダ行, カラム 1     | ヘッダ 2   | ヘッダ 3  |
+        +========================+============+===========+
+        | ボディ 行 1, カラム 1  | カラム 2   | カラム 3  |
+        +------------------------+------------+-----------+
+        | ボディ 列 2            | セルまたぎも可能       |
+        +------------------------+------------------------+
 
-        This paragraph belongs to a first-level block quote.
+    2. シンプルテーブル_; 簡単で簡潔だが、制限がある::
 
-        Paragraph 2 of the first-level block quote.
+        =====================  ==========  ==========
+        ヘッダ 行, カラム 1   カラム 2    カラム 3
+        =====================  ==========  ==========
+        ボディ 行 1, カラム 1  カラム 2    カラム 3
+        ボディ 行 2            セルの列またぎも可能
+        =====================  ======================
 
-Multiple levels of indentation within a block quote will result in
-more complex structures::
+..
+   - `Explicit markup blocks`_ all begin with an explicit block marker,
+     two periods and a space:
 
-    This is a top-level paragraph.
+     - Footnotes_::
 
-        This paragraph belongs to a first-level block quote.
+           .. [1] A footnote contains body elements, consistently
+              indented by at least 3 spaces.
 
-            This paragraph belongs to a second-level block quote.
+     - Citations_::
 
-    Another top-level paragraph.
+           .. [CIT2002] Just like a footnote, except the label is
+              textual.
 
-            This paragraph belongs to a second-level block quote.
+     - `Hyperlink targets`_::
 
-        This paragraph belongs to a first-level block quote.  The
-        second-level block quote above is inside this first-level
-        block quote.
+           .. _Python: http://www.python.org
 
-When a paragraph or other construct consists of more than one line of
-text, the lines must be left-aligned::
+           .. _example:
 
-    This is a paragraph.  The lines of
-    this paragraph are aligned at the left.
+           The "_example" target above points to this paragraph.
 
-        This paragraph has problems.  The
-    lines are not left-aligned.  In addition
-      to potential misinterpretation, warning
-        and/or error messages will be generated
-      by the parser.
+     - Directives_::
 
-Several constructs begin with a marker, and the body of the construct
-must be indented relative to the marker.  For constructs using simple
-markers (`bullet lists`_, `enumerated lists`_, footnotes_, citations_,
-`hyperlink targets`_, directives_, and comments_), the level of
-indentation of the body is determined by the position of the first
-line of text, which begins on the same line as the marker.  For
-example, bullet list bodies must be indented by at least two columns
-relative to the left edge of the bullet::
+           .. image:: mylogo.png
 
-    - This is the first line of a bullet list
-      item's paragraph.  All lines must align
-      relative to the first line.  [1]_
+     - `Substitution definitions`_::
 
-          This indented paragraph is interpreted
-          as a block quote.
+           .. |symbol here| image:: symbol.png
 
-    Because it is not sufficiently indented,
-    this paragraph does not belong to the list
-    item.
+     - Comments_::
 
-    .. [1] Here's a footnote.  The second line is aligned
-       with the beginning of the footnote label.  The ".."
-       marker is what determines the indentation.
+           .. Comments begin with two dots and a space.  Anything may
+              follow, except for the syntax of footnotes/citations,
+              hyperlink targets, directives, or substitution definitions.
 
-For constructs using complex markers (`field lists`_ and `option
-lists`_), where the marker may contain arbitrary text, the indentation
-of the first line *after* the marker determines the left edge of the
-body.  For example, field lists may have very long markers (containing
-the field names)::
+- 明示的なマークアップブロック_\ はすべて明示的なブロックマーカー、\
+  ピリオド二文字とスペースで始まります:
 
-    :Hello: This field has a short field name, so aligning the field
-            body with the first line is feasible.
+  - 脚注_::
 
-    :Number-of-African-swallows-required-to-carry-a-coconut: It would
-        be very difficult to align the field body with the left edge
-        of the first line.  It may even be preferable not to begin the
-        body on the same line as the marker.
+       .. [1] 脚注はbody要素を含み、常に少なくともスペース３つ分で
+          インデントされています。
 
+  - 引用_::
 
-Escaping Mechanism
+       .. [CIT2001] ちょうど脚注に似ていますが、ラベルが
+          テキストです。
+
+  - ハイパーリンクターゲット_::
+
+       .. _Python: http://www.python.org
+
+       .. _example:
+
+       上の "_example" ターゲットはこの段落を指し示します。
+
+  - ディレクティブ_::
+
+       .. image:: mylogo.png
+
+  - 置換定義_::
+
+       .. |symbol here| image:: symbol.png
+
+  - コメント_::
+
+       .. コメントはドット２つとスペースで始まります。脚注/引用、ハイパーリンク
+          ターゲット、ディレクティブ、置換定義の構文を除けば、何でも書けます
+
+.. ----------------
+    Syntax Details
+   ----------------
+.. _syntax details:
+
+----------
+ 構文詳細
+----------
+
+..
+   Descriptions below list "doctree elements" (document tree element
+   names; XML DTD generic identifiers) corresponding to syntax
+   constructs.  For details on the hierarchy of elements, please see `The
+   Docutils Document Tree`_ and the `Docutils Generic DTD`_ XML document
+   type definition.
+
+以下の記述は、構文構造に関連する"doctree要素"(文書ツリーの要素名; XML DTDの\
+汎用識別子)のリストです。要素の階層の詳細については、
+`The Docutils Document Tree`_ と `Docutils Generic DTD`_ のXMLドキュメント\
+型定義を参照してください。
+
+
+.. Whitespace
+   ==========
+.. _whitespace:
+
+空白文字
+========
+
+..
+   Spaces are recommended for indentation_, but tabs may also be used.
+   Tabs will be converted to spaces.  Tab stops are at every 8th column.
+
+インデント_ にはスペースが推奨されますが、タブ文字を使うこともできます。タブ\
+はスペースに変換されます。タブストップは8桁毎です。
+
+..
+   Other whitespace characters (form feeds [chr(12)] and vertical tabs
+   [chr(11)]) are converted to single spaces before processing.
+
+他の空白文字(フォームフィード [CHR(12)]、及び垂直タブ[CHR(11)])は、処理の前に\
+単一のスペースに変換されます。
+
+
+.. Blank Lines
+   -----------
+.. _blank lines:
+
+空白行
+------
+
+..
+   Blank lines are used to separate paragraphs and other elements.
+   Multiple successive blank lines are equivalent to a single blank line,
+   except within literal blocks (where all whitespace is preserved).
+   Blank lines may be omitted when the markup makes element separation
+   unambiguous, in conjunction with indentation.  The first line of a
+   document is treated as if it is preceded by a blank line, and the last
+   line of a document is treated as if it is followed by a blank line.
+
+空白行は段落や他の要素を区切るために使われます。複数の連続する空白行は、\
+(全ての空白が保持される)リテラルブロック内を除き、単一の空白行と等価です。\
+空白行は、マークアップがインデントと組み合わせて明示的に要素を区切る場合、\
+省略できます。文書の最初の行は前の空白行に続いているかのように、文書の最終行\
+はその後ろに空白行が続いているかのように扱われます。
+
+
+.. Indentation
+   -----------
+.. _indentation:
+
+インデント
+----------
+
+..
+   Indentation is used to indicate -- and is only significant in
+   indicating -- block quotes, definitions (in definition list items),
+   and local nested content:
+
+インデントは引用ブロック、定義(定義リストのアイテム)、ローカルの入れ子になっ\
+たコンテンツを表す -- そして、それらを表す場合にのみ意味をもつ -- ために使い\
+ます:
+
+..
+   - list item content (multi-line contents of list items, and multiple
+     body elements within a list item, including nested lists),
+   - the content of literal blocks, and
+   - the content of explicit markup blocks.
+
+- リストアイテム(内容が複数行のリストアイテム、入れ子のリストを含む複数の\
+  body要素を含むリストアイテム)、
+- リテラルブロックの内容、
+- 明示的マークアップブロックの内容
+
+..
+   Any text whose indentation is less than that of the current level
+   (i.e., unindented text or "dedents") ends the current level of
+   indentation.
+
+現在のインデントレベルよりも小さい任意のテキスト(つまり、インデントしてい\
+ないテキスト又は逆インデントされたテキスト)で、現在のレベルのインデントを\
+終了します。
+
+..
+   Since all indentation is significant, the level of indentation must be
+   consistent.  For example, indentation is the sole markup indicator for
+   `block quotes`_::
+
+       This is a top-level paragraph.
+
+           This paragraph belongs to a first-level block quote.
+
+           Paragraph 2 of the first-level block quote.
+
+すべてのインデントには意味があるので、インデントのレベルは一貫している必要が\
+あります。例えば、インデントは 引用ブロック_ の唯一のマークアップ指示です::
+
+   これはトップレベルの段落です。
+
+      この段落は、最初のレベルの引用ブロックに属しています。
+
+      最初のレベルの引用ブロックに属する段落２。
+
+..
+   Multiple levels of indentation within a block quote will result in
+   more complex structures::
+
+       This is a top-level paragraph.
+
+           This paragraph belongs to a first-level block quote.
+
+               This paragraph belongs to a second-level block quote.
+
+       Another top-level paragraph.
+
+               This paragraph belongs to a second-level block quote.
+
+           This paragraph belongs to a first-level block quote.  The
+           second-level block quote above is inside this first-level
+           block quote.
+
+引用ブロック内の複数レベルのインデントは、より複雑な構造になります::
+
+   これはトップレベルの段落です。
+
+       この段落は第一レベルの引用ブロックに属しています。
+
+           この段落は第二レベルの引用ブロックに属しています。
+
+   もう一つのトップレベルの段落です。
+
+           この段落は第二レベルの引用ブロックに属しています。
+
+       この段落は第一レベルの引用ブロックに属しています。上の第二レベルの
+       引用ブロックは、この第一レベルの引用ブロックの内部に含まれます。
+
+..
+   When a paragraph or other construct consists of more than one line of
+   text, the lines must be left-aligned::
+
+       This is a paragraph.  The lines of
+       this paragraph are aligned at the left.
+
+           This paragraph has problems.  The
+       lines are not left-aligned.  In addition
+         to potential misinterpretation, warning
+           and/or error messages will be generated
+         by the parser.
+
+段落又は他の構文が複数行のテキストで構成されている場合、行は左揃えされている\
+必要があります::
+
+   これは段落です。
+   この段落の行は左揃えされています。
+
+       この段落は問題を抱えています。行
+   は左揃えされていません。さらに
+     パーサーによる誤った解釈、警告、
+       および/または エラーのメッセージが
+     生成される可能性が潜んでいます。
+
+..
+   Several constructs begin with a marker, and the body of the construct
+   must be indented relative to the marker.  For constructs using simple
+   markers (`bullet lists`_, `enumerated lists`_, footnotes_, citations_,
+   `hyperlink targets`_, directives_, and comments_), the level of
+   indentation of the body is determined by the position of the first
+   line of text, which begins on the same line as the marker.  For
+   example, bullet list bodies must be indented by at least two columns
+   relative to the left edge of the bullet::
+
+       - This is the first line of a bullet list
+         item's paragraph.  All lines must align
+         relative to the first line.  [1]_
+
+             This indented paragraph is interpreted
+             as a block quote.
+
+       Because it is not sufficiently indented,
+       this paragraph does not belong to the list
+       item.
+
+       .. [1] Here's a footnote.  The second line is aligned
+          with the beginning of the footnote label.  The ".."
+          marker is what determines the indentation.
+
+いくつかの構成要素はマーカーによって始まり、そのbody構造はマーカーに対して\
+相対的にインデントしている必要があります。単純なマーカーを使った構造\
+(箇条書きリスト_\ 、\ 列挙リスト_\ 、\ 脚注_\ 、\ 引用_\ 、\
+ハイパーリンクターゲット_\ 、\ ディレクティブ_\ および\ コメント_)の場合、\
+bodyのインデントレベルは開始マーカーと同じ行から始まる、テキストの最初の行の\
+位置によって決まります。例えば、箇条書きリストのbodyはバレットの左端を基準に\
+して、少なくとも２列のインデントが必要です::
+
+   - これは箇条書きリストアイテムの
+     段落の最初の行です。全ての行は
+     最初の行を基準にしなければなりません。 [1]_
+
+         このインデントされた段落は引用ブロックとして
+         解釈されます。
+
+   十分にインデントされていないため、
+   この段落はリストのアイテムには
+   属しません。
+
+   .. [1] これは脚注です。２行目は脚注ラベルの
+      開始位置に揃えられています。 ".." マーカーが
+      インデントを決定するものです。
+
+..
+   For constructs using complex markers (`field lists`_ and `option
+   lists`_), where the marker may contain arbitrary text, the indentation
+   of the first line *after* the marker determines the left edge of the
+   body.  For example, field lists may have very long markers (containing
+   the field names)::
+
+       :Hello: This field has a short field name, so aligning the field
+               body with the first line is feasible.
+
+       :Number-of-African-swallows-required-to-carry-a-coconut: It would
+           be very difficult to align the field body with the left edge
+           of the first line.  It may even be preferable not to begin the
+           body on the same line as the marker.
+
+複雑なマーカーを使った構造(フィールドリスト_\ 、\ オプションリスト_)の場合、\
+マーカーの後の最初の行のインデントが、bodyの左端を決定します。例えば、フィー\
+ルドリストは非常に長いマーカー(フィールド名を含む)を持つ場合があります::
+
+   :Hello: このフィールドの名前は短いので、最初の行とフィールドのbodyを
+           揃えることは可能です。
+
+   :Number-of-African-swallows-required-to-carry-a-coconut: 最初の行の
+       左端にフィールドのbodyを揃えることは非常に困難です。マーカーと
+       同じ行にbodyの開始位置を揃えない方が好ましい場合があります。
+
+
+.. Escaping Mechanism
+   ==================
+.. _escaping mechanism:
+
+エスケープの仕組み
 ==================
 
-The character set universally available to plaintext documents, 7-bit
-ASCII, is limited.  No matter what characters are used for markup,
-they will already have multiple meanings in written text.  Therefore
-markup characters *will* sometimes appear in text **without being
-intended as markup**.  Any serious markup system requires an escaping
-mechanism to override the default meaning of the characters used for
-the markup.  In reStructuredText we use the backslash, commonly used
-as an escaping character in other domains.
+..
+   The character set universally available to plaintext documents, 7-bit
+   ASCII, is limited.  No matter what characters are used for markup,
+   they will already have multiple meanings in written text.  Therefore
+   markup characters *will* sometimes appear in text **without being
+   intended as markup**.  Any serious markup system requires an escaping
+   mechanism to override the default meaning of the characters used for
+   the markup.  In reStructuredText we use the backslash, commonly used
+   as an escaping character in other domains.
 
-A backslash followed by any character (except whitespace characters)
-escapes that character.  The escaped character represents the
-character itself, and is prevented from playing a role in any markup
-interpretation.  The backslash is removed from the output.  A literal
-backslash is represented by two backslashes in a row (the first
-backslash "escapes" the second, preventing it being interpreted in an
-"escaping" role).
+プレーンテキスト文書に利用できる 7-bit ASCII 文字セットは、普遍的に制限され\
+ています。マークアップに利用されたか否かに関わらず、それらは書かれた文書の中\
+で複数の意味を持つことになります。そのため、マークアップ文字は時に\
+**マークアップ文字として意図されずに**\ テキストに表示される\ *でしょう*\ 。\
+まともなマークアップシステムでは、エスケープ機構がマークアップに使用される\
+文字のデフォルトの意味を上書きする必要があります。reStructuredTextでは一般的\
+に他のドメインでエスケープ文字として使わているバックスラッシュを使います。
 
-Backslash-escaped whitespace characters are removed from the document.
-This allows for character-level `inline markup`_.
+..
+   A backslash followed by any character (except whitespace characters)
+   escapes that character.  The escaped character represents the
+   character itself, and is prevented from playing a role in any markup
+   interpretation.  The backslash is removed from the output.  A literal
+   backslash is represented by two backslashes in a row (the first
+   backslash "escapes" the second, preventing it being interpreted in an
+   "escaping" role).
 
-There are two contexts in which backslashes have no special meaning:
-literal blocks and inline literals.  In these contexts, a single
-backslash represents a literal backslash, without having to double up.
+任意の文字(空白文字を除いて)が続くバックスラッシュは、その文字をエスケープ\
+します。エスケープ文字は、文字そのものを表し、任意のマークアップの解釈に\
+基づく役割を果たさなくなります。バックスラッシュは出力から削除されます。\
+リテラルのバックスラッシュは行中に２つのバックスラッシュ(最初のバックスラッ\
+シュは、２つ目の"エスケープする"役割に解釈されるのを"エスケープ"します)で\
+表します。
 
-Please note that the reStructuredText specification and parser do not
-address the issue of the representation or extraction of text input
-(how and in what form the text actually *reaches* the parser).
-Backslashes and other characters may serve a character-escaping
-purpose in certain contexts and must be dealt with appropriately.  For
-example, Python uses backslashes in strings to escape certain
-characters, but not others.  The simplest solution when backslashes
-appear in Python docstrings is to use raw docstrings::
+..
+   Backslash-escaped whitespace characters are removed from the document.
+   This allows for character-level `inline markup`_.
 
-    r"""This is a raw docstring.  Backslashes (\) are not touched."""
+バックスラッシュでエスケープされた空白文字は文書から取り除かれます。これに\
+より文字レベルの インラインマークアップ_ が可能になります。
 
+..
+   There are two contexts in which backslashes have no special meaning:
+   literal blocks and inline literals.  In these contexts, a single
+   backslash represents a literal backslash, without having to double up.
 
-Reference Names
-===============
+リテラルブロックとインラインリテラル: バックスラッシュが特別な意味を持たない\
+、２つのコンテキストがあります。これらのコンテキストでは、単一のバックスラッ\
+シュを２重にすることなく、リテラルのバックスラッシュを表します。
 
-Simple reference names are single words consisting of alphanumerics
-plus isolated (no two adjacent) internal hyphens, underscores,
-periods, colons and plus signs; no whitespace or other characters are
-allowed.  Footnote labels (Footnotes_ & `Footnote References`_), citation
-labels (Citations_ & `Citation References`_), `interpreted text`_ roles,
-and some `hyperlink references`_ use the simple reference name syntax.
+..
+   Please note that the reStructuredText specification and parser do not
+   address the issue of the representation or extraction of text input
+   (how and in what form the text actually *reaches* the parser).
+   Backslashes and other characters may serve a character-escaping
+   purpose in certain contexts and must be dealt with appropriately.  For
+   example, Python uses backslashes in strings to escape certain
+   characters, but not others.  The simplest solution when backslashes
+   appear in Python docstrings is to use raw docstrings::
 
-Reference names using punctuation or whose names are phrases (two or
-more space-separated words) are called "phrase-references".
-Phrase-references are expressed by enclosing the phrase in backquotes
-and treating the backquoted text as a reference name::
+       r"""This is a raw docstring.  Backslashes (\) are not touched."""
 
-    Want to learn about `my favorite programming language`_?
+reStructuredTextの仕様やパーサーは、テキスト入力の表現や抽出の問題(どのよう\
+に、またどのテキスト形式で実際にパーサへ\ *到達する*\ のか)を扱わないことに\
+注意して下さい。バックスラッシュと他の文字は、特定のコンテキストにおいて文字\
+エスケープの目的を果たすことができ、また適切に対処されなければなりません。\
+例えばPythonは文字列内で特定の文字をエスケープするのに、他でもないバック\
+スラッシュを使います。Pythonのdoctstringでバックスラッシュを表示する最も簡単\
+な解決策は、raw doctringを使うことです::
 
-    .. _my favorite programming language: http://www.python.org
-
-Simple reference names may also optionally use backquotes.
-
-Reference names are whitespace-neutral and case-insensitive.  When
-resolving reference names internally:
-
-- whitespace is normalized (one or more spaces, horizontal or vertical
-  tabs, newlines, carriage returns, or form feeds, are interpreted as
-  a single space), and
-
-- case is normalized (all alphabetic characters are converted to
-  lowercase).
-
-For example, the following `hyperlink references`_ are equivalent::
-
-    - `A HYPERLINK`_
-    - `a    hyperlink`_
-    - `A
-      Hyperlink`_
-
-Hyperlinks_, footnotes_, and citations_ all share the same namespace
-for reference names.  The labels of citations (simple reference names)
-and manually-numbered footnotes (numbers) are entered into the same
-database as other hyperlink names.  This means that a footnote
-(defined as "``.. [1]``") which can be referred to by a footnote
-reference (``[1]_``), can also be referred to by a plain hyperlink
-reference (1_).  Of course, each type of reference (hyperlink,
-footnote, citation) may be processed and rendered differently.  Some
-care should be taken to avoid reference name conflicts.
+   r"""これはraw docstringです。バックスラッシュ (\) は触れられません。"""
 
 
-Document Structure
-==================
+.. Reference Names
+   ===============
+.. _reference names:
 
-Document
---------
+参照名
+======
 
-Doctree element: document.
+..
+   Simple reference names are single words consisting of alphanumerics
+   plus isolated (no two adjacent) internal hyphens, underscores,
+   periods, colons and plus signs; no whitespace or other characters are
+   allowed.  Footnote labels (Footnotes_ & `Footnote References`_), citation
+   labels (Citations_ & `Citation References`_), `interpreted text`_ roles,
+   and some `hyperlink references`_ use the simple reference name syntax.
 
-The top-level element of a parsed reStructuredText document is the
-"document" element.  After initial parsing, the document element is a
-simple container for a document fragment, consisting of `body
-elements`_, transitions_, and sections_, but lacking a document title
-or other bibliographic elements.  The code that calls the parser may
-choose to run one or more optional post-parse transforms_,
-rearranging the document fragment into a complete document with a
-title and possibly other metadata elements (author, date, etc.; see
-`Bibliographic Fields`_).
+単純な参照名は、英数字に加えて単独で(２つが隣接していない)埋め込みのハイフン\
+、アンダースコア、ピリオド、コロン、そしてプラス記号で構成される単一のワード\
+です; 空白及び他の文字は許可されません。脚注のラベル(脚注_\ と 脚注参照_)、\
+引用ラベル(引用_\ と\ 引用参照_)、\ 解釈済みテキスト_\ ロール、およびいくつか\
+の\ ハイパーリンク参照_\ は、この単純な参照名の構文を使用します。
 
-Specifically, there is no way to indicate a document title and
-subtitle explicitly in reStructuredText.  Instead, a lone top-level
-section title (see Sections_ below) can be treated as the document
-title.  Similarly, a lone second-level section title immediately after
-the "document title" can become the document subtitle.  The rest of
-the sections are then lifted up a level or two.  See the `DocTitle
-transform`_ for details.
+..
+   Reference names using punctuation or whose names are phrases (two or
+   more space-separated words) are called "phrase-references".
+   Phrase-references are expressed by enclosing the phrase in backquotes
+   and treating the backquoted text as a reference name::
+
+       Want to learn about `my favorite programming language`_?
+
+       .. _my favorite programming language: http://www.python.org
+
+句読点やフレーズ(複数のスペースで区切られた単語)の名前を使った参照名は、"フ\
+レーズ参照"と呼ばれます。フレーズ参照はバッククォートで囲み、バッククォート\
+されたテキストを参照名として処理することによって表されます::
+
+   `私のお気に入りのプログラミング言語`_ について知りたいですか?
+
+   .. _私のお気に入りのプログラミング言語: http://www.python.org
+
+..
+   Simple reference names may also optionally use backquotes.
+
+単純な参照名も、オプションでバッククォートを使うことができます。
+
+..
+   Reference names are whitespace-neutral and case-insensitive.  When
+   resolving reference names internally:
+
+   - whitespace is normalized (one or more spaces, horizontal or vertical
+     tabs, newlines, carriage returns, or form feeds, are interpreted as
+     a single space), and
+
+   - case is normalized (all alphabetic characters are converted to
+     lowercase).
+
+参照名は、空白に対して中立であり、大文字と小文字を区別しません。内部的に参照\
+名が解決される時:
+
+- 空白文字は正規化(一つ以上のスペース、水平及び垂直タブ、改行、キャリッジ\
+  リターン、またはフォームフィードは単一のスペースとして解釈)され、
+
+- 大文字、小文字も正規化(全ての英字は小文字に変換)されます。
+
+..
+   For example, the following `hyperlink references`_ are equivalent::
+
+       - `A HYPERLINK`_
+       - `a    hyperlink`_
+       - `A
+         Hyperlink`_
+
+例えば、以下の\ ハイパーリンク参照_\ は等価です::
+
+   - `A HYPERLINK`_
+   - `a    hyperlink`_
+   - `A
+     Hyperlink`_
+
+..
+   Hyperlinks_, footnotes_, and citations_ all share the same namespace
+   for reference names.  The labels of citations (simple reference names)
+   and manually-numbered footnotes (numbers) are entered into the same
+   database as other hyperlink names.  This means that a footnote
+   (defined as "``.. [1]``") which can be referred to by a footnote
+   reference (``[1]_``), can also be referred to by a plain hyperlink
+   reference (1_).  Of course, each type of reference (hyperlink,
+   footnote, citation) may be processed and rendered differently.  Some
+   care should be taken to avoid reference name conflicts.
+
+ハイパーリンク__\ 、\ 脚注_\ 、および\ 引用_\ は参照名のために、全て同じ名前\
+空間を共有します。引用(単純な参照名)のラベルと手動で番号付けした脚注(番号)は\
+他のハイパーリンク名と同じデータベースに入力されます。これは(".. [1]"のように\
+定義された)脚注が、脚注参照(\ [1]_\ )で参照可能であり、またふつうのハイパー\
+リンク参照(\ 1_\ )で参照可能であることを意味します。もちろん参照の各タイプ\
+(ハイパーリンク、脚注、引用)が処理され異なったレンダリングをされる場合があり\
+ます。参照名の競合を避けるために、多少の注意を払うべきです。
+
+__ ハイパーリンクターゲット_
 
 
-Sections
---------
+.. Document Structure
+   ==================
+.. _document structure:
 
-Doctree elements: section, title.
+ドキュメント構造
+================
 
-Sections are identified through their titles, which are marked up with
-adornment: "underlines" below the title text, or underlines and
-matching "overlines" above the title.  An underline/overline is a
-single repeated punctuation character that begins in column 1 and
-forms a line extending at least as far as the right edge of the title
-text.  Specifically, an underline/overline character may be any
-non-alphanumeric printable 7-bit ASCII character [#]_.  When an
-overline is used, the length and character used must match the
-underline.  Underline-only adornment styles are distinct from
-overline-and-underline styles that use the same character.  There may
-be any number of levels of section titles, although some output
-formats may have limits (HTML has 6 levels).
+.. Document
+   --------
+.. _document:
 
-.. [#] The following are all valid section title adornment
-   characters::
+ドキュメント
+------------
+..
+   Doctree element: document.
+
+Doc ツリー要素: document
+
+..
+   The top-level element of a parsed reStructuredText document is the
+   "document" element.  After initial parsing, the document element is a
+   simple container for a document fragment, consisting of `body
+   elements`_, transitions_, and sections_, but lacking a document title
+   or other bibliographic elements.  The code that calls the parser may
+   choose to run one or more optional post-parse transforms_,
+   rearranging the document fragment into a complete document with a
+   title and possibly other metadata elements (author, date, etc.; see
+   `Bibliographic Fields`_).
+
+解析されたreStructuredText文書の最上位の要素は"document"要素です。最初の構文\
+解析を行った後、document要素は文書のタイトルや書誌要素を欠いた、\ body要素_\
+、\ トランジション_\ 、および\ セクション_\ から構成される文書の断片の単純な\
+コンテナです。パーサを呼び出すコードは文書の断片を、タイトルおよび場合によっ\
+ては他のメタデータ要素(著者、日付など; 書誌項目_ を参照してください)を持つ完\
+全な文書に再構成するための一つ以上の任意の解析後\ 変換_\ を実行することもで\
+きます。
+
+..
+   Specifically, there is no way to indicate a document title and
+   subtitle explicitly in reStructuredText.  Instead, a lone top-level
+   section title (see Sections_ below) can be treated as the document
+   title.  Similarly, a lone second-level section title immediately after
+   the "document title" can become the document subtitle.  The rest of
+   the sections are then lifted up a level or two.  See the `DocTitle
+   transform`_ for details.
+
+具体的に、reStructuredTextにおいて明示的に文書のタイトルおよびサブタイトルを\
+明示的に示す方法はありません。代わりに、独立した最上位セクションのタイトル(\
+下の\ セクション_\ を参照)を文書のタイトルとして扱うことができます。同様に、\
+"文書タイトル"の直後の第２レベルのセクションのタイトルは、文書のサブタイトル\
+とすることができます。残りのセクションはそのため、１ないし２レベル持ち上げら\
+れます。詳細については\ `文書タイトル変換`_\ を参照してください。
+
+
+.. Sections
+   --------
+.. _sections:
+
+セクション
+----------
+..
+   Doctree elements: section, title.
+
+Doc ツリー要素: section, title
+
+..
+   Sections are identified through their titles, which are marked up with
+   adornment: "underlines" below the title text, or underlines and
+   matching "overlines" above the title.  An underline/overline is a
+   single repeated punctuation character that begins in column 1 and
+   forms a line extending at least as far as the right edge of the title
+   text.  Specifically, an underline/overline character may be any
+   non-alphanumeric printable 7-bit ASCII character [#]_.  When an
+   overline is used, the length and character used must match the
+   underline.  Underline-only adornment styles are distinct from
+   overline-and-underline styles that use the same character.  There may
+   be any number of levels of section titles, although some output
+   formats may have limits (HTML has 6 levels).
+
+セクションは、タイトルテキスト下の"アンダーライン"、またはアンダーラインと\
+タイトルの上にある同じ長さの"オーバーライン"の装飾でマークアップされたタイ\
+トルによって識別されます。アンダーライン/オーバーラインは行頭から始まり、少\
+なくともタイトルテキストの右端まで延びる線を形成する、単一の句読点文字の繰り\
+返しです。具体的にはアンダーライン/オーバーラインの文字は英数字を除く印刷\
+可能な7-bit ASCII文字です [#]_\ 。オーバーラインを使う場合、使用される長さと\
+文字をアンダーラインと一致させる必要があります。アンダーラインのみの装飾スタ\
+イルは、同じ文字を使ったオーバーラインとアンダーラインのスタイルとは異なりま\
+す。セクションタイトルのレベル数は任意ですが、出力形式によっては制限があるか\
+も知れません(HTMLは6レベルです)。
+
+..
+   .. [#] The following are all valid section title adornment
+      characters::
+
+          ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+
+      Some characters are more suitable than others.  The following are
+      recommended::
+
+          = - ` : . ' " ~ ^ _ * + #
+
+.. [#] 以下は全てセクションタイトルの装飾に有効な文字です::
 
        ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
 
-   Some characters are more suitable than others.  The following are
-   recommended::
+   一部の文字は他の文字よりも適しています。以下が推奨されています::
 
        = - ` : . ' " ~ ^ _ * + #
 
-Rather than imposing a fixed number and order of section title
-adornment styles, the order enforced will be the order as encountered.
-The first style encountered will be an outermost title (like HTML H1),
-the second style will be a subtitle, the third will be a subsubtitle,
-and so on.
+..
+   Rather than imposing a fixed number and order of section title
+   adornment styles, the order enforced will be the order as encountered.
+   The first style encountered will be an outermost title (like HTML H1),
+   the second style will be a subtitle, the third will be a subsubtitle,
+   and so on.
 
-Below are examples of section title styles::
+セクションの順番は、セクションタイトルの装飾の固定した番号や順番ではなく、\
+出現した順番に従って適用されます。最初に出現したスタイルは、最も外側のタイ\
+トル(HTMLのH1のような)になり、2番目のスタイルがサブタイトルになり、3番目の\
+スタイルがサブサブタイトルになる、といった感じです。
 
-    ===============
-     Section Title
-    ===============
+..
+   Below are examples of section title styles::
 
-    ---------------
-     Section Title
-    ---------------
+       ===============
+        Section Title
+       ===============
 
-    Section Title
-    =============
+       ---------------
+        Section Title
+       ---------------
 
-    Section Title
-    -------------
+       Section Title
+       =============
 
-    Section Title
-    `````````````
+       Section Title
+       -------------
 
-    Section Title
-    '''''''''''''
+       Section Title
+       `````````````
 
-    Section Title
-    .............
+       Section Title
+       '''''''''''''
 
-    Section Title
-    ~~~~~~~~~~~~~
+       Section Title
+       .............
 
-    Section Title
-    *************
+       Section Title
+       ~~~~~~~~~~~~~
 
-    Section Title
-    +++++++++++++
+       Section Title
+       *************
 
-    Section Title
-    ^^^^^^^^^^^^^
+       Section Title
+       +++++++++++++
 
-When a title has both an underline and an overline, the title text may
-be inset, as in the first two examples above.  This is merely
-aesthetic and not significant.  Underline-only title text may *not* be
-inset.
+       Section Title
+       ^^^^^^^^^^^^^
 
-A blank line after a title is optional.  All text blocks up to the
-next title of the same or higher level are included in a section (or
-subsection, etc.).
+以下はセクションタイトルのスタイルの例です::
 
-All section title styles need not be used, nor need any specific
-section title style be used.  However, a document must be consistent
-in its use of section titles: once a hierarchy of title styles is
-established, sections must use that hierarchy.
+    ====================
+     セクションタイトル
+    ====================
 
-Each section title automatically generates a hyperlink target pointing
-to the section.  The text of the hyperlink target (the "reference
-name") is the same as that of the section title.  See `Implicit
-Hyperlink Targets`_ for a complete description.
+    --------------------
+     セクションタイトル
+    --------------------
 
-Sections may contain `body elements`_, transitions_, and nested
-sections.
+    セクションタイトル
+    ==================
+
+    セクションタイトル
+    ------------------
+
+    セクションタイトル
+    ``````````````````
+
+    セクションタイトル
+    ''''''''''''''''''
+
+    セクションタイトル
+    ..................
+
+    セクションタイトル
+    ~~~~~~~~~~~~~~~~~~
+
+    セクションタイトル
+    ******************
+
+    セクションタイトル
+    ++++++++++++++++++
+
+    セクションタイトル
+    ^^^^^^^^^^^^^^^^^^
+
+..
+   When a title has both an underline and an overline, the title text may
+   be inset, as in the first two examples above.  This is merely
+   aesthetic and not significant.  Underline-only title text may *not* be
+   inset.
+
+上記の例の最初の２つのように、タイトルがアンダーラインとオーバーラインの双方\
+を持つ場合、タイトルテキストの前後に空白を挿入して書けます。これは単に見た目\
+上のもので、深い意味はありません。アンダーラインのみのタイトルテキストの前後\
+に空白を挿入することはできません。
+
+..
+   A blank line after a title is optional.  All text blocks up to the
+   next title of the same or higher level are included in a section (or
+   subsection, etc.).
+
+タイトルの後の空白行は省略可能です。次の、同じまたはより高いレベルのタイトル\
+までの全てのテキストが、セクション(またはサブセクションなど)に含まれます。
+
+..
+   All section title styles need not be used, nor need any specific
+   section title style be used.  However, a document must be consistent
+   in its use of section titles: once a hierarchy of title styles is
+   established, sections must use that hierarchy.
+
+全てのセクションタイトルスタイルを使う必要も、どれか特定のセクションタイトル\
+スタイルを使う必要もありません。しかし、文書はセクションタイトルの使い方が\
+一貫している必要があります: 一度タイトルスタイルの階層が確立されたら、セク\
+ションはその階層に従う必要があります。
+
+..
+   Each section title automatically generates a hyperlink target pointing
+   to the section.  The text of the hyperlink target (the "reference
+   name") is the same as that of the section title.  See `Implicit
+   Hyperlink Targets`_ for a complete description.
+
+各セクションのタイトルは、自動的にそのセクションを指すハイパーリンクターゲ\
+ットを生成します。ハイパーリンクターゲットのテキスト("参照名")はセクション\
+のタイトルと同じです。\
+詳しい説明に付いては\ `暗黙的ハイパーリンクターゲット`_\ を参照してください。
+
+..
+   Sections may contain `body elements`_, transitions_, and nested
+   sections.
+
+セクションは\ body要素_, トランジション_, そして入れ子になったセクションを\
+含めることができます。
 
 
-Transitions
------------
+.. Transitions
+   -----------
+.. _transitions:
 
-Doctree element: transition.
+トランジション
+--------------
+..
+   Doctree element: transition.
 
-    Instead of subheads, extra space or a type ornament between
-    paragraphs may be used to mark text divisions or to signal
-    changes in subject or emphasis.
+       Instead of subheads, extra space or a type ornament between
+       paragraphs may be used to mark text divisions or to signal
+       changes in subject or emphasis.
 
-    (The Chicago Manual of Style, 14th edition, section 1.80)
+       (The Chicago Manual of Style, 14th edition, section 1.80)
 
-Transitions are commonly seen in novels and short fiction, as a gap
-spanning one or more lines, with or without a type ornament such as a
-row of asterisks.  Transitions separate other body elements.  A
-transition should not begin or end a section or document, nor should
-two transitions be immediately adjacent.
+Doc ツリー要素: transition
 
-The syntax for a transition marker is a horizontal line of 4 or more
-repeated punctuation characters.  The syntax is the same as section
-title underlines without title text.  Transition markers require blank
-lines before and after::
+    小見出しの代わりに、段落の間に余分なスペースや花形を、文章の仕切りや主題\
+    や強調の変化を知らせるために使うことができます。
 
-    Para.
+    (シカゴマニュアルオブスタイル, 第14版, 1.80節)
+
+..
+   Transitions are commonly seen in novels and short fiction, as a gap
+   spanning one or more lines, with or without a type ornament such as a
+   row of asterisks.  Transitions separate other body elements.  A
+   transition should not begin or end a section or document, nor should
+   two transitions be immediately adjacent.
+
+トランジションは一般に1行から数行にまたがる、アスタリスクの行などのような\
+花形を伴ったもしくは伴わない空白で、小説や短編作品などに見られます。トラン\
+ジションは他のbody要素を区切ります。トランジションはセクションや文書の開始\
+または終了すべきものではありませんし、また二つのトランジションが直接隣接\
+すべきでもありません。
+
+..
+   The syntax for a transition marker is a horizontal line of 4 or more
+   repeated punctuation characters.  The syntax is the same as section
+   title underlines without title text.  Transition markers require blank
+   lines before and after::
+
+       Para.
+
+       ----------
+
+       Para.
+
+トランジションマーカーの構文は、4つまたはそれ以上の句読点文字の繰り返しの\
+水平線です。これはタイトルテキストの無いセクションタイトルのアンダーライン\
+構文と同じです。トランジションマーカーは前と後ろに空白行が必要です::
+
+    段落
 
     ----------
 
-    Para.
+    段落
 
-Unlike section title underlines, no hierarchy of transition markers is
-enforced, nor do differences in transition markers accomplish
-anything.  It is recommended that a single consistent style be used.
+..
+   Unlike section title underlines, no hierarchy of transition markers is
+   enforced, nor do differences in transition markers accomplish
+   anything.  It is recommended that a single consistent style be used.
 
-The processing system is free to render transitions in output in any
-way it likes.  For example, horizontal rules (``<hr>``) in HTML output
-would be an obvious choice.
+セクションタイトルのアンダーラインと異なり、トランジションマーカーは階層構造\
+を適用しませんし、トランジションマーカーの中で違いを持つこともしません。単一\
+の一貫したスタイルを使用することが推奨されます。
+
+..
+   The processing system is free to render transitions in output in any
+   way it likes.  For example, horizontal rules (``<hr>``) in HTML output
+   would be an obvious choice.
+
+処理システムは、好みの任意の方法でトランジションを出力に描画して構いません。\
+例えばHTML出力での水平罫線(``<hr>``)は、分かりやすい選択でしょう。
 
 
-Body Elements
-=============
+.. Body Elements
+   =============
+.. _body elements:
 
-Paragraphs
-----------
+body 要素
+=========
 
-Doctree element: paragraph.
+.. Paragraphs
+   ----------
+.. _paragraphs:
 
-Paragraphs consist of blocks of left-aligned text with no markup
-indicating any other body element.  Blank lines separate paragraphs
-from each other and from other body elements.  Paragraphs may contain
-`inline markup`_.
+段落
+----
 
-Syntax diagram::
+..
+   Doctree element: paragraph.
+
+Doc ツリー要素: paragraph
+
+..
+   Paragraphs consist of blocks of left-aligned text with no markup
+   indicating any other body element.  Blank lines separate paragraphs
+   from each other and from other body elements.  Paragraphs may contain
+   `inline markup`_.
+
+段落は、他のbody要素のマークアップを伴わない左揃えのテキストブロックで構成\
+されます。空白行によって段落および他のbody要素と区切ります。\
+段落は\ インラインマークアップ_\ を含むことができます。
+
+..
+   Syntax diagram::
+
+       +------------------------------+
+       | paragraph                    |
+       |                              |
+       +------------------------------+
+
+       +------------------------------+
+       | paragraph                    |
+       |                              |
+       +------------------------------+
+
+構文ダイアグラム::
 
     +------------------------------+
-    | paragraph                    |
+    | 段落                         |
     |                              |
     +------------------------------+
 
     +------------------------------+
-    | paragraph                    |
+    | 段落                         |
     |                              |
     +------------------------------+
 
 
-Bullet Lists
-------------
+.. Bullet Lists
+   ------------
+.. _bullet lists:
 
-Doctree elements: bullet_list, list_item.
+箇条書きリスト
+--------------
 
-A text block which begins with a "*", "+", "-", "•", "‣", or "⁃",
-followed by whitespace, is a bullet list item (a.k.a. "unordered" list
-item).  List item bodies must be left-aligned and indented relative to
-the bullet; the text immediately after the bullet determines the
-indentation.  For example::
+..
+   Doctree elements: bullet_list, list_item.
 
-    - This is the first bullet list item.  The blank line above the
-      first list item is required; blank lines between list items
-      (such as below this paragraph) are optional.
+Doc ツリー要素: bullet_list, list_item
 
-    - This is the first paragraph in the second item in the list.
+..
+   A text block which begins with a "*", "+", "-", "•", "‣", or "⁃",
+   followed by whitespace, is a bullet list item (a.k.a. "unordered" list
+   item).  List item bodies must be left-aligned and indented relative to
+   the bullet; the text immediately after the bullet determines the
+   indentation.  For example::
 
-      This is the second paragraph in the second item in the list.
-      The blank line above this paragraph is required.  The left edge
-      of this paragraph lines up with the paragraph above, both
-      indented relative to the bullet.
+       - This is the first bullet list item.  The blank line above the
+         first list item is required; blank lines between list items
+         (such as below this paragraph) are optional.
 
-      - This is a sublist.  The bullet lines up with the left edge of
-        the text blocks above.  A sublist is a new list so requires a
-        blank line above and below.
+       - This is the first paragraph in the second item in the list.
 
-    - This is the third item of the main list.
+         This is the second paragraph in the second item in the list.
+         The blank line above this paragraph is required.  The left edge
+         of this paragraph lines up with the paragraph above, both
+         indented relative to the bullet.
 
-    This paragraph is not part of the list.
+         - This is a sublist.  The bullet lines up with the left edge of
+           the text blocks above.  A sublist is a new list so requires a
+           blank line above and below.
 
-Here are examples of **incorrectly** formatted bullet lists::
+       - This is the third item of the main list.
 
-    - This first line is fine.
-    A blank line is required between list items and paragraphs.
-    (Warning)
+       This paragraph is not part of the list.
 
-    - The following line appears to be a new sublist, but it is not:
-      - This is a paragraph continuation, not a sublist (since there's
-        no blank line).  This line is also incorrectly indented.
-      - Warnings may be issued by the implementation.
+空白が後に続く "*", "+", "-", "•", "‣", または "⁃" 始まるテキストブロックは\
+箇条書きリストアイテム(別名、"順不同"リストアイテム)です。リストアイテムの\
+本文は、関連する箇条書きの印に合わせて左揃えでインデントする必要があります; \
+印の直後のテキストがインデントを決定します。例えば::
 
-Syntax diagram::
+    - これは、最初の箇条書きリストのアイテムです。最初のリスト項目の上に\
+      空白行は必須ですが、リスト項目(例えばこの段落の下)との間の空白行は\
+      オプションです。
+
+    - これは、リストの２番目のアイテムの最初の段落です。
+
+      これは、リストの２番目の項目の２つ目の段落です。この段落の上には\
+      空白行が必要です。この段落の行の左端は上の段落と並んで、どちらも\
+      印に合わせてインデントされています。
+
+      - これはサブリストです。箇条書きの印の行の左端は上のテキスト\
+        ブロックと並べます。サブリストは新しいリストなので、上下に\
+        空白行が必要です。
+
+    - これは、メインリストの３番目のアイテムです。
+
+    この段落は、リストの一部ではありません。
+
+..
+   Here are examples of **incorrectly** formatted bullet lists::
+
+       - This first line is fine.
+       A blank line is required between list items and paragraphs.
+       (Warning)
+
+       - The following line appears to be a new sublist, but it is not:
+         - This is a paragraph continuation, not a sublist (since there's
+           no blank line).  This line is also incorrectly indented.
+         - Warnings may be issued by the implementation.
+
+これは箇条書きリストの\ **正しくない**\ 例です::
+
+    - この最初の行は問題ありません。
+    空行はリストのアイテムと段落の間に必要です。
+    (警告)
+
+    - 次の行は、サブリストのように見えますがそうではありません:
+      - これは段落の継続であって、(空白行がないので)サブリストでは\
+        ありません。この行は間違ってインデントされます。
+      - 警告は、実装によっては発行される可能性があります。
+
+..
+   Syntax diagram::
+
+       +------+-----------------------+
+       | "- " | list item             |
+       +------| (body elements)+      |
+              +-----------------------+
+
+構文ダイアグラム::
 
     +------+-----------------------+
-    | "- " | list item             |
-    +------| (body elements)+      |
+    | "- " | アイテムリスト        |
+    +------| (body要素)+           |
            +-----------------------+
 
 
-Enumerated Lists
-----------------
+.. Enumerated Lists
+   ----------------
+.. _enumerated lists:
 
-Doctree elements: enumerated_list, list_item.
+列挙リスト
+----------
 
-Enumerated lists (a.k.a. "ordered" lists) are similar to bullet lists,
-but use enumerators instead of bullets.  An enumerator consists of an
-enumeration sequence member and formatting, followed by whitespace.
-The following enumeration sequences are recognized:
+..
+   Doctree elements: enumerated_list, list_item.
 
-- arabic numerals: 1, 2, 3, ... (no upper limit).
-- uppercase alphabet characters: A, B, C, ..., Z.
-- lower-case alphabet characters: a, b, c, ..., z.
-- uppercase Roman numerals: I, II, III, IV, ..., MMMMCMXCIX (4999).
-- lowercase Roman numerals: i, ii, iii, iv, ..., mmmmcmxcix (4999).
+Doc ツリー要素: enumerated_list, list_item
 
-In addition, the auto-enumerator, "#", may be used to automatically
-enumerate a list.  Auto-enumerated lists may begin with explicit
-enumeration, which sets the sequence.  Fully auto-enumerated lists use
-arabic numerals and begin with 1.  (Auto-enumerated lists are new in
-Docutils 0.3.8.)
+..
+   Enumerated lists (a.k.a. "ordered" lists) are similar to bullet lists,
+   but use enumerators instead of bullets.  An enumerator consists of an
+   enumeration sequence member and formatting, followed by whitespace.
+   The following enumeration sequences are recognized:
 
-The following formatting types are recognized:
+列挙リスト(別名、"順序"リスト)は箇条書きリストと似ていますが、印の代わりに\
+列挙子をつかいます。列挙子は列挙シーケンスメンバーと書式で構成されています\
+。次の列挙シーケンスが認識されます:
 
-- suffixed with a period: "1.", "A.", "a.", "I.", "i.".
-- surrounded by parentheses: "(1)", "(A)", "(a)", "(I)", "(i)".
-- suffixed with a right-parenthesis: "1)", "A)", "a)", "I)", "i)".
+..
+   - arabic numerals: 1, 2, 3, ... (no upper limit).
+   - uppercase alphabet characters: A, B, C, ..., Z.
+   - lower-case alphabet characters: a, b, c, ..., z.
+   - uppercase Roman numerals: I, II, III, IV, ..., MMMMCMXCIX (4999).
+   - lowercase Roman numerals: i, ii, iii, iv, ..., mmmmcmxcix (4999).
 
-While parsing an enumerated list, a new list will be started whenever:
+- アラビア数字: 1, 2, 3, ... (上限なし)
+- アルファベット大文字: A, B, C, ..., Z
+- アルファベット小文字: a, b, c, ..., z
+- ローマ数字大文字: I, II, III, IV, ..., MMMMCMXCIX (4999)
+- ローマ数字小文字: i, ii, iii, iv, ..., mmmmcmxcix (4999)
 
-- An enumerator is encountered which does not have the same format and
-  sequence type as the current list (e.g. "1.", "(a)" produces two
-  separate lists).
+..
+   In addition, the auto-enumerator, "#", may be used to automatically
+   enumerate a list.  Auto-enumerated lists may begin with explicit
+   enumeration, which sets the sequence.  Fully auto-enumerated lists use
+   arabic numerals and begin with 1.  (Auto-enumerated lists are new in
+   Docutils 0.3.8.)
 
-- The enumerators are not in sequence (e.g., "1.", "3." produces two
-  separate lists).
+さらに、自動列挙子"#"は、自動的にリストを列挙するために使用できます。自動\
+列挙リストは、シーケンスを設定した明示的な列挙から初めることもできます。\
+完全に自動の列挙リストはアラビア数字を使用し、1から始まります。(自動列挙\
+リストはDocutils0.3.8からの新機能です)
 
-It is recommended that the enumerator of the first list item be
-ordinal-1 ("1", "A", "a", "I", or "i").  Although other start-values
-will be recognized, they may not be supported by the output format.  A
-level-1 [info] system message will be generated for any list beginning
-with a non-ordinal-1 enumerator.
+..
+   The following formatting types are recognized:
 
-Lists using Roman numerals must begin with "I"/"i" or a
-multi-character value, such as "II" or "XV".  Any other
-single-character Roman numeral ("V", "X", "L", "C", "D", "M") will be
-interpreted as a letter of the alphabet, not as a Roman numeral.
-Likewise, lists using letters of the alphabet may not begin with
-"I"/"i", since these are recognized as Roman numeral 1.
+   - suffixed with a period: "1.", "A.", "a.", "I.", "i.".
+   - surrounded by parentheses: "(1)", "(A)", "(a)", "(I)", "(i)".
+   - suffixed with a right-parenthesis: "1)", "A)", "a)", "I)", "i)".
 
-The second line of each enumerated list item is checked for validity.
-This is to prevent ordinary paragraphs from being mistakenly
-interpreted as list items, when they happen to begin with text
-identical to enumerators.  For example, this text is parsed as an
-ordinary paragraph::
+以下の書式タイプが推奨されます:
 
-    A. Einstein was a really
-    smart dude.
+- ピリオドを後ろに付ける: "1.", "A.", "a.", "I.", "i.".
+- 丸括弧で括る: "(1)", "(A)", "(a)", "(I)", "(i)".
+- 丸括弧を後ろに付ける: "1)", "A)", "a)", "I)", "i)".
 
-However, ambiguity cannot be avoided if the paragraph consists of only
-one line.  This text is parsed as an enumerated list item::
+..
+   While parsing an enumerated list, a new list will be started whenever:
 
-    A. Einstein was a really smart dude.
+   - An enumerator is encountered which does not have the same format and
+     sequence type as the current list (e.g. "1.", "(a)" produces two
+     separate lists).
 
-If a single-line paragraph begins with text identical to an enumerator
-("A.", "1.", "(b)", "I)", etc.), the first character will have to be
-escaped in order to have the line parsed as an ordinary paragraph::
+   - The enumerators are not in sequence (e.g., "1.", "3." produces two
+     separate lists).
 
-    \A. Einstein was a really smart dude.
+列挙リストを解析中であっても、別の新しいリストが始まる場合があります:
 
-Examples of nested enumerated lists::
+- 列挙子が現在のリストのフォーマットやシーケンスと異なる\
+  (例, "1."と"(a)"では別々のリストを生成します)
 
-    1. Item 1 initial text.
+- 列挙子が順番に並んでいない\
+  (例, "1."と"3."では別々のリストを生成します)
 
-       a) Item 1a.
-       b) Item 1b.
+..
+   It is recommended that the enumerator of the first list item be
+   ordinal-1 ("1", "A", "a", "I", or "i").  Although other start-values
+   will be recognized, they may not be supported by the output format.  A
+   level-1 [info] system message will be generated for any list beginning
+   with a non-ordinal-1 enumerator.
 
-    2. a) Item 2a.
-       b) Item 2b.
+リストの最初の項目の列挙子は、序数1("1", "A", "a", "I", または "i")とする\
+ことを推奨します。他の開始の値も認識はされますが、出力形式によってサポート\
+されない可能性があります。非序数1の列挙子で始まる任意のリストはレベル1 \
+[info] システムメッセージが生成されます。
 
-Example syntax diagram::
+..
+   Lists using Roman numerals must begin with "I"/"i" or a
+   multi-character value, such as "II" or "XV".  Any other
+   single-character Roman numeral ("V", "X", "L", "C", "D", "M") will be
+   interpreted as a letter of the alphabet, not as a Roman numeral.
+   Likewise, lists using letters of the alphabet may not begin with
+   "I"/"i", since these are recognized as Roman numeral 1.
+
+ローマ数字を使用するリストは、"I"/"i"または"II"や"XV"のようなマルチキャラ\
+クターの値で始まることが必要です。その他の任意の単一文字のローマ数字("V", \
+"X", "L", "C", "D", "M")は、ローマ数字ではなくアルファベットの文字として\
+解釈されます。同様に、"I"/"i" はローマ数字の1と認識されるため、アルファベ\
+ットの文字を使うリストをこれらで始めることは出来ません。
+
+..
+   The second line of each enumerated list item is checked for validity.
+   This is to prevent ordinary paragraphs from being mistakenly
+   interpreted as list items, when they happen to begin with text
+   identical to enumerators.  For example, this text is parsed as an
+   ordinary paragraph::
+
+       A. Einstein was a really
+       smart dude.
+
+列挙リストの各項目の2行目は、有効性がチェックされます。これは列挙子と全く\
+同じテキストで始まる場合に誤ってリストアイテムとして解釈されることを防ぐた\
+めです。例えば、このテキストは通常のパラグラフとして解析されます::
+
+    A. アインシュタインは本当に
+    賢いヤツだ。
+
+..
+   However, ambiguity cannot be avoided if the paragraph consists of only
+   one line.  This text is parsed as an enumerated list item::
+
+       A. Einstein was a really smart dude.
+
+しかし、段落が1行のみで構成されている場合、曖昧さを回避することが出来ませ\
+ん。このテキストは列挙リストのアイテムと解釈されます::
+
+    A. アインシュタインは本当に賢いヤツだ。
+
+..
+   If a single-line paragraph begins with text identical to an enumerator
+   ("A.", "1.", "(b)", "I)", etc.), the first character will have to be
+   escaped in order to have the line parsed as an ordinary paragraph::
+
+       \A. Einstein was a really smart dude.
+
+もし単一行の段落が列挙子("A.", "1.", "(b)", "I)", など)と同じテキストで始\
+まる場合、その行が通常の段落と解釈されるように最初の文字をエスケープする\
+必要があります::
+
+    \A. アインシュタインは本当に賢いヤツだ。
+
+..
+   Examples of nested enumerated lists::
+
+       1. Item 1 initial text.
+
+          a) Item 1a.
+          b) Item 1b.
+
+       2. a) Item 2a.
+          b) Item 2b.
+
+入れ子になった列挙リストの例::
+
+    1. 項目 1 最初のテキスト。
+
+       a) 項目 1a.
+       b) 項目 1b.
+
+    2. a) 項目 2a.
+       b) 項目 2b.
+
+..
+   Example syntax diagram::
+
+       +-------+----------------------+
+       | "1. " | list item            |
+       +-------| (body elements)+     |
+               +----------------------+
+
+構文ダイアグラム::
 
     +-------+----------------------+
-    | "1. " | list item            |
-    +-------| (body elements)+     |
+    | "1. " | リストアイテム       |
+    +-------| (body要素)+          |
             +----------------------+
 
 
-Definition Lists
-----------------
+.. Definition Lists
+   ----------------
+.. _definition lists:
 
-Doctree elements: definition_list, definition_list_item, term,
-classifier, definition.
+定義リスト
+----------
 
-Each definition list item contains a term, optional classifiers, and a
-definition.  A term is a simple one-line word or phrase.  Optional
-classifiers may follow the term on the same line, each after an inline
-" : " (space, colon, space).  A definition is a block indented
-relative to the term, and may contain multiple paragraphs and other
-body elements.  There may be no blank line between a term line and a
-definition block (this distinguishes definition lists from `block
-quotes`_).  Blank lines are required before the first and after the
-last definition list item, but are optional in-between.  For example::
+..
+   Doctree elements: definition_list, definition_list_item, term,
+   classifier, definition.
 
-    term 1
-        Definition 1.
+Doc ツリー要素: definition_list, definition_list_item, term,
+classifier, definition
 
-    term 2
-        Definition 2, paragraph 1.
+..
+   Each definition list item contains a term, optional classifiers, and a
+   definition.  A term is a simple one-line word or phrase.  Optional
+   classifiers may follow the term on the same line, each after an inline
+   " : " (space, colon, space).  A definition is a block indented
+   relative to the term, and may contain multiple paragraphs and other
+   body elements.  There may be no blank line between a term line and a
+   definition block (this distinguishes definition lists from `block
+   quotes`_).  Blank lines are required before the first and after the
+   last definition list item, but are optional in-between.  For example::
 
-        Definition 2, paragraph 2.
+       term 1
+           Definition 1.
 
-    term 3 : classifier
-        Definition 3.
+       term 2
+           Definition 2, paragraph 1.
 
-    term 4 : classifier one : classifier two
-        Definition 4.
+           Definition 2, paragraph 2.
 
-Inline markup is parsed in the term line before the classifier
-delimiter (" : ") is recognized.  The delimiter will only be
-recognized if it appears outside of any inline markup.
+       term 3 : classifier
+           Definition 3.
 
-A definition list may be used in various ways, including:
+       term 4 : classifier one : classifier two
+           Definition 4.
 
-- As a dictionary or glossary.  The term is the word itself, a
-  classifier may be used to indicate the usage of the term (noun,
-  verb, etc.), and the definition follows.
+定義リストの各項目には用語、省略可能な分類詞、および定義が含まれます。用語\
+は1行の単純な単語またはフレーズです。省略可能な分類詞は用語と同じ行に" : "\
+(スペース、コロン、スペース)に続けることが出来ます。定義は用語に関するイン\
+デントされたブロックで、複数の段落および他のbody要素を含むことができます。\
+用語の行と定義ブロックの間には空行がありません(これによって定義リストと引\
+用ブロックを区別します)。空白行は最初の定義リスト項目の前と、最後の定義リ\
+スト項目の後に必要ですが、間は省略可能です。例えば::
 
-- To describe program variables.  The term is the variable name, a
-  classifier may be used to indicate the type of the variable (string,
-  integer, etc.), and the definition describes the variable's use in
-  the program.  This usage of definition lists supports the classifier
-  syntax of Grouch_, a system for describing and enforcing a Python
-  object schema.
+    項目 1
+        定義 1。
 
-Syntax diagram::
+    項目 2
+        定義 2、段落1。
+
+        定義 2、段落2。
+
+    項目 3 : 分類詞
+        定義 3。
+
+    項目 4 : 分類詞 1 : 分類詞 2
+        定義 4。
+
+..
+   Inline markup is parsed in the term line before the classifier
+   delimiter (" : ") is recognized.  The delimiter will only be
+   recognized if it appears outside of any inline markup.
+
+   A definition list may be used in various ways, including:
+
+   - As a dictionary or glossary.  The term is the word itself, a
+     classifier may be used to indicate the usage of the term (noun,
+     verb, etc.), and the definition follows.
+
+   - To describe program variables.  The term is the variable name, a
+     classifier may be used to indicate the type of the variable (string,
+     integer, etc.), and the definition describes the variable's use in
+     the program.  This usage of definition lists supports the classifier
+     syntax of Grouch_, a system for describing and enforcing a Python
+     object schema.
+
+用語の行の中で、分類詞の区切り文字より前で解釈されたインラインマークアップ\
+は認識されます。\
+区切り文字は任意のインラインマークアップの外に現れた場合の\み認識されます。
+
+定義リストは以下のような例を含め、様々な使い方があります:
+
+- 辞書や用語集として。用語は単語そのもので、分類詞は用語の使い方(名詞、動\
+  詞、など)として使うことができ、後ろに定義が続きます。
+
+- プログラムの変数の説明。用語は変数名、分類詞は変数の型(文字列型、整数型\
+  、など)を示すために使用し、定義はプログラム内ので変数の使い方を説明しま\
+  す。この定義リストの使い方は、Pythonオブジェクトのスキーマを表現、強制\
+  するための\ Grouch_\ の構文をサポートしています。
+
+..
+   Syntax diagram::
+
+       +----------------------------+
+       | term [ " : " classifier ]* |
+       +--+-------------------------+--+
+          | definition                 |
+          | (body elements)+           |
+          +----------------------------+
+
+構文ダイアグラム::
 
     +----------------------------+
-    | term [ " : " classifier ]* |
+    | 用語 [ " : " 分類詞 ]*     |
     +--+-------------------------+--+
-       | definition                 |
-       | (body elements)+           |
+       | 定義                       |
+       | (body 要素)+               |
        +----------------------------+
 
 
-Field Lists
------------
+.. Field Lists
+   -----------
+.. _field lists:
 
-Doctree elements: field_list, field, field_name, field_body.
+フィールドリスト
+----------------
 
-Field lists are used as part of an extension syntax, such as options
-for directives_, or database-like records meant for further
-processing.  They may also be used for two-column table-like
-structures resembling database records (label & data pairs).
-Applications of reStructuredText may recognize field names and
-transform fields or field bodies in certain contexts.  For examples,
-see `Bibliographic Fields`_ below, or the "image_" and "meta_"
-directives in `reStructuredText Directives`_.
+..
+   Doctree elements: field_list, field, field_name, field_body.
 
-Field lists are mappings from field names to field bodies, modeled on
-RFC822_ headers.  A field name may consist of any characters, but
-colons (":") inside of field names must be escaped with a backslash.
-Inline markup is parsed in field names.  Field names are
-case-insensitive when further processed or transformed.  The field
-name, along with a single colon prefix and suffix, together form the
-field marker.  The field marker is followed by whitespace and the
-field body.  The field body may contain multiple body elements,
-indented relative to the field marker.  The first line after the field
-name marker determines the indentation of the field body.  For
-example::
+Doc ツリー要素: field_list, field, firld_name, field_body
 
-    :Date: 2001-08-16
-    :Version: 1
-    :Authors: - Me
-              - Myself
-              - I
-    :Indentation: Since the field marker may be quite long, the second
-       and subsequent lines of the field body do not have to line up
-       with the first line, but they must be indented relative to the
-       field name marker, and they must line up with each other.
-    :Parameter i: integer
+..
+   Field lists are used as part of an extension syntax, such as options
+   for directives_, or database-like records meant for further
+   processing.  They may also be used for two-column table-like
+   structures resembling database records (label & data pairs).
+   Applications of reStructuredText may recognize field names and
+   transform fields or field bodies in certain contexts.  For examples,
+   see `Bibliographic Fields`_ below, or the "image_" and "meta_"
+   directives in `reStructuredText Directives`_.
 
-The interpretation of individual words in a multi-word field name is
-up to the application.  The application may specify a syntax for the
-field name.  For example, second and subsequent words may be treated
-as "arguments", quoted phrases may be treated as a single argument,
-and direct support for the "name=value" syntax may be added.
+フィールドリストは、ディレクティブのオプションやデータベースような何かしら\
+の処理向けレコードの拡張構文の一部として使用されます。また、データベースの\
+レコードに類似した2カラムのテーブルのような構造体(ラベルとデータのペア)と\
+しても使用されます。reStructuredTextアプリケーションはフィールド名を認識し\
+、フィールドまたはフィールド本体を特定のコンテキストに変換することがありま\
+す。例については下記の\ 書誌項目_\ 、\
+または\ `reStructuredText ディレクティブ`_\ の"Image_"と"Meta_"ディレクテ\
+ィブを参照してください。
 
-Standard RFC822_ headers cannot be used for this construct because
-they are ambiguous.  A word followed by a colon at the beginning of a
-line is common in written text.  However, in well-defined contexts
-such as when a field list invariably occurs at the beginning of a
-document (PEPs and email messages), standard RFC822 headers could be
-used.
+..
+   Field lists are mappings from field names to field bodies, modeled on
+   RFC822_ headers.  A field name may consist of any characters, but
+   colons (":") inside of field names must be escaped with a backslash.
+   Inline markup is parsed in field names.  Field names are
+   case-insensitive when further processed or transformed.  The field
+   name, along with a single colon prefix and suffix, together form the
+   field marker.  The field marker is followed by whitespace and the
+   field body.  The field body may contain multiple body elements,
+   indented relative to the field marker.  The first line after the field
+   name marker determines the indentation of the field body.  For
+   example::
 
-Syntax diagram (simplified)::
+       :Date: 2001-08-16
+       :Version: 1
+       :Authors: - Me
+                 - Myself
+                 - I
+       :Indentation: Since the field marker may be quite long, the second
+          and subsequent lines of the field body do not have to line up
+          with the first line, but they must be indented relative to the
+          field name marker, and they must line up with each other.
+       :Parameter i: integer
 
-    +--------------------+----------------------+
-    | ":" field name ":" | field body           |
-    +-------+------------+                      |
-            | (body elements)+                  |
+フィールドリストは、\ RFC822_\ ヘッダに沿ってフィールド名をフィールド本体に\
+マッピングしています。フィールド名は任意の文字で構成する事ができますが、\
+フィールド名内のコロン(":")はバックスラッシュでエスケープが必要です。フィー\
+ルド名内のインラインマークアップは解釈されます。さらに処理や変換の際にフィー\
+ルド名の大文字・小文字は区別されません。フィールド名は、先頭と末尾の単一の\
+コロンと合わせてフィールドマーカーを形成します。フィールドマーカーには空白と\
+フィールド本体が続きます。フィールド本体はフィールドマーカーに対してインデン\
+トされた、複数のbody要素を含めることが出来ます。フィールド名マーカーの後の\
+最初の行がフィールド本体のインデントを決定します。次に例を示します::
+
+    :日付: 2001-08-16
+    :版: 1
+    :著者: - 自分
+           - 自分自身
+           - 私
+    :インデント: フィールドマーカーは非常に長くなる可能性があるため、
+       フィールド本体の2行目以降は最初の行と合わせる必要はありませんが、
+       これらはフィールド名マーカーに対してインデントされる必要があり、
+       それらはお互いに整列する必要があります。
+    :パラメータ i: integer
+
+..
+   The interpretation of individual words in a multi-word field name is
+   up to the application.  The application may specify a syntax for the
+   field name.  For example, second and subsequent words may be treated
+   as "arguments", quoted phrases may be treated as a single argument,
+   and direct support for the "name=value" syntax may be added.
+
+複数の後で構成されたフィールド名の個々の単語の解釈は、アプリケーション次第\
+です。アプリケーションはフィールド名の構文を指定することができます。例えば\
+、2番目以降の単語を"引数"として扱ったり、クォートされたフレーズを一つの引数\
+として扱ったり、"mane=value"という構文をサポートさせることができます。
+
+..
+   Standard RFC822_ headers cannot be used for this construct because
+   they are ambiguous.  A word followed by a colon at the beginning of a
+   line is common in written text.  However, in well-defined contexts
+   such as when a field list invariably occurs at the beginning of a
+   document (PEPs and email messages), standard RFC822 headers could be
+   used.
+
+標準の RFC822_ ヘッダは曖昧なため、この構造には使えません。後ろにコロンが\
+付いた単語が、書かれたテキスト行の先頭にあるのが一般的です。しかしフィー\
+ルドリストが先頭に必ず出現する文書(PEPやメールメッセージ)のように明確に定\
+義されたコンテキストであれば、標準のRFC822ヘッダを使うことができます。
+
+..
+   Syntax diagram (simplified)::
+
+       +--------------------+----------------------+
+       | ":" field name ":" | field body           |
+       +-------+------------+                      |
+               | (body elements)+                  |
+               +-----------------------------------+
+
+構文ダイアグラム (簡易版) ::
+
+    +----------------------+--------------------+
+    | ":" フィールド名 ":" | フィールド本体     |
+    +-------+--------------+                    |
+            | (body要素)+                       |
             +-----------------------------------+
 
 
-Bibliographic Fields
-````````````````````
+.. Bibliographic Fields
+   ````````````````````
+.. _bibliographic fields:
 
-Doctree elements: docinfo, author, authors, organization, contact,
+書誌情報
+````````
+
+..
+   Doctree elements: docinfo, author, authors, organization, contact,
+   version, status, date, copyright, field, topic.
+
+Doc ツリー要素: docinfo, author, authors, organization, contact,
 version, status, date, copyright, field, topic.
 
-When a field list is the first non-comment element in a document
-(after the document title, if there is one), it may have its fields
-transformed to document bibliographic data.  This bibliographic data
-corresponds to the front matter of a book, such as the title page and
-copyright page.
+..
+   When a field list is the first non-comment element in a document
+   (after the document title, if there is one), it may have its fields
+   transformed to document bibliographic data.  This bibliographic data
+   corresponds to the front matter of a book, such as the title page and
+   copyright page.
 
-Certain registered field names (listed below) are recognized and
-transformed to the corresponding doctree elements, most becoming child
-elements of the "docinfo" element.  No ordering is required of these
-fields, although they may be rearranged to fit the document structure,
-as noted.  Unless otherwise indicated below, each of the bibliographic
-elements' field bodies may contain a single paragraph only.  Field
-bodies may be checked for `RCS keywords`_ and cleaned up.  Any
-unrecognized fields will remain as generic fields in the docinfo
-element.
+フィールドリストが文書内の最初の非コメント要素(文書タイトルの後ろに、もし\
+あれば)である場合、そのフィールドは文書の書誌情報に変換される可能性があり\
+ます。この書誌情報はタイトルページや著作権ページのような、本の前付けに対応\
+しています。
 
-The registered bibliographic field names and their corresponding
-doctree elements are as follows:
+..
+   Certain registered field names (listed below) are recognized and
+   transformed to the corresponding doctree elements, most becoming child
+   elements of the "docinfo" element.  No ordering is required of these
+   fields, although they may be rearranged to fit the document structure,
+   as noted.  Unless otherwise indicated below, each of the bibliographic
+   elements' field bodies may contain a single paragraph only.  Field
+   bodies may be checked for `RCS keywords`_ and cleaned up.  Any
+   unrecognized fields will remain as generic fields in the docinfo
+   element.
 
-- Field name "Author": author element.
+特定の登録済みフィールド名(下記参照)は、識別されて対応するDOCツリー要素へ\
+変換され、ほとんどが"docinfo"要素の子要素になります。これらのフィールドの\
+順番は必要ありませんが、注釈のとおり文書の構造に合わせて再配置されます。\
+特に以下に記載のない限り、書誌要素のフィールド本体はどれも単一の段落のみを\
+含めることができます。フィールド本体は\ RCSキーワード_\ をチェックし、整形\
+されます。\
+認識されないフィールドはdocinfo要素内の汎用フィールドとして保持されます。
+
+..
+   The registered bibliographic field names and their corresponding
+   doctree elements are as follows:
+
+   - Field name "Author": author element.
+   - "Authors": authors.
+   - "Organization": organization.
+   - "Contact": contact.
+   - "Address": address.
+   - "Version": version.
+   - "Status": status.
+   - "Date": date.
+   - "Copyright": copyright.
+   - "Dedication": topic.
+   - "Abstract": topic.
+
+登録済み書誌フィールド名と対応するdoctree要素は以下のとおりです:
+
+- フィールド名 "Author": author 要素.
 - "Authors": authors.
 - "Organization": organization.
 - "Contact": contact.
@@ -897,287 +1795,582 @@ doctree elements are as follows:
 - "Dedication": topic.
 - "Abstract": topic.
 
-The "Authors" field may contain either: a single paragraph consisting
-of a list of authors, separated by ";" or ","; or a bullet list whose
-elements each contain a single paragraph per author.  ";" is checked
-first, so "Doe, Jane; Doe, John" will work.  In some languages
-(e.g. Swedish), there is no singular/plural distinction between
-"Author" and "Authors", so only an "Authors" field is provided, and a
-single name is interpreted as an "Author".  If a single name contains
-a comma, end it with a semicolon to disambiguate: ":Authors: Doe,
-Jane;".
+..
+   The "Authors" field may contain either: a single paragraph consisting
+   of a list of authors, separated by ";" or ","; or a bullet list whose
+   elements each contain a single paragraph per author.  ";" is checked
+   first, so "Doe, Jane; Doe, John" will work.  In some languages
+   (e.g. Swedish), there is no singular/plural distinction between
+   "Author" and "Authors", so only an "Authors" field is provided, and a
+   single name is interpreted as an "Author".  If a single name contains
+   a comma, end it with a semicolon to disambiguate: ":Authors: Doe,
+   Jane;".
 
-The "Address" field is for a multi-line surface mailing address.
-Newlines and whitespace will be preserved.
+"Author" フィールドは: ";"や","で区切られた著者のリストで構成された単一の\
+段落; または著者毎にそれぞれ単一の段落を含む箇条書きリストのどちらも含める\
+ことができます。";"は最初にチェックされるので、"Doe, Jane; Doe, John"は\
+正しく動作します。いくつかの言語(例えば、スウェーデン語)では、"Author"と\
+"Authors"の間に単数形/複数形の解釈の違いがないため、"Authors"のみが提供\
+され、一人の名前の場合は"Author"と解釈されます。一人の名前にカンマが含まれ\
+ている場合、明示的にセミコロンで終了します: ":Authors: Doe, Jane;"
 
-The "Dedication" and "Abstract" fields may contain arbitrary body
-elements.  Only one of each is allowed.  They become topic elements
-with "Dedication" or "Abstract" titles (or language equivalents)
-immediately following the docinfo element.
+..
+   The "Address" field is for a multi-line surface mailing address.
+   Newlines and whitespace will be preserved.
 
-This field-name-to-element mapping can be replaced for other
-languages.  See the `DocInfo transform`_ implementation documentation
-for details.
+   The "Dedication" and "Abstract" fields may contain arbitrary body
+   elements.  Only one of each is allowed.  They become topic elements
+   with "Dedication" or "Abstract" titles (or language equivalents)
+   immediately following the docinfo element.
 
-Unregistered/generic fields may contain one or more paragraphs or
-arbitrary body elements.
+   This field-name-to-element mapping can be replaced for other
+   languages.  See the `DocInfo transform`_ implementation documentation
+   for details.
 
+   Unregistered/generic fields may contain one or more paragraphs or
+   arbitrary body elements.
 
-RCS Keywords
-````````````
+"Address"フィールドはメールアドレスの複数行表示用です。改行や空白文字は\
+保持されます。
 
-`Bibliographic fields`_ recognized by the parser are normally checked
-for RCS [#]_ keywords and cleaned up [#]_.  RCS keywords may be
-entered into source files as "$keyword$", and once stored under RCS or
-CVS [#]_, they are expanded to "$keyword: expansion text $".  For
-example, a "Status" field will be transformed to a "status" element::
+"Dedication"と"Abstract"フィールドは任意のbody要素を含むことができます。\
+許可されるのはそれぞれ一つだけです。これらはdocinfo要素直後に続く"献辞"\
+または"要約"(もしくはそれと同様の言葉)が付いたトピック要素になります。
 
-    :Status: $keyword: expansion text $
+このフィールド名と要素名の対応は他の言語に置換できます。詳しいことは\
+`DocInfo transform`_ の実装ドキュメントを参照してください。
 
-.. [#] Revision Control System.
-.. [#] RCS keyword processing can be turned off (unimplemented).
-.. [#] Concurrent Versions System.  CVS uses the same keywords as RCS.
-
-Processed, the "status" element's text will become simply "expansion
-text".  The dollar sign delimiters and leading RCS keyword name are
-removed.
-
-The RCS keyword processing only kicks in when the field list is in
-bibliographic context (first non-comment construct in the document,
-after a document title if there is one).
+未登録/汎用フィールドは一つまたはそれ以上の段落、又は任意のbody要素を含める\
+ことができます。
 
 
-Option Lists
-------------
+.. RCS Keywords
+   ````````````
+.. _rcs keywords:
 
-Doctree elements: option_list, option_list_item, option_group, option,
+RCS キーワード
+``````````````
+
+..
+   `Bibliographic fields`_ recognized by the parser are normally checked
+   for RCS [#]_ keywords and cleaned up [#]_.  RCS keywords may be
+   entered into source files as "$keyword$", and once stored under RCS or
+   CVS [#]_, they are expanded to "$keyword: expansion text $".  For
+   example, a "Status" field will be transformed to a "status" element::
+
+       :Status: $keyword: expansion text $
+
+   .. [#] Revision Control System.
+   .. [#] RCS keyword processing can be turned off (unimplemented).
+   .. [#] Concurrent Versions System.  CVS uses the same keywords as RCS.
+
+パーサによって認識される書誌情報フィールドは、通常RCS [#]_ キーワードか\
+どうかをチェックされ、処理が完了します [#]_\ 。RCSキーワードは"$キーワード$"\
+のようにソースファイルに入力することができ、一度RCSやCVS [#]_ に保存されると\
+それらは"$キーワード: 展開テキスト$"に展開されます。例えば、"ステータス"\
+フィールドは"ステータス"要素に変換されます::
+
+    :Status: $キーワード: 展開テキスト $
+
+.. [#] Revision Control System。
+.. [#] RCS キーワード処理をOffにすることができます (未実装)。
+.. [#] Concurrent Versions System。CVSはRCSと同じキーワードを使います。
+
+..
+   Processed, the "status" element's text will become simply "expansion
+   text".  The dollar sign delimiters and leading RCS keyword name are
+   removed.
+
+   The RCS keyword processing only kicks in when the field list is in
+   bibliographic context (first non-comment construct in the document,
+   after a document title if there is one).
+
+処理された、"ステータス"要素のテキストは単純に"展開テキスト"になります。\
+ドル記号の区切り文字やRCSキーワード名は削除されます。
+
+RCSキーワードの処理はフィールドリストが書誌コンテキスト(文書内の最初の非\
+コメント構造で、もしタイトルがある場合はその後ろ)内にある場合にのみキック\
+されます。
+
+
+.. Option Lists
+   ------------
+.. _option lists:
+
+オプションリスト
+----------------
+
+..
+   Doctree elements: option_list, option_list_item, option_group, option,
+   option_string, option_argument, description.
+
+Doc ツリー要素: option_list, option_list_item, option_group, option,
 option_string, option_argument, description.
 
-Option lists are two-column lists of command-line options and
-descriptions, documenting a program's options.  For example::
+..
+   Option lists are two-column lists of command-line options and
+   descriptions, documenting a program's options.  For example::
 
-    -a         Output all.
-    -b         Output both (this description is
-               quite long).
-    -c arg     Output just arg.
-    --long     Output all day long.
+       -a         Output all.
+       -b         Output both (this description is
+                  quite long).
+       -c arg     Output just arg.
+       --long     Output all day long.
 
-    -p         This option has two paragraphs in the description.
-               This is the first.
+       -p         This option has two paragraphs in the description.
+                  This is the first.
 
-               This is the second.  Blank lines may be omitted between
-               options (as above) or left in (as here and below).
+                  This is the second.  Blank lines may be omitted between
+                  options (as above) or left in (as here and below).
 
-    --very-long-option  A VMS-style option.  Note the adjustment for
-                        the required two spaces.
+       --very-long-option  A VMS-style option.  Note the adjustment for
+                           the required two spaces.
+
+       --an-even-longer-option
+                  The description can also start on the next line.
+
+       -2, --two  This option has two variants.
+
+       -f FILE, --file=FILE  These two options are synonyms; both have
+                             arguments.
+
+       /V         A VMS/DOS-style option.
+
+オプションリストはプログラムのオプションを文書化する、コマンドラインオプ\
+ションおよび説明文の2カラムのリストです。次に例を示します::
+
+    -a         全て出力する。
+    -b         両方出力する(これは説明が
+               とても長い)。
+    -c arg     引数のみ出力。
+    --long     一日中出力する。
+
+    -p         このオプションは説明の中に2つの段落を持っています。
+               これは一つ目。
+
+               これは二つ目です。オプション同士の間の空行は(上述のように)
+               省略するか、(ここや下記のように)残すことができます。
+
+    --very-long-option  VMSスタイルのオプションです。位置合わせにはスペース
+                        2つが必要なので注意してください。
 
     --an-even-longer-option
-               The description can also start on the next line.
+               説明文は次の行から始めることもできます。
 
-    -2, --two  This option has two variants.
+    -2, --two  このオプションは2つの異なる形があります。
 
-    -f FILE, --file=FILE  These two options are synonyms; both have
-                          arguments.
+    -f FILE, --file=FILE  これら2つのオプションはシノニムです; どちらも引数を
+                          持ちます。
 
-    /V         A VMS/DOS-style option.
+    /V         VMS/DOSスタイルのオプション。
 
-There are several types of options recognized by reStructuredText:
+..
+   There are several types of options recognized by reStructuredText:
 
-- Short POSIX options consist of one dash and an option letter.
-- Long POSIX options consist of two dashes and an option word; some
-  systems use a single dash.
-- Old GNU-style "plus" options consist of one plus and an option
-  letter ("plus" options are deprecated now, their use discouraged).
-- DOS/VMS options consist of a slash and an option letter or word.
+   - Short POSIX options consist of one dash and an option letter.
+   - Long POSIX options consist of two dashes and an option word; some
+     systems use a single dash.
+   - Old GNU-style "plus" options consist of one plus and an option
+     letter ("plus" options are deprecated now, their use discouraged).
+   - DOS/VMS options consist of a slash and an option letter or word.
 
-Please note that both POSIX-style and DOS/VMS-style options may be
-used by DOS or Windows software.  These and other variations are
-sometimes used mixed together.  The names above have been chosen for
-convenience only.
+reStructuredTextが認識するオプションにはいくつか種類があります:
 
-The syntax for short and long POSIX options is based on the syntax
-supported by Python's getopt.py_ module, which implements an option
-parser similar to the `GNU libc getopt_long()`_ function but with some
-restrictions.  There are many variant option systems, and
-reStructuredText option lists do not support all of them.
+- 短いPOSIXオプションは1つのダッシュとオプション文字で構成されます。
+- 長いPOSIXオプションは2つのダッシュとオプション用語で構成されます; いくつか\
+  のシステムでは単一のダッシュを使います。
+- 古いGNUスタイルの "プラス" オプションは一つのプラス記号とオプション文字で\
+  構成されます("プラス"オプションは非推奨のため、使用すべきではありません)。
+- DOS/VMSオプションはスラッシュとオプション文字又は用語で構成されます。
 
-Although long POSIX and DOS/VMS option words may be allowed to be
-truncated by the operating system or the application when used on the
-command line, reStructuredText option lists do not show or support
-this with any special syntax.  The complete option word should be
-given, supported by notes about truncation if and when applicable.
+..
+   Please note that both POSIX-style and DOS/VMS-style options may be
+   used by DOS or Windows software.  These and other variations are
+   sometimes used mixed together.  The names above have been chosen for
+   convenience only.
 
-Options may be followed by an argument placeholder, whose role and
-syntax should be explained in the description text.  Either a space or
-an equals sign may be used as a delimiter between options and option
-argument placeholders; short options ("-" or "+" prefix only) may omit
-the delimiter.  Option arguments may take one of two forms:
+DOSやWindowsソフトウェアはPOSIXスタイルとDOS/VMSスタイルの両方を使うことが\
+あります。これらおよびその他のバリエーションが、しばしば混在して使われます。\
+上記の名前は便宜上の都合で選んだものです。
 
-- Begins with a letter (``[a-zA-Z]``) and subsequently consists of
-  letters, numbers, underscores and hyphens (``[a-zA-Z0-9_-]``).
-- Begins with an open-angle-bracket (``<``) and ends with a
-  close-angle-bracket (``>``); any characters except angle brackets
-  are allowed internally.
+..
+   The syntax for short and long POSIX options is based on the syntax
+   supported by Python's getopt.py_ module, which implements an option
+   parser similar to the `GNU libc getopt_long()`_ function but with some
+   restrictions.  There are many variant option systems, and
+   reStructuredText option lists do not support all of them.
 
-Multiple option "synonyms" may be listed, sharing a single
-description.  They must be separated by comma-space.
+POSIXの短いオプションと長いオプションの構文は、\ `GNU libc getopt_long()`_\
+関数と同様のオプションパーサを実装した、Pythonの getopt.py_ モジュールに\
+よってサポートされている構文に基づいていますが、いくつか制限があります。\
+異なる形のオプションシステムがたくさんあり、reStructuredTextのオプション\
+リストはそれらの全てをサポートはしていません。
 
-There must be at least two spaces between the option(s) and the
-description.  The description may contain multiple body elements.  The
-first line after the option marker determines the indentation of the
-description.  As with other types of lists, blank lines are required
-before the first option list item and after the last, but are optional
-between option entries.
+..
+   Although long POSIX and DOS/VMS option words may be allowed to be
+   truncated by the operating system or the application when used on the
+   command line, reStructuredText option lists do not show or support
+   this with any special syntax.  The complete option word should be
+   given, supported by notes about truncation if and when applicable.
 
-Syntax diagram (simplified)::
+長いPOSIXオプションやDOS/VMSのオプション用語は、コマンドラインで使用された際\
+に、オペレーティングシステムやアプリケーションによって切り捨てられることを\
+許可されることがありますが、reStructuredTextのオプションリストでは特別な構文\
+でこれらを表示やサポートしたりしていません。もし該当する場合には、切り捨てに\
+関する注釈でサポートしつつ、完全なオプション名を与えるべきです。
+
+..
+   Options may be followed by an argument placeholder, whose role and
+   syntax should be explained in the description text.  Either a space or
+   an equals sign may be used as a delimiter between options and option
+   argument placeholders; short options ("-" or "+" prefix only) may omit
+   the delimiter.  Option arguments may take one of two forms:
+
+   - Begins with a letter (``[a-zA-Z]``) and subsequently consists of
+     letters, numbers, underscores and hyphens (``[a-zA-Z0-9_-]``).
+   - Begins with an open-angle-bracket (``<``) and ends with a
+     close-angle-bracket (``>``); any characters except angle brackets
+     are allowed internally.
+
+オプションは引数のプレースホルダを持つ場合があり、その役割や構文は説明文の\
+テキストの中で説明されるべきです。スペースまたは等号のいずれかがオプション\
+とオプション引数のプレースホルダの区切り文字として使用されることがあります; \
+短い形式のオプション("-"や"+"の接頭辞のみ)の場合は区切り文字を省略できます。\
+オプション引数は次のいずれかの形式を取ります:
+
+- 英字(``[a-zA-Z]``)で始まり、続いて英字、数字、アンダースコアおよびハイフン\
+  (``[a-zA-Z0-9_-]``)で構成される
+- 開き山括弧(``<``)で始まり、閉じ山括弧(``>``)で終わる; 括弧内は山括弧を\
+  除く任意の文字が許される
+
+..
+   Multiple option "synonyms" may be listed, sharing a single
+   description.  They must be separated by comma-space.
+
+   There must be at least two spaces between the option(s) and the
+   description.  The description may contain multiple body elements.  The
+   first line after the option marker determines the indentation of the
+   description.  As with other types of lists, blank lines are required
+   before the first option list item and after the last, but are optional
+   between option entries.
+
+一つの説明を共有する複数のオプション"シノニム"を表示することができます。\
+それらはカンマで区切る必要があります。
+
+オプション(複数可)と説明の間には、少なくとも2つのスペースが必要なければ\
+なりません。説明には複数のbody要素を含めることができます。オプションマーカの\
+後の最初の行は説明の字下げを決定します。他のタイプのリストと同様に、空行は\
+最初のオプションリストアイテムの前と最後のアイテムの後には必要ですが、オプ\
+ションエントリの間は省略可能です。
+
+..
+   Syntax diagram (simplified)::
+
+       +----------------------------+-------------+
+       | option [" " argument] "  " | description |
+       +-------+--------------------+             |
+               | (body elements)+                 |
+               +----------------------------------+
+
+構文ダイアグラム (簡易版)::
 
     +----------------------------+-------------+
-    | option [" " argument] "  " | description |
+    | オプション [" " 引数] "  " | 説明        |
     +-------+--------------------+             |
-            | (body elements)+                 |
+            | (body要素)+                      |
             +----------------------------------+
 
 
-Literal Blocks
---------------
+.. Literal Blocks
+   --------------
+.. _literal blocks:
 
-Doctree element: literal_block.
+リテラルブロック
+----------------
 
-A paragraph consisting of two colons ("::") signifies that the
-following text block(s) comprise a literal block.  The literal block
-must either be indented or quoted (see below).  No markup processing
-is done within a literal block.  It is left as-is, and is typically
-rendered in a monospaced typeface::
+..
+   Doctree element: literal_block.
 
-    This is a typical paragraph.  An indented literal block follows.
+Doc ツリー要素: literal_block
+
+..
+   A paragraph consisting of two colons ("::") signifies that the
+   following text block(s) comprise a literal block.  The literal block
+   must either be indented or quoted (see below).  No markup processing
+   is done within a literal block.  It is left as-is, and is typically
+   rendered in a monospaced typeface::
+
+       This is a typical paragraph.  An indented literal block follows.
+
+       ::
+
+           for a in [5,4,3,2,1]:   # this is program code, shown as-is
+               print a
+           print "it's..."
+           # a literal block continues until the indentation ends
+
+       This text has returned to the indentation of the first paragraph,
+       is outside of the literal block, and is therefore treated as an
+       ordinary paragraph.
+
+二つのコロン("::")で構成される段落は、次のテキストブロック(複数可)がリテラル\
+ブロックを構成することを示します。リテラルブロックはインデントか引用符を\
+付与(下記参照)のいずれかを必要があります。リテラルブロック内ではマークアップ\
+処理は行われません。それらはそのまま残され、通常は等幅書体で表示されます::
+
+    これは普通の段落です。インデントされたリテラルブロックが続きます。
 
     ::
 
-        for a in [5,4,3,2,1]:   # this is program code, shown as-is
+        for a in [5,4,3,2,1]:   # プログラムコード。そのまま表示されます
             print a
         print "it's..."
-        # a literal block continues until the indentation ends
+        # リテラルブロックはインデントが終わるまで続きます
 
-    This text has returned to the indentation of the first paragraph,
-    is outside of the literal block, and is therefore treated as an
-    ordinary paragraph.
+    このテキストは最初の段落のインデントに戻っていて、リテラルブロックの外\
+    であり、そのため普通の段落として扱われます。
 
-The paragraph containing only "::" will be completely removed from the
-output; no empty paragraph will remain.
+..
+   The paragraph containing only "::" will be completely removed from the
+   output; no empty paragraph will remain.
 
-As a convenience, the "::" is recognized at the end of any paragraph.
-If immediately preceded by whitespace, both colons will be removed
-from the output (this is the "partially minimized" form).  When text
-immediately precedes the "::", *one* colon will be removed from the
-output, leaving only one colon visible (i.e., "::" will be replaced by
-":"; this is the "fully minimized" form).
+   As a convenience, the "::" is recognized at the end of any paragraph.
+   If immediately preceded by whitespace, both colons will be removed
+   from the output (this is the "partially minimized" form).  When text
+   immediately precedes the "::", *one* colon will be removed from the
+   output, leaving only one colon visible (i.e., "::" will be replaced by
+   ":"; this is the "fully minimized" form).
 
-In other words, these are all equivalent (please pay attention to the
-colons after "Paragraph"):
+"::"のみを含む段落は出力から完全に削除されます; 空の段落は残りません。
 
-1. Expanded form::
+利便性のため、"::"は任意の段落の末尾で認識されます。直前に空白がある場合、\
+両方のコロンが出力から削除されます(これは"部分最小化"の形式です)。"::"の直前\
+にテキストがある場合、一つのコロンは出力から削除されてコロンが一つだけ残り\
+ます(つまり、"::"は":"に置き換えられます。これは"完全最小化"の形式です)。
 
-      Paragraph:
+..
+   In other words, these are all equivalent (please pay attention to the
+   colons after "Paragraph"):
+
+   1. Expanded form::
+
+         Paragraph:
+
+         ::
+
+             Literal block
+
+   2. Partially minimized form::
+
+         Paragraph: ::
+
+             Literal block
+
+   3. Fully minimized form::
+
+         Paragraph::
+
+             Literal block
+
+   All whitespace (including line breaks, but excluding minimum
+   indentation for indented literal blocks) is preserved.  Blank lines
+   are required before and after a literal block, but these blank lines
+   are not included as part of the literal block.
+
+言い換えれば、これらは全て等価です("段落"の後のコロンに注意してください):
+
+1. 展開された形式::
+
+      段落:
 
       ::
 
-          Literal block
+          リテラルブロック
 
-2. Partially minimized form::
+2. 部分最小化した形式::
 
-      Paragraph: ::
+      段落: ::
 
-          Literal block
+          リテラルブロック
 
-3. Fully minimized form::
+3. 完全最小化した形式::
 
-      Paragraph::
+      段落::
 
-          Literal block
+          リテラルブロック
 
-All whitespace (including line breaks, but excluding minimum
-indentation for indented literal blocks) is preserved.  Blank lines
-are required before and after a literal block, but these blank lines
-are not included as part of the literal block.
+全ての空白(改行を含みますが、インデントリテラルブロックのための最低限の\
+インデントは除きます)は保持されます。空行はリテラルブロックの前後に必要です\
+が、これらの空行はリテラルブロックには含まれません。
 
 
-Indented Literal Blocks
-```````````````````````
+.. Indented Literal Blocks
+   ```````````````````````
+.. _indented literal blocks:
 
-Indented literal blocks are indicated by indentation relative to the
-surrounding text (leading whitespace on each line).  The minimum
-indentation will be removed from each line of an indented literal
-block.  The literal block need not be contiguous; blank lines are
-allowed between sections of indented text.  The literal block ends
-with the end of the indentation.
+インデントリテラルブロック
+``````````````````````````
 
-Syntax diagram::
+..
+   Indented literal blocks are indicated by indentation relative to the
+   surrounding text (leading whitespace on each line).  The minimum
+   indentation will be removed from each line of an indented literal
+   block.  The literal block need not be contiguous; blank lines are
+   allowed between sections of indented text.  The literal block ends
+   with the end of the indentation.
+
+インデントリテラルブロックは周囲のテキストに対する相対インデント(各行の先頭\
+にある空白)によって示されます。最小のインデントはインデントリテラルブロック\
+の各行から削除されます。リテラルブロックは隣接している必要はありません; \
+インデントされたテキスト内のセクションの間に空行を入れるができます。リテラル\
+ブロックはインデントの終わりで終了します。
+
+..
+   Syntax diagram::
+
+       +------------------------------+
+       | paragraph                    |
+       | (ends with "::")             |
+       +------------------------------+
+          +---------------------------+
+          | indented literal block    |
+          +---------------------------+
+
+構文ダイアグラム::
 
     +------------------------------+
-    | paragraph                    |
-    | (ends with "::")             |
+    | 段落                         |
+    | (末尾の "::")                |
     +------------------------------+
        +---------------------------+
-       | indented literal block    |
+       | インデントされた          |
+       | リテラルブロック          |
        +---------------------------+
 
 
-Quoted Literal Blocks
-`````````````````````
+.. Quoted Literal Blocks
+   `````````````````````
+.. _quoted literal blocks:
 
-Quoted literal blocks are unindented contiguous blocks of text where
-each line begins with the same non-alphanumeric printable 7-bit ASCII
-character [#]_.  A blank line ends a quoted literal block.  The
-quoting characters are preserved in the processed document.
+クオートリテラルブロック
+````````````````````````
+
+..
+   Quoted literal blocks are unindented contiguous blocks of text where
+   each line begins with the same non-alphanumeric printable 7-bit ASCII
+   character [#]_.  A blank line ends a quoted literal block.  The
+   quoting characters are preserved in the processed document.
+
+   .. [#]
+      The following are all valid quoting characters::
+
+          ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+
+      Note that these are the same characters as are valid for title
+      adornment of sections_.
+
+クォートリテラルブロックはそれぞれの行が同じ英数字以外の印刷可能な7-bit ASCII\
+文字 [#]_ から始まる、インデントされていない隣接したテキストのブロックです。\
+空行はクォートリテラルブロックを終了します。引用文字は処理された文書に保存\
+されます。
 
 .. [#]
-   The following are all valid quoting characters::
+   有効なクォート文字は以下のとおりです::
 
        ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
 
-   Note that these are the same characters as are valid for title
-   adornment of sections_.
+   これらはセクションタイトルの修飾に有効な文字と同じであることに注意して\
+   ください。
 
-Possible uses include literate programming in Haskell and email
-quoting::
+..
+   Possible uses include literate programming in Haskell and email
+   quoting::
 
-    John Doe wrote::
+       John Doe wrote::
 
-    >> Great idea!
+       >> Great idea!
+       >
+       > Why didn't I think of that?
+
+       You just did!  ;-)
+
+用途としては、Haskellでの文芸的プログラミングや電子メールの引用などがあります::
+
+    John Doe は書きました::
+
+    >> すごいアイデアだ!
     >
-    > Why didn't I think of that?
+    > なんでそれを考えていなかったんだろう?
 
-    You just did!  ;-)
+    やったね!  ;-)
 
-Syntax diagram::
+..
+   Syntax diagram::
+
+       +------------------------------+
+       | paragraph                    |
+       | (ends with "::")             |
+       +------------------------------+
+       +------------------------------+
+       | ">" per-line-quoted          |
+       | ">" contiguous literal block |
+       +------------------------------+
+
+構文ダイアグラム::
 
     +------------------------------+
-    | paragraph                    |
-    | (ends with "::")             |
+    | 段落                         |
+    | (末尾の "::")                |
     +------------------------------+
     +------------------------------+
-    | ">" per-line-quoted          |
-    | ">" contiguous literal block |
+    | ">" 行毎に引用符の付いた     |
+    | ">" 隣接するリテラルブロック |
     +------------------------------+
 
 
-Line Blocks
------------
+.. Line Blocks
+   -----------
+.. _line blocks:
 
-Doctree elements: line_block, line.  (New in Docutils 0.3.5.)
+行ブロック
+----------
 
-Line blocks are useful for address blocks, verse (poetry, song
-lyrics), and unadorned lists, where the structure of lines is
-significant.  Line blocks are groups of lines beginning with vertical
-bar ("|") prefixes.  Each vertical bar prefix indicates a new line, so
-line breaks are preserved.  Initial indents are also significant,
-resulting in a nested structure.  Inline markup is supported.
-Continuation lines are wrapped portions of long lines; they begin with
-a space in place of the vertical bar.  The left edge of a continuation
-line must be indented, but need not be aligned with the left edge of
-the text above it.  A line block ends with a blank line.
+..
+   Doctree elements: line_block, line.  (New in Docutils 0.3.5.)
 
-This example illustrates continuation lines::
+Doc ツリー要素: line_block, line.  (Docutils 0.3.5 以降)
+
+..
+   Line blocks are useful for address blocks, verse (poetry, song
+   lyrics), and unadorned lists, where the structure of lines is
+   significant.  Line blocks are groups of lines beginning with vertical
+   bar ("|") prefixes.  Each vertical bar prefix indicates a new line, so
+   line breaks are preserved.  Initial indents are also significant,
+   resulting in a nested structure.  Inline markup is supported.
+   Continuation lines are wrapped portions of long lines; they begin with
+   a space in place of the vertical bar.  The left edge of a continuation
+   line must be indented, but need not be aligned with the left edge of
+   the text above it.  A line block ends with a blank line.
+
+行ブロックは住所ブロック、(詩、歌の歌詞)、そして簡素なリストなど、\
+行の構造が重要なものに便利です。行ブロックは縦棒("|")の接頭辞で始まる行の\
+グループです。それぞれの接頭辞の縦棒は新しい行を示すため、改行は保持され\
+ます。最初のインデントも需要で、入れ子構造の結果になります。インライン\
+マークアップをサポートされています。継続した行は長い行の回り込んだ部分です; \
+これらは縦線の代わりにスペースで始まります。継続行の左端をインデントする\
+必要がありますが、上のテキストの左端と揃える必要はありません。行ブロック\
+は空行で終わります。
+
+..
+   This example illustrates continuation lines::
+
+       | Lend us a couple of bob till Thursday.
+       | I'm absolutely skint.
+       | But I'm expecting a postal order and I can pay you back
+         as soon as it comes.
+       | Love, Ewan.
+
+継続行の例を示します::
 
     | Lend us a couple of bob till Thursday.
     | I'm absolutely skint.
@@ -1185,8 +2378,28 @@ This example illustrates continuation lines::
       as soon as it comes.
     | Love, Ewan.
 
-This example illustrates the nesting of line blocks, indicated by the
-initial indentation of new lines::
+..
+   This example illustrates the nesting of line blocks, indicated by the
+   initial indentation of new lines::
+
+       Take it away, Eric the Orchestra Leader!
+
+           | A one, two, a one two three four
+           |
+           | Half a bee, philosophically,
+           |     must, *ipso facto*, half not be.
+           | But half the bee has got to be,
+           |     *vis a vis* its entity.  D'you see?
+           |
+           | But can a bee be said to be
+           |     or not to be an entire bee,
+           |         when half the bee is not a bee,
+           |             due to some ancient injury?
+           |
+           | Singing...
+
+この例では、新しい行の初期インデントを示すことによって行ブロックの入れ子構造\
+を示しています::
 
     Take it away, Eric the Orchestra Leader!
 
@@ -1204,109 +2417,221 @@ initial indentation of new lines::
         |
         | Singing...
 
-Syntax diagram::
+..
+   Syntax diagram::
+
+       +------+-----------------------+
+       | "| " | line                  |
+       +------| continuation line     |
+              +-----------------------+
+
+構文ダイアグラム::
 
     +------+-----------------------+
-    | "| " | line                  |
-    +------| continuation line     |
+    | "| " | 行                    |
+    +------| 継続行                |
            +-----------------------+
 
 
-Block Quotes
+.. Block Quotes
+   ------------
+.. _block quotes:
+
+引用ブロック
 ------------
 
-Doctree element: block_quote, attribution.
+..
+   Doctree element: block_quote, attribution.
 
-A text block that is indented relative to the preceding text, without
-preceding markup indicating it to be a literal block or other content,
-is a block quote.  All markup processing (for body elements and inline
-markup) continues within the block quote::
+Doc ツリー要素: block_quote, attribution
 
-    This is an ordinary paragraph, introducing a block quote.
+..
+   A text block that is indented relative to the preceding text, without
+   preceding markup indicating it to be a literal block or other content,
+   is a block quote.  All markup processing (for body elements and inline
+   markup) continues within the block quote::
 
-        "It is my business to know things.  That is my trade."
+       This is an ordinary paragraph, introducing a block quote.
 
-        -- Sherlock Holmes
+           "It is my business to know things.  That is my trade."
 
-A block quote may end with an attribution: a text block beginning with
-"--", "---", or a true em-dash, flush left within the block quote.  If
-the attribution consists of multiple lines, the left edges of the
-second and subsequent lines must align.
+           -- Sherlock Holmes
 
-Multiple block quotes may occur consecutively if terminated with
-attributions.
+リテラルブロックやその他のコンテンツであることを示すマークアップが前に無く、\
+先行するテキストに対してインデントしたテキストブロックは、引用ブロックです。\
+全てのマークアップ処理(body要素やインラインマークアップ)は引用ブロックの中で\
+継続されます::
 
-    Unindented paragraph.
+    これは引用ブロックを含む、普通の段落です。
 
-        Block quote 1.
+        "物事を知るのが私の仕事です。それが本業ですので。"
 
-        -- Attribution 1
+        -- シャーロック・ホームズ
 
-        Block quote 2.
+..
+   A block quote may end with an attribution: a text block beginning with
+   "--", "---", or a true em-dash, flush left within the block quote.  If
+   the attribution consists of multiple lines, the left edges of the
+   second and subsequent lines must align.
 
-`Empty comments`_ may be used to explicitly terminate preceding
-constructs that would otherwise consume a block quote::
+   Multiple block quotes may occur consecutively if terminated with
+   attributions.
 
-    * List item.
+       Unindented paragraph.
+
+           Block quote 1.
+
+           -- Attribution 1
+
+           Block quote 2.
+
+引用ブロックはアトリビューション("--"、"---"または本当のEMダッシュで始まり、\
+引用ブロック内で左揃えのテキストブロック)で終わる場合があります。アトリビュ\
+ーションが複数行で構成されている場合は、2行目以降の行の左端は揃える必要が\
+あります。
+
+アトリビューションで終了した場合、複数の引用ブロックを生成することができます。
+
+    インデントしていない段落。
+
+        引用ブロック 1。
+
+        -- アトリビューション 1
+
+        引用ブロック 2。
+
+..
+   `Empty comments`_ may be used to explicitly terminate preceding
+   constructs that would otherwise consume a block quote::
+
+       * List item.
+
+       ..
+
+           Block quote 3.
+
+   Empty comments may also be used to separate block quotes::
+
+           Block quote 4.
+
+       ..
+
+           Block quote 5.
+
+空のコメントは先行する構成要素を引用ブロックに含まないようにするために、\
+明示的に終了させるために利用できます::
+
+    * リスト項目
 
     ..
 
-        Block quote 3.
+        引用ブロック 3。
 
-Empty comments may also be used to separate block quotes::
+空のコメントは引用ブロックを分けるのにも利用できます::
 
-        Block quote 4.
+        引用ブロック 4。
 
     ..
 
-        Block quote 5.
+        引用ブロック 5。
 
-Blank lines are required before and after a block quote, but these
-blank lines are not included as part of the block quote.
+..
+   Blank lines are required before and after a block quote, but these
+   blank lines are not included as part of the block quote.
 
-Syntax diagram::
+空行は引用ブロックの前後に必要ですが、これらの空行は引用ブロックには含まれ\
+ません。
+
+..
+   Syntax diagram::
+
+       +------------------------------+
+       | (current level of            |
+       | indentation)                 |
+       +------------------------------+
+          +---------------------------+
+          | block quote               |
+          | (body elements)+          |
+          |                           |
+          | -- attribution text       |
+          |    (optional)             |
+          +---------------------------+
+
+構文ダイアグラム::
 
     +------------------------------+
-    | (current level of            |
-    | indentation)                 |
+    | (現在のレベルの              |
+    | インデント)                  |
     +------------------------------+
        +---------------------------+
-       | block quote               |
-       | (body elements)+          |
+       | 引用ブロック              |
+       | (body要素)+               |
        |                           |
-       | -- attribution text       |
-       |    (optional)             |
+       | -- アトリビューション文   |
+       |    (省略可)               |
        +---------------------------+
 
 
-Doctest Blocks
---------------
+.. Doctest Blocks
+   --------------
+.. _doctest blocks:
 
-Doctree element: doctest_block.
+Doctest ブロック
+----------------
 
-Doctest blocks are interactive Python sessions cut-and-pasted into
-docstrings.  They are meant to illustrate usage by example, and
-provide an elegant and powerful testing environment via the `doctest
-module`_ in the Python standard library.
+..
+   Doctree element: doctest_block.
 
-Doctest blocks are text blocks which begin with ``">>> "``, the Python
-interactive interpreter main prompt, and end with a blank line.
-Doctest blocks are treated as a special case of literal blocks,
-without requiring the literal block syntax.  If both are present, the
-literal block syntax takes priority over Doctest block syntax::
+Doc ツリー要素: doctest_block
 
-    This is an ordinary paragraph.
+..
+   Doctest blocks are interactive Python sessions cut-and-pasted into
+   docstrings.  They are meant to illustrate usage by example, and
+   provide an elegant and powerful testing environment via the `doctest
+   module`_ in the Python standard library.
 
-    >>> print 'this is a Doctest block'
+Doctestブロックはdocstringsの中にカットアンドペーストされた、対話型Python\
+セッションです。これらは例によって使用方法を示し、Python標準ライブラリの\
+doctestモジュール_\ を経由してエレガントかつパワフルなテスト環境を提供する\
+ことを目的としています。
+
+..
+   Doctest blocks are text blocks which begin with ``">>> "``, the Python
+   interactive interpreter main prompt, and end with a blank line.
+   Doctest blocks are treated as a special case of literal blocks,
+   without requiring the literal block syntax.  If both are present, the
+   literal block syntax takes priority over Doctest block syntax::
+
+       This is an ordinary paragraph.
+
+       >>> print 'this is a Doctest block'
+       this is a Doctest block
+
+       The following is a literal block::
+
+           >>> This is not recognized as a doctest block by
+           reStructuredText.  It *will* be recognized by the doctest
+           module, though!
+
+   Indentation is not required for doctest blocks.
+
+DoctestブロックはPython対話型インタプリタのプロンプト ``">>> "`` で始まり、\
+空行で終了します。Doctestブロックはリテラルブロックの特殊なケースとして\
+扱われ、リテラルブロックの構文は不要です。両方とも存在する場合は、リテラル\
+ブロックの構文がDoctestブロック構文よりも優先されます::
+
+    これは普通の段落です。
+
+    >>> print 7this is a Doctest block'
     this is a Doctest block
 
-    The following is a literal block::
+    次はリテラルブロックです::
 
-        >>> This is not recognized as a doctest block by
-        reStructuredText.  It *will* be recognized by the doctest
-        module, though!
+        >>> これはreStructuredTextにはDoctestブロックとして
+        認識されません。しかし、Doctestモジュールによって
+        *認識されます* !
 
-Indentation is not required for doctest blocks.
+doctestブロックは、インデントは必要ではありません。
 
 
 Tables
