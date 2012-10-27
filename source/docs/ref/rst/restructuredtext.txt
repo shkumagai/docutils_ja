@@ -24,7 +24,7 @@
 
    この文書は詳細な技術仕様書であり、チュートリアルや入門書ではありません。
    これがあなたのreStructuredTextとの最初の接点であれば、まず最初に\
-   `reStructuredText入門`_ や `早わかりreStructuredText`_ ユーザーリファレンスを\
+   `reStructuredText入門`_ や `早わかり reStructuredText`_ ユーザーリファレンスを\
    読んでください。
 
 .. _`reStructuredText 入門書`:
@@ -275,7 +275,7 @@ reStructuredText ドキュメントは body 要素またはブロックレベル
          >>> print '(cut and pasted from interactive Python sessions)'
          (cut and pasted from interactive Python sessions)
 
-- Doctestブロック_::
+- `Doctest ブロック`_::
 
      >>> print 'Python-specific usage examples; begun with ">>>"'
      Python-specific usage example; begun with ">>>"
@@ -361,7 +361,7 @@ reStructuredText ドキュメントは body 要素またはブロックレベル
               follow, except for the syntax of footnotes/citations,
               hyperlink targets, directives, or substitution definitions.
 
-- 明示的なマークアップブロック_\ はすべて明示的なブロックマーカー、\
+- 明示的マークアップブロック_\ はすべて明示的なブロックマーカー、\
   ピリオド二文字とスペースで始まります:
 
   - 脚注_::
@@ -861,7 +861,7 @@ Doc ツリー要素: document
    `Bibliographic Fields`_).
 
 解析されたreStructuredText文書の最上位の要素は"document"要素です。最初の構文\
-解析を行った後、document要素は文書のタイトルや書誌要素を欠いた、\ body要素_\
+解析を行った後、document要素は文書のタイトルや書誌要素を欠いた、\ `body 要素`_\
 、\ トランジション_\ 、および\ セクション_\ から構成される文書の断片の単純な\
 コンテナです。パーサを呼び出すコードは文書の断片を、タイトルおよび場合によっ\
 ては他のメタデータ要素(著者、日付など; 書誌項目_ を参照してください)を持つ完\
@@ -1072,7 +1072,7 @@ Doc ツリー要素: section, title
    Sections may contain `body elements`_, transitions_, and nested
    sections.
 
-セクションは\ body要素_, トランジション_, そして入れ子になったセクションを\
+セクションは\ `body 要素`_, トランジション_, そして入れ子になったセクションを\
 含めることができます。
 
 
@@ -1724,7 +1724,7 @@ Doc ツリー要素: field_list, field, firld_name, field_body
    ````````````````````
 .. _bibliographic fields:
 
-書誌情報
+書誌項目
 ````````
 
 ..
@@ -1761,7 +1761,7 @@ version, status, date, copyright, field, topic.
 変換され、ほとんどが"docinfo"要素の子要素になります。これらのフィールドの\
 順番は必要ありませんが、注釈のとおり文書の構造に合わせて再配置されます。\
 特に以下に記載のない限り、書誌要素のフィールド本体はどれも単一の段落のみを\
-含めることができます。フィールド本体は\ RCSキーワード_\ をチェックし、整形\
+含めることができます。フィールド本体は\ `RCS キーワード`_\ をチェックし、整形\
 されます。\
 認識されないフィールドはdocinfo要素内の汎用フィールドとして保持されます。
 
@@ -2592,7 +2592,7 @@ Doc ツリー要素: doctest_block
 
 Doctestブロックはdocstringsの中にカットアンドペーストされた、対話型Python\
 セッションです。これらは例によって使用方法を示し、Python標準ライブラリの\
-doctestモジュール_\ を経由してエレガントかつパワフルなテスト環境を提供する\
+`doctest モジュール`_\ を経由してエレガントかつパワフルなテスト環境を提供する\
 ことを目的としています。
 
 ..
@@ -2634,133 +2634,273 @@ DoctestブロックはPython対話型インタプリタのプロンプト ``">>>
 doctestブロックは、インデントは必要ではありません。
 
 
-Tables
-------
+.. Tables
+   ------
+.. _tables:
 
-Doctree elements: table, tgroup, colspec, thead, tbody, row, entry.
+テーブル
+--------
 
-ReStructuredText provides two syntaxes for delineating table cells:
-`Grid Tables`_ and `Simple Tables`_.
+..
+   Doctree elements: table, tgroup, colspec, thead, tbody, row, entry.
 
-As with other body elements, blank lines are required before and after
-tables.  Tables' left edges should align with the left edge of
-preceding text blocks; if indented, the table is considered to be part
-of a block quote.
+Doc ツリー要素: table, tgroup, colspec, thead, tbody, row, entry
 
-Once isolated, each table cell is treated as a miniature document; the
-top and bottom cell boundaries act as delimiting blank lines.  Each
-cell contains zero or more body elements.  Cell contents may include
-left and/or right margins, which are removed before processing.
+..
+   ReStructuredText provides two syntaxes for delineating table cells:
+   `Grid Tables`_ and `Simple Tables`_.
+
+   As with other body elements, blank lines are required before and after
+   tables.  Tables' left edges should align with the left edge of
+   preceding text blocks; if indented, the table is considered to be part
+   of a block quote.
+
+   Once isolated, each table cell is treated as a miniature document; the
+   top and bottom cell boundaries act as delimiting blank lines.  Each
+   cell contains zero or more body elements.  Cell contents may include
+   left and/or right margins, which are removed before processing.
+
+ReStructuredTextはテーブルセルの輪郭を描くための二つの構文: グリッドテーブル_\
+と\ シンプルテーブル_\ を提供しています。
+
+他のbody要素と同様に、空行がテーブルの前後に必要です。テーブルの左端は\
+前のテキストブロックの左端と揃えておく必要があります; インデントされている\
+場合、テーブルは引用ブロックの一部とみなされます。
+
+一度分離されると、それぞれのテーブルセルは文書のミニチュアのように扱われます; \
+セルの上下の境界線は、区切り用の空行のように機能します。それぞれのセルには\
+0個以上のbody要素が含まれます。セルの内容は左右にマージンを含めてもよく、\
+それらは処理前に削除されます。
 
 
-Grid Tables
-```````````
+.. Grid Tables
+   ```````````
+.. _grid tables:
 
-Grid tables provide a complete table representation via grid-like
-"ASCII art".  Grid tables allow arbitrary cell contents (body
-elements), and both row and column spans.  However, grid tables can be
-cumbersome to produce, especially for simple data sets.  The `Emacs
-table mode`_ is a tool that allows easy editing of grid tables, in
-Emacs.  See `Simple Tables`_ for a simpler (but limited)
-representation.
+グリッドテーブル
+````````````````
 
-Grid tables are described with a visual grid made up of the characters
-"-", "=", "|", and "+".  The hyphen ("-") is used for horizontal lines
-(row separators).  The equals sign ("=") may be used to separate
-optional header rows from the table body (not supported by the `Emacs
-table mode`_).  The vertical bar ("|") is used for vertical lines
-(column separators).  The plus sign ("+") is used for intersections of
-horizontal and vertical lines.  Example::
+..
+   Grid tables provide a complete table representation via grid-like
+   "ASCII art".  Grid tables allow arbitrary cell contents (body
+   elements), and both row and column spans.  However, grid tables can be
+   cumbersome to produce, especially for simple data sets.  The `Emacs
+   table mode`_ is a tool that allows easy editing of grid tables, in
+   Emacs.  See `Simple Tables`_ for a simpler (but limited)
+   representation.
+
+グリッドテーブルはグリッドのような"ASCIIアート"を使って完全なテーブル表現を\
+提供します。グリッドテーブルは任意のセル内容(body要素)、および行と列の跨がり\
+が許可します。しかしグリッドテーブルは、特に簡単なデータセットに対しては生成\
+するための手順が煩雑になり得ます。Emacsのtable modeは、Emacsでの表の編集を\
+簡単にしてくれるツールです。より簡単な(しかし制限のある)表現には\
+シンプルテーブル_\ を参照してください。
+
+..
+   Grid tables are described with a visual grid made up of the characters
+   "-", "=", "|", and "+".  The hyphen ("-") is used for horizontal lines
+   (row separators).  The equals sign ("=") may be used to separate
+   optional header rows from the table body (not supported by the `Emacs
+   table mode`_).  The vertical bar ("|") is used for vertical lines
+   (column separators).  The plus sign ("+") is used for intersections of
+   horizontal and vertical lines.  Example::
+
+       +------------------------+------------+----------+----------+
+       | Header row, column 1   | Header 2   | Header 3 | Header 4 |
+       | (header rows optional) |            |          |          |
+       +========================+============+==========+==========+
+       | body row 1, column 1   | column 2   | column 3 | column 4 |
+       +------------------------+------------+----------+----------+
+       | body row 2             | Cells may span columns.          |
+       +------------------------+------------+---------------------+
+       | body row 3             | Cells may  | - Table cells       |
+       +------------------------+ span rows. | - contain           |
+       | body row 4             |            | - body elements.    |
+       +------------------------+------------+---------------------+
+
+グリッドテーブルは"-"、"="、"|"、そして"+"の文字で構成された、視覚的な\
+グリッドで描かれています。ハイフン("-")は水平線(行の区切り)に使用されます。\
+等号("=")はオプションのヘッダ行をテーブル本体と区切るために使用されます\
+(`Emacs table mode`_ ではサポートされていません)。縦棒("|")は垂直線(列の\
+区切り)に使用されます。プラス記号("+")は水平線と垂直線の交点に使用されます。\
+例えば::
 
     +------------------------+------------+----------+----------+
-    | Header row, column 1   | Header 2   | Header 3 | Header 4 |
-    | (header rows optional) |            |          |          |
+    | ヘッダ行, 列 1         | ヘッダ 2   | ヘッダ 3 | ヘッダ 4 |
+    | (ヘッダ行はオプション) |            |          |          |
     +========================+============+==========+==========+
-    | body row 1, column 1   | column 2   | column 3 | column 4 |
+    | 本体 行 1, 列 1        | 列 2       | 列 3     | 列 4     |
     +------------------------+------------+----------+----------+
-    | body row 2             | Cells may span columns.          |
+    | 本体 行 2              | セルは列を跨げます。             |
     +------------------------+------------+---------------------+
-    | body row 3             | Cells may  | - Table cells       |
-    +------------------------+ span rows. | - contain           |
-    | body row 4             |            | - body elements.    |
+    | 本体 行 3              | セルは行を | - テーブルセルは    |
+    +------------------------+ 跨げます。 | - body要素を        |
+    | 本体 行 4              |            | - 含みます。        |
     +------------------------+------------+---------------------+
 
-Some care must be taken with grid tables to avoid undesired
-interactions with cell text in rare cases.  For example, the following
-table contains a cell in row 2 spanning from column 2 to column 4::
+..
+   Some care must be taken with grid tables to avoid undesired
+   interactions with cell text in rare cases.  For example, the following
+   table contains a cell in row 2 spanning from column 2 to column 4::
+
+       +--------------+----------+-----------+-----------+
+       | row 1, col 1 | column 2 | column 3  | column 4  |
+       +--------------+----------+-----------+-----------+
+       | row 2        |                                  |
+       +--------------+----------+-----------+-----------+
+       | row 3        |          |           |           |
+       +--------------+----------+-----------+-----------+
+
+ごくまれな、セルのテキストとの望ましくない相互作用を避けるために、グリッド\
+テーブルに注意擦る必要があります。例えば次のテーブルの行2には列2から列4に\
+跨るセルがあります::
 
     +--------------+----------+-----------+-----------+
-    | row 1, col 1 | column 2 | column 3  | column 4  |
+    | 行 1, 列 1   | 列 2     | 列 3      | 列 4      |
     +--------------+----------+-----------+-----------+
-    | row 2        |                                  |
+    | 行 2         |                                  |
     +--------------+----------+-----------+-----------+
-    | row 3        |          |           |           |
-    +--------------+----------+-----------+-----------+
-
-If a vertical bar is used in the text of that cell, it could have
-unintended effects if accidentally aligned with column boundaries::
-
-    +--------------+----------+-----------+-----------+
-    | row 1, col 1 | column 2 | column 3  | column 4  |
-    +--------------+----------+-----------+-----------+
-    | row 2        | Use the command ``ls | more``.   |
-    +--------------+----------+-----------+-----------+
-    | row 3        |          |           |           |
+    | 行 3         |          |           |           |
     +--------------+----------+-----------+-----------+
 
-Several solutions are possible.  All that is needed is to break the
-continuity of the cell outline rectangle.  One possibility is to shift
-the text by adding an extra space before::
+..
+   If a vertical bar is used in the text of that cell, it could have
+   unintended effects if accidentally aligned with column boundaries::
 
-    +--------------+----------+-----------+-----------+
-    | row 1, col 1 | column 2 | column 3  | column 4  |
-    +--------------+----------+-----------+-----------+
-    | row 2        |  Use the command ``ls | more``.  |
-    +--------------+----------+-----------+-----------+
-    | row 3        |          |           |           |
-    +--------------+----------+-----------+-----------+
+       +--------------+----------+-----------+-----------+
+       | row 1, col 1 | column 2 | column 3  | column 4  |
+       +--------------+----------+-----------+-----------+
+       | row 2        | Use the command ``ls | more``.   |
+       +--------------+----------+-----------+-----------+
+       | row 3        |          |           |           |
+       +--------------+----------+-----------+-----------+
 
-Another possibility is to add an extra line to row 2::
+もしそのセルのテキストで縦棒が使われる場合、誤って列の区切りと位置が揃った\
+場合に意図しない影響を及ぼす可能性があります::
 
-    +--------------+----------+-----------+-----------+
-    | row 1, col 1 | column 2 | column 3  | column 4  |
-    +--------------+----------+-----------+-----------+
-    | row 2        | Use the command ``ls | more``.   |
-    |              |                                  |
-    +--------------+----------+-----------+-----------+
-    | row 3        |          |           |           |
-    +--------------+----------+-----------+-----------+
+    +--------------+----------+----------+----------+
+    | 行 1, 列 1   | 列 2     | 列 3     | 列 4     |
+    +--------------+----------+----------+----------+
+    | 行 2         | コマンドを使う ``ls | more``   |
+    +--------------+----------+----------+----------+
+    | 行 3         |          |          |          |
+    +--------------+----------+----------+----------+
+
+..
+   Several solutions are possible.  All that is needed is to break the
+   continuity of the cell outline rectangle.  One possibility is to shift
+   the text by adding an extra space before::
+
+       +--------------+----------+-----------+-----------+
+       | row 1, col 1 | column 2 | column 3  | column 4  |
+       +--------------+----------+-----------+-----------+
+       | row 2        |  Use the command ``ls | more``.  |
+       +--------------+----------+-----------+-----------+
+       | row 3        |          |           |           |
+       +--------------+----------+-----------+-----------+
+
+いくつかの解決策があります。必要なのは、セルの枠の矩形が繋がった状態を断つ\
+ことです。やり方の一つは、前に余分なスペースを追加してテキストを変えること\
+です::
+
+    +--------------+----------+----------+----------+
+    | 行 1, 列 1   | 列 2     | 列 3     | 列 4     |
+    +--------------+----------+----------+----------+
+    | 行 2         |  コマンドを使う ``ls | more``  |
+    +--------------+----------+----------+----------+
+    | 行 3         |          |          |          |
+    +--------------+----------+----------+----------+
+
+..
+   Another possibility is to add an extra line to row 2::
+
+       +--------------+----------+-----------+-----------+
+       | row 1, col 1 | column 2 | column 3  | column 4  |
+       +--------------+----------+-----------+-----------+
+       | row 2        | Use the command ``ls | more``.   |
+       |              |                                  |
+       +--------------+----------+-----------+-----------+
+       | row 3        |          |           |           |
+       +--------------+----------+-----------+-----------+
+
+もう一つの方法は、行2に余分な行を追加することです::
+
+    +--------------+----------+----------+----------+
+    | 行 1, 列 1   | 列 2     | 列 3     | 列 4     |
+    +--------------+----------+----------+----------+
+    | 行 2         | コマンドを使う ``ls | more``   |
+    |              |                                |
+    +--------------+----------+----------+----------+
+    | 行 3         |          |          |          |
+    +--------------+----------+----------+----------+
 
 
-Simple Tables
-`````````````
+.. Simple Tables
+   `````````````
+.. _simple tables:
 
-Simple tables provide a compact and easy to type but limited
-row-oriented table representation for simple data sets.  Cell contents
-are typically single paragraphs, although arbitrary body elements may
-be represented in most cells.  Simple tables allow multi-line rows (in
-all but the first column) and column spans, but not row spans.  See
-`Grid Tables`_ above for a complete table representation.
+シンプルテーブル
+````````````````
 
-Simple tables are described with horizontal borders made up of "=" and
-"-" characters.  The equals sign ("=") is used for top and bottom
-table borders, and to separate optional header rows from the table
-body.  The hyphen ("-") is used to indicate column spans in a single
-row by underlining the joined columns, and may optionally be used to
-explicitly and/or visually separate rows.
+..
+   Simple tables provide a compact and easy to type but limited
+   row-oriented table representation for simple data sets.  Cell contents
+   are typically single paragraphs, although arbitrary body elements may
+   be represented in most cells.  Simple tables allow multi-line rows (in
+   all but the first column) and column spans, but not row spans.  See
+   `Grid Tables`_ above for a complete table representation.
 
-A simple table begins with a top border of equals signs with one or
-more spaces at each column boundary (two or more spaces recommended).
-Regardless of spans, the top border *must* fully describe all table
-columns.  There must be at least two columns in the table (to
-differentiate it from section headers).  The top border may be
-followed by header rows, and the last of the optional header rows is
-underlined with '=', again with spaces at column boundaries.  There
-may not be a blank line below the header row separator; it would be
-interpreted as the bottom border of the table.  The bottom boundary of
-the table consists of '=' underlines, also with spaces at column
-boundaries.  For example, here is a truth table, a three-column table
-with one header row and four body rows::
+   Simple tables are described with horizontal borders made up of "=" and
+   "-" characters.  The equals sign ("=") is used for top and bottom
+   table borders, and to separate optional header rows from the table
+   body.  The hyphen ("-") is used to indicate column spans in a single
+   row by underlining the joined columns, and may optionally be used to
+   explicitly and/or visually separate rows.
+
+シンプルテーブルは単純なデータセットのために、コンパクト且つ入力しやすいが、\
+制限された行指向のテーブル表現を提供します。殆どのセルで任意のbody要素を表現\
+できるものの、セルの内容は通常ひとつの段落です。シンプルテーブルでは複数行を\
+含む(1列目を除いた全ての)行と列の跨がりを許可し、行の跨がりは許可しません。\
+完全なテーブル表現については上述の\ `グリッドテーブル`_\ を参照してください。
+
+シンプルテーブルは"-"と"="の文字で構成された水平線で描かれます。等号("=")は\
+テーブルの上部と下部の境界線、およびオプションのヘッダ行をテーブル本体と\
+区切るために使用されます。ハイフン("-")は結合される列に下線を付けることに\
+よって一つの行で列の跨がりを示すためや、オプションで明示的・視覚的に行を\
+区切るために使うことができます。
+
+..
+   A simple table begins with a top border of equals signs with one or
+   more spaces at each column boundary (two or more spaces recommended).
+   Regardless of spans, the top border *must* fully describe all table
+   columns.  There must be at least two columns in the table (to
+   differentiate it from section headers).  The top border may be
+   followed by header rows, and the last of the optional header rows is
+   underlined with '=', again with spaces at column boundaries.  There
+   may not be a blank line below the header row separator; it would be
+   interpreted as the bottom border of the table.  The bottom boundary of
+   the table consists of '=' underlines, also with spaces at column
+   boundaries.  For example, here is a truth table, a three-column table
+   with one header row and four body rows::
+
+       =====  =====  =======
+         A      B    A and B
+       =====  =====  =======
+       False  False  False
+       True   False  False
+       False  True   False
+       True   True   True
+       =====  =====  =======
+
+シンプルテーブルは各列の境界に一つ以上のスペース（2つ以上のスペースを推奨）\
+を持つ、等号の上部境界線から始まります。跨がりに関係なく、上部の境界線は\
+全てのテーブル列を完全に記述する必要があります。テーブル内には少なくとも\
+2つの列がなければなりません（セクションヘッダと区別するため）。\
+上部の境界線はヘッダ行が続く場合があり、オプションのヘッダ行の後に、再び\
+列の境界にスペースのある'='で下線が引かれます。ヘッダ行の区切り線の下は空行\
+にできません; これはテーブルの下部境界線と解釈されます。テーブルの下部の\
+境界線も、列の境界にスペースのある'='の下線で構成されます。例えば、これは\
+一つのヘッダ行と四つの行を持つ三列の真理値のテーブルです::
 
     =====  =====  =======
       A      B    A and B
@@ -2771,13 +2911,31 @@ with one header row and four body rows::
     True   True   True
     =====  =====  =======
 
-Underlines of '-' may be used to indicate column spans by "filling in"
-column margins to join adjacent columns.  Column span underlines must
-be complete (they must cover all columns) and align with established
-column boundaries.  Text lines containing column span underlines may
-not contain any other text.  A column span underline applies only to
-one row immediately above it.  For example, here is a table with a
-column span in the header::
+..
+   Underlines of '-' may be used to indicate column spans by "filling in"
+   column margins to join adjacent columns.  Column span underlines must
+   be complete (they must cover all columns) and align with established
+   column boundaries.  Text lines containing column span underlines may
+   not contain any other text.  A column span underline applies only to
+   one row immediately above it.  For example, here is a table with a
+   column span in the header::
+
+       =====  =====  ======
+          Inputs     Output
+       ------------  ------
+         A      B    A or B
+       =====  =====  ======
+       False  False  False
+       True   False  True
+       False  True   True
+       True   True   True
+       =====  =====  ======
+
+'-'の下線は、隣接する列を繋ぐ列の余白を"埋める"ことによって、列の跨がりを\
+示すために使用されます。列跨ぎの下線は完全（全ての列をカバーする必要があり\
+ます）かつ出来上がった列の区切りと合わせる必要があります。列跨ぎの下線を\
+含むテキスト行は他のテキストを含めることはできません。列跨ぎの下線は直前の\
+1行にのみ適用されます。これはヘッダ内の列跨ぎの例です::
 
     =====  =====  ======
        Inputs     Output
@@ -2790,688 +2948,1349 @@ column span in the header::
     True   True   True
     =====  =====  ======
 
-Each line of text must contain spaces at column boundaries, except
-where cells have been joined by column spans.  Each line of text
-starts a new row, except when there is a blank cell in the first
-column.  In that case, that line of text is parsed as a continuation
-line.  For this reason, cells in the first column of new rows (*not*
-continuation lines) *must* contain some text; blank cells would lead
-to a misinterpretation (but see the tip below).  Also, this mechanism
-limits cells in the first column to only one line of text.  Use `grid
-tables`_ if this limitation is unacceptable.
+..
+   Each line of text must contain spaces at column boundaries, except
+   where cells have been joined by column spans.  Each line of text
+   starts a new row, except when there is a blank cell in the first
+   column.  In that case, that line of text is parsed as a continuation
+   line.  For this reason, cells in the first column of new rows (*not*
+   continuation lines) *must* contain some text; blank cells would lead
+   to a misinterpretation (but see the tip below).  Also, this mechanism
+   limits cells in the first column to only one line of text.  Use `grid
+   tables`_ if this limitation is unacceptable.
+
+   .. Tip::
+
+      To start a new row in a simple table without text in the first
+      column in the processed output, use one of these:
+
+      * an empty comment (".."), which may be omitted from the processed
+        output (see Comments_ below)
+
+      * a backslash escape ("``\``") followed by a space (see `Escaping
+        Mechanism`_ above)
+
+テキストの各行はセルが列を跨いで結合している場合を除いて、列の境界にスペース\
+を含む必要があります。テキストの各行は新しい行を開始しますが、最初の列に\
+空のセルがある場合を除きます。その場合、その行のテキストは継続行として解釈\
+されます。このため新しい行（継続行\ *ではない*\ ）の最初の列のセルには\
+何かのテキストを含む\ *必要があります*\ ; 空のセルは誤った解釈を招きます\
+（ですが、下記のTipsを参照してください）。またこのメカニズムは、最初の列の\
+セルを1行のテキストのみに制限します。この制限が許容されない場合は\
+グリッドテーブル_\ を使用してください。
 
 .. Tip::
 
-   To start a new row in a simple table without text in the first
-   column in the processed output, use one of these:
+   シンプルテーブルで、最初の列にテキストを出力されずに新しい行を開始する\
+   ためには、これらのうちいずれかを使います:
 
-   * an empty comment (".."), which may be omitted from the processed
-     output (see Comments_ below)
+   * 処理された出力から省略できる、空のコメント("..") (後述の\ コメント_\
+     を参照してください)
 
-   * a backslash escape ("``\``") followed by a space (see `Escaping
-     Mechanism`_ above)
+   * 後ろにスペースを続けたバックスラッシュ("``\``") (上述の\ エスケープの仕組み_\
+     を参照してください)
 
-Underlines of '-' may also be used to visually separate rows, even if
-there are no column spans.  This is especially useful in long tables,
-where rows are many lines long.
+..
+   Underlines of '-' may also be used to visually separate rows, even if
+   there are no column spans.  This is especially useful in long tables,
+   where rows are many lines long.
 
-Blank lines are permitted within simple tables.  Their interpretation
-depends on the context.  Blank lines *between* rows are ignored.
-Blank lines *within* multi-line rows may separate paragraphs or other
-body elements within cells.
+   Blank lines are permitted within simple tables.  Their interpretation
+   depends on the context.  Blank lines *between* rows are ignored.
+   Blank lines *within* multi-line rows may separate paragraphs or other
+   body elements within cells.
 
-The rightmost column is unbounded; text may continue past the edge of
-the table (as indicated by the table borders).  However, it is
-recommended that borders be made long enough to contain the entire
-text.
+   The rightmost column is unbounded; text may continue past the edge of
+   the table (as indicated by the table borders).  However, it is
+   recommended that borders be made long enough to contain the entire
+   text.
 
-The following example illustrates continuation lines (row 2 consists
-of two lines of text, and four lines for row 3), a blank line
-separating paragraphs (row 3, column 2), text extending past the right
-edge of the table, and a new row which will have no text in the first
-column in the processed output (row 4)::
+'-'の下線は、列跨ぎがない場合でも視覚的に行を分けるために使うこともできます。\
+これは特に、行が数行分の長さのある長いテーブルに有効です。
 
-    =====  =====
-    col 1  col 2
-    =====  =====
-    1      Second column of row 1.
-    2      Second column of row 2.
-           Second line of paragraph.
-    3      - Second column of row 3.
+空行はシンプルテーブル内では許可されます。それらの解釈は文脈に依存します。\
+行の\ *間*\ の空行は無視されます。複数行で構成される行の間の空行は、セル内の\
+段落または他のbody要素を区切ることができます。
 
-           - Second item in bullet
-             list (row 3, column 2).
-    \      Row 4; column 1 will be empty.
-    =====  =====
+右端の列は区切りがなく、テキストは(テーブルの境界線によって示される)テーブルの\
+端を超えて継続することができます。しかし、境界線はテキスト全体を含めるのに十分\
+長くしておくことをお勧めします。
+
+..
+   The following example illustrates continuation lines (row 2 consists
+   of two lines of text, and four lines for row 3), a blank line
+   separating paragraphs (row 3, column 2), text extending past the right
+   edge of the table, and a new row which will have no text in the first
+   column in the processed output (row 4)::
+
+       =====  =====
+       col 1  col 2
+       =====  =====
+       1      Second column of row 1.
+       2      Second column of row 2.
+              Second line of paragraph.
+       3      - Second column of row 3.
+
+              - Second item in bullet
+                list (row 3, column 2).
+       \      Row 4; column 1 will be empty.
+       =====  =====
+
+次の例は、継続する行（行2は2行のテキストで、行3は4行で構成されている）、\
+空行が区切る段落（行3、列2）、テーブルの右端を超えて延びるテキスト、\
+処理された出力の最初の列が空の新しい行（行4）を示しています::
+
+    ===== =====
+    列  1 列  2
+    ===== =====
+    1     行1の2列目。
+    2     行2の2列目。
+          段落の2行目。
+    3     - 行3の2列目。
+
+          - 箇条書きリストの
+            項目２つ目(行3, 列2)。
+    \     行4; 1列目は空になります。
+    ===== =====
 
 
-Explicit Markup Blocks
-----------------------
+.. Explicit Markup Blocks
+   ----------------------
+.. _explicit markup blocks:
 
-An explicit markup block is a text block:
+明示的マークアップブロック
+--------------------------
 
-- whose first line begins with ".." followed by whitespace (the
-  "explicit markup start"),
-- whose second and subsequent lines (if any) are indented relative to
-  the first, and
-- which ends before an unindented line.
+..
+   An explicit markup block is a text block:
 
-Explicit markup blocks are analogous to bullet list items, with ".."
-as the bullet.  The text on the lines immediately after the explicit
-markup start determines the indentation of the block body.  The
-maximum common indentation is always removed from the second and
-subsequent lines of the block body.  Therefore if the first construct
-fits in one line, and the indentation of the first and second
-constructs should differ, the first construct should not begin on the
-same line as the explicit markup start.
+   - whose first line begins with ".." followed by whitespace (the
+     "explicit markup start"),
+   - whose second and subsequent lines (if any) are indented relative to
+     the first, and
+   - which ends before an unindented line.
 
-Blank lines are required between explicit markup blocks and other
-elements, but are optional between explicit markup blocks where
-unambiguous.
+明示的マークアップは以下のようなテキストブロックです:
 
-The explicit markup syntax is used for footnotes, citations, hyperlink
-targets, directives, substitution definitions, and comments.
+- 最初の行が空白の続く".."（明示的マークアップの開始）で始まり、
+- 2行目またはそれ以降の行（もしあれば）が1行目に対してインデントされていて、
+- インデントされていない行までで終わる
+
+..
+   Explicit markup blocks are analogous to bullet list items, with ".."
+   as the bullet.  The text on the lines immediately after the explicit
+   markup start determines the indentation of the block body.  The
+   maximum common indentation is always removed from the second and
+   subsequent lines of the block body.  Therefore if the first construct
+   fits in one line, and the indentation of the first and second
+   constructs should differ, the first construct should not begin on the
+   same line as the explicit markup start.
+
+   Blank lines are required between explicit markup blocks and other
+   elements, but are optional between explicit markup blocks where
+   unambiguous.
+
+   The explicit markup syntax is used for footnotes, citations, hyperlink
+   targets, directives, substitution definitions, and comments.
+
+明示的マークアップブロックは、".."を印とした箇条書きリストに似ています。明示的\
+マークアップ開始行の直後のテキストが、ブロック本体のインデントを決定します。
+共通する最大のインデント幅は常にブロック本体である２行目とそれ以降の行から\
+取り除かれます。そのため、もし最初の構文が１行に収まり、且つ１つめと二つ目の\
+構文のインデントが異なる必要がある場合、１つめの構文は明示的マークアップの開始\
+と同じ行から始めるべきではありません。
+
+空行は明示的マークアップブロックと他の要素の間に必要ですが、明示的マークアップ\
+ブロックが明白なところでは省略可能です。
+
+明示的マークアップの構文は、脚注、引用、ハイパーリンクターゲット、ディレクティ\
+ブ、置換定義、そしてコメントに使用されます。
 
 
-Footnotes
-`````````
+.. Footnotes
+   `````````
+.. _footnotes:
 
-Doctree elements: footnote, label.
+脚注
+````
 
-Each footnote consists of an explicit markup start (".. "), a left
-square bracket, the footnote label, a right square bracket, and
-whitespace, followed by indented body elements.  A footnote label can
-be:
+..
+   Doctree elements: footnote, label.
 
-- a whole decimal number consisting of one or more digits,
+Doc ツリー要素: footnote, label
 
-- a single "#" (denoting `auto-numbered footnotes`_),
+..
+   Each footnote consists of an explicit markup start (".. "), a left
+   square bracket, the footnote label, a right square bracket, and
+   whitespace, followed by indented body elements.  A footnote label can
+   be:
 
-- a "#" followed by a simple reference name (an `autonumber label`_),
-  or
+   - a whole decimal number consisting of one or more digits,
 
-- a single "*" (denoting `auto-symbol footnotes`_).
+   - a single "#" (denoting `auto-numbered footnotes`_),
 
-The footnote content (body elements) must be consistently indented (by
-at least 3 spaces) and left-aligned.  The first body element within a
-footnote may often begin on the same line as the footnote label.
-However, if the first element fits on one line and the indentation of
-the remaining elements differ, the first element must begin on the
-line after the footnote label.  Otherwise, the difference in
-indentation will not be detected.
+   - a "#" followed by a simple reference name (an `autonumber label`_),
+     or
 
-Footnotes may occur anywhere in the document, not only at the end.
-Where and how they appear in the processed output depends on the
-processing system.
+   - a single "*" (denoting `auto-symbol footnotes`_).
 
-Here is a manually numbered footnote::
+それぞれの脚注は、明示的マークアップの開始(".. ")と、左角括弧、脚注ラベル、\
+右角括弧で構成され、スペース、インデントされたbody要素が続きます。脚注ラベルは:
 
-    .. [1] Body elements go here.
+- １桁以上の数字で構成された10進数すべて、
 
-Each footnote automatically generates a hyperlink target pointing to
-itself.  The text of the hyperlink target name is the same as that of
-the footnote label.  `Auto-numbered footnotes`_ generate a number as
-their footnote label and reference name.  See `Implicit Hyperlink
-Targets`_ for a complete description of the mechanism.
+- 単一の "\#"（\ `オートナンバー型脚注`_\ で示します）、
 
-Syntax diagram::
+- 簡易の参照名が続く "\#"（\ `オートナンバー型ラベル`_\ ）、または
+
+- 単一の "\*"（\ `オートナンバー型脚注`_\ で示します）が使えます。
+
+..
+   The footnote content (body elements) must be consistently indented (by
+   at least 3 spaces) and left-aligned.  The first body element within a
+   footnote may often begin on the same line as the footnote label.
+   However, if the first element fits on one line and the indentation of
+   the remaining elements differ, the first element must begin on the
+   line after the footnote label.  Otherwise, the difference in
+   indentation will not be detected.
+
+   Footnotes may occur anywhere in the document, not only at the end.
+   Where and how they appear in the processed output depends on the
+   processing system.
+
+   Here is a manually numbered footnote::
+
+       .. [1] Body elements go here.
+
+脚注の内容（body要素）は、一貫して（少なくとも３スペースでの）インデントと\
+左揃えされている必要があります。脚注内の最初のbody要素は、しばしば脚注ラベルと\
+同じ行から開始します。しかし、最初の要素が１行に収まり、且つ残りの要素のインデ\
+ントが異なる場合、最初の要素は脚注ラベル行の次の行から始めなければなりません。
+そうでない場合、インデントの違いは検知されません。
+
+脚注は文書の最後だけでなく、任意の場所に入れることができます。処理された出力が\
+どこにどのように現れるかは処理系に依存します。
+
+これは手動ナンバー型の脚注です::
+
+    .. [1] body要素はここです。
+
+..
+   Each footnote automatically generates a hyperlink target pointing to
+   itself.  The text of the hyperlink target name is the same as that of
+   the footnote label.  `Auto-numbered footnotes`_ generate a number as
+   their footnote label and reference name.  See `Implicit Hyperlink
+   Targets`_ for a complete description of the mechanism.
+
+   Syntax diagram::
+
+       +-------+-------------------------+
+       | ".. " | "[" label "]" footnote  |
+       +-------+                         |
+               | (body elements)+        |
+               +-------------------------+
+
+それぞれの脚注は自動的にそれ自身へのハイパーリンクターゲットを生成します。
+ハイパーリンクターゲット名のテキストは、脚注ラベルのそれと同じです。
+`オートナンバー型脚注`_\ は脚注ラベルおよび参照名となる番号を生成します。
+メカニズムの詳しい説明については\ `暗黙的ハイパーリンクターゲット`_\ を参照して\
+ください。
+
+構文ダイアグラム::
 
     +-------+-------------------------+
-    | ".. " | "[" label "]" footnote  |
+    | ".. " | "[" ラベル "]" 脚注     |
     +-------+                         |
-            | (body elements)+        |
+            | (body 要素)+            |
             +-------------------------+
 
 
-Auto-Numbered Footnotes
-.......................
+.. Auto-Numbered Footnotes
+   .......................
+.. _auto-numbered footnotes:
 
-A number sign ("#") may be used as the first character of a footnote
-label to request automatic numbering of the footnote or footnote
-reference.
+オートナンバー型脚注
+....................
 
-The first footnote to request automatic numbering is assigned the
-label "1", the second is assigned the label "2", and so on (assuming
-there are no manually numbered footnotes present; see `Mixed Manual
-and Auto-Numbered Footnotes`_ below).  A footnote which has
-automatically received a label "1" generates an implicit hyperlink
-target with name "1", just as if the label was explicitly specified.
+..
+   A number sign ("#") may be used as the first character of a footnote
+   label to request automatic numbering of the footnote or footnote
+   reference.
 
-.. _autonumber label: `autonumber labels`_
+   The first footnote to request automatic numbering is assigned the
+   label "1", the second is assigned the label "2", and so on (assuming
+   there are no manually numbered footnotes present; see `Mixed Manual
+   and Auto-Numbered Footnotes`_ below).  A footnote which has
+   automatically received a label "1" generates an implicit hyperlink
+   target with name "1", just as if the label was explicitly specified.
 
-A footnote may specify a label explicitly while at the same time
-requesting automatic numbering: ``[#label]``.  These labels are called
-_`autonumber labels`.  Autonumber labels do two things:
+   .. _autonumber label: `autonumber labels`_
 
-- On the footnote itself, they generate a hyperlink target whose name
-  is the autonumber label (doesn't include the "#").
+ナンバー記号（"\#"）は、脚注や脚注参照のオートナンバリングを要求するために、\
+脚注ラベルの最初の文字として使用します。
 
-- They allow an automatically numbered footnote to be referred to more
-  than once, as a footnote reference or hyperlink reference.  For
-  example::
+オートナンバリング要求をした最初の脚注はラベル"1"が割り当てられ、２番目は
+ラベル"2"が割り当てられ、のようになります（手動ナンバリング脚注が存在しないと\
+仮定します;\ 手動とオートナンバー型脚注の混在_\ は下記を参照してください）。
+自動的にラベル"1"を付与された脚注は、ラベルが明示的に指定された場合と同様に、\
+"1"という名前の暗黙的ハイパーリンクターゲットを生成します。
 
-      If [#note]_ is the first footnote reference, it will show up as
-      "[1]".  We can refer to it again as [#note]_ and again see
-      "[1]".  We can also refer to it as note_ (an ordinary internal
-      hyperlink reference).
+..
+   A footnote may specify a label explicitly while at the same time
+   requesting automatic numbering: ``[#label]``.  These labels are called
+   _`autonumber labels`.  Autonumber labels do two things:
 
-      .. [#note] This is the footnote labeled "note".
+   - On the footnote itself, they generate a hyperlink target whose name
+     is the autonumber label (doesn't include the "#").
 
-The numbering is determined by the order of the footnotes, not by the
-order of the references.  For footnote references without autonumber
-labels (``[#]_``), the footnotes and footnote references must be in
-the same relative order but need not alternate in lock-step.  For
-example::
+   - They allow an automatically numbered footnote to be referred to more
+     than once, as a footnote reference or hyperlink reference.  For
+     example::
 
-    [#]_ is a reference to footnote 1, and [#]_ is a reference to
-    footnote 2.
+         If [#note]_ is the first footnote reference, it will show up as
+         "[1]".  We can refer to it again as [#note]_ and again see
+         "[1]".  We can also refer to it as note_ (an ordinary internal
+         hyperlink reference).
 
-    .. [#] This is footnote 1.
-    .. [#] This is footnote 2.
-    .. [#] This is footnote 3.
+         .. [#note] This is the footnote labeled "note".
 
-    [#]_ is a reference to footnote 3.
+オートナンバリングを使いながら明示的にラベルを指定する事ができます: ``[#label]``
+このラベルは\ _`オートナンバー型ラベル`\ と呼ばれます。オートナンバ型ラベルは\
+２つのことをします:
 
-Special care must be taken if footnotes themselves contain
-auto-numbered footnote references, or if multiple references are made
-in close proximity.  Footnotes and references are noted in the order
-they are encountered in the document, which is not necessarily the
-same as the order in which a person would read them.
+- 脚注自体に対し、名前がオートナンバー型ラベル（"#"は含まない）のハイパーリンク\
+  ターゲットを生成します。
+
+- それらは、オートナンバリング脚注を脚注参照やハイパーリンク参照として複数回の\
+  参照ができるようにします。次に例を示します::
+
+     [#note]_ が最初の脚注参照の場合、"[1]"として表示されます。これは\
+     [#note]_\ として再度参照ができ、また"[1]"と表示されます。また\ note_\
+     （通常のハイパーリンク参照）としても参照が可能です。
+
+     .. [#note] これは "note" とラベルされた脚注です。
+
+..
+   The numbering is determined by the order of the footnotes, not by the
+   order of the references.  For footnote references without autonumber
+   labels (``[#]_``), the footnotes and footnote references must be in
+   the same relative order but need not alternate in lock-step.  For
+   example::
+
+       [#]_ is a reference to footnote 1, and [#]_ is a reference to
+       footnote 2.
+
+       .. [#] This is footnote 1.
+       .. [#] This is footnote 2.
+       .. [#] This is footnote 3.
+
+       [#]_ is a reference to footnote 3.
+
+番号付けは参照の順番ではなく、脚注の順序によって決まります。オートナンバー\
+ラベル（\ ``[#]_``\ ）の無い脚注参照のため、脚注や脚注参照はお互いに同じ順序に\
+なっている必要がありますが、番号付け固定で代替する必要はありません。次に例を\
+示します::
+
+    [#]_ は脚注1の参照、 [#]_ は脚注2の参照です。
+
+    .. [#] これは脚注1です。
+    .. [#] これは脚注2です。
+    .. [#] これは脚注3です。
+
+    [#]_ これは脚注3の参照です。
+
+..
+   Special care must be taken if footnotes themselves contain
+   auto-numbered footnote references, or if multiple references are made
+   in close proximity.  Footnotes and references are noted in the order
+   they are encountered in the document, which is not necessarily the
+   same as the order in which a person would read them.
+
+脚注がオートナンバー型の脚注参照を含む場合や、複数の参照が近接して作成されて\
+いる場合には特別に注意をしなければなりません。脚注や参照はドキュメントの中に\
+出現した順に記載されており、人がそれらを読む順番と同じである必要性は\
+ありません。
 
 
-Auto-Symbol Footnotes
-.....................
+.. Auto-Symbol Footnotes
+   .....................
+.. _auto-symbol footnotes:
 
-An asterisk ("*") may be used for footnote labels to request automatic
-symbol generation for footnotes and footnote references.  The asterisk
-may be the only character in the label.  For example::
+オートシンボル脚注
+..................
 
-    Here is a symbolic footnote reference: [*]_.
+..
+   An asterisk ("*") may be used for footnote labels to request automatic
+   symbol generation for footnotes and footnote references.  The asterisk
+   may be the only character in the label.  For example::
 
-    .. [*] This is the footnote.
+       Here is a symbolic footnote reference: [*]_.
 
-A transform will insert symbols as labels into corresponding footnotes
-and footnote references.  The number of references must be equal to
-the number of footnotes.  One symbol footnote cannot have multiple
-references.
+       .. [*] This is the footnote.
 
-The standard Docutils system uses the following symbols for footnote
-marks [#]_:
+   A transform will insert symbols as labels into corresponding footnotes
+   and footnote references.  The number of references must be equal to
+   the number of footnotes.  One symbol footnote cannot have multiple
+   references.
 
-- asterisk/star ("*")
-- dagger (HTML character entity "&dagger;", Unicode U+02020)
-- double dagger ("&Dagger;"/U+02021)
-- section mark ("&sect;"/U+000A7)
-- pilcrow or paragraph mark ("&para;"/U+000B6)
-- number sign ("#")
-- spade suit ("&spades;"/U+02660)
-- heart suit ("&hearts;"/U+02665)
-- diamond suit ("&diams;"/U+02666)
-- club suit ("&clubs;"/U+02663)
+アスタリスク（"*"）は脚注と脚注参照に自動的にシンボルを付与する要求をするため\
+に、脚注のラベルに仕様されることがあります。ラベルにはアスタリスクのみである\
+場合もあります。次に例を示します::
 
-.. [#] This list was inspired by the list of symbols for "Note
-   Reference Marks" in The Chicago Manual of Style, 14th edition,
-   section 12.51.  "Parallels" ("||") were given in CMoS instead of
-   the pilcrow.  The last four symbols (the card suits) were added
-   arbitrarily.
+    これはシンボル付きの脚注参照です: [*]_
 
-If more than ten symbols are required, the same sequence will be
-reused, doubled and then tripled, and so on ("**" etc.).
+    .. [*] これは脚注です。
 
-.. Note:: When using auto-symbol footnotes, the choice of output
-   encoding is important.  Many of the symbols used are not encodable
-   in certain common text encodings such as Latin-1 (ISO 8859-1).  The
-   use of UTF-8 for the output encoding is recommended.  An
-   alternative for HTML and XML output is to use the
-   "xmlcharrefreplace" `output encoding error handler`__.
+変換では対応する脚注と脚注参照にラベルとしてシンボルを挿入します。参照の数は\
+脚注の数と同じである必要があります。一つのシンボル付き脚注は複数の参照を持つ\
+ことはできません。
+
+..
+   The standard Docutils system uses the following symbols for footnote
+   marks [#]_:
+
+   - asterisk/star ("*")
+   - dagger (HTML character entity "&dagger;", Unicode U+02020)
+   - double dagger ("&Dagger;"/U+02021)
+   - section mark ("&sect;"/U+000A7)
+   - pilcrow or paragraph mark ("&para;"/U+000B6)
+   - number sign ("#")
+   - spade suit ("&spades;"/U+02660)
+   - heart suit ("&hearts;"/U+02665)
+   - diamond suit ("&diams;"/U+02666)
+   - club suit ("&clubs;"/U+02663)
+
+   .. [#] This list was inspired by the list of symbols for "Note
+      Reference Marks" in The Chicago Manual of Style, 14th edition,
+      section 12.51.  "Parallels" ("||") were given in CMoS instead of
+      the pilcrow.  The last four symbols (the card suits) were added
+      arbitrarily.
+
+標準のDocutilsシステムは以下のシンボルを脚注のマークとして使います [#]_:
+
+- アスタリスク/スター（"*"）
+- ダガー（HTML文字参照 "&dagger;"、Unicode U+02020）
+- ダブルダガー（"&Dagger;"/U+02021）
+- セクション記号（"&sect;"/U+000A7）
+- 段落記号（"&para;"/U+000B6）
+- ナンバー記号（"#"）
+- スペード組（"&spades;"/U+02660）
+- ハート組（"&hearts;"/U+02665）
+- ダイヤ組（"&diams;"/U+02666）
+- クラブ組（"&clubs;"/U+02663）
+
+.. [#] このリストはシカゴマニュアルオブスタイル, 第14版, 12.51節の中の"注記\
+   参照記号"のためのシンボル一覧にインスパイアされました。シカゴマニュアルオブ\
+   スタイルでは"並行バー"（"||"）が段落記号の代わりに与えられています。\
+   最後の４つのシンボル（トランプの組）は、任意で追加しました。
+
+..
+   If more than ten symbols are required, the same sequence will be
+   reused, doubled and then tripled, and so on ("**" etc.).
+
+   .. Note:: When using auto-symbol footnotes, the choice of output
+      encoding is important.  Many of the symbols used are not encodable
+      in certain common text encodings such as Latin-1 (ISO 8859-1).  The
+      use of UTF-8 for the output encoding is recommended.  An
+      alternative for HTML and XML output is to use the
+      "xmlcharrefreplace" `output encoding error handler`__.
+
+10個以上のシンボルが必要な場合、同じ順番で２つずつ、３つずつ（"\*\*"など）という\
+ように再利用されます。
+
+.. Note:: オートシンボル脚注を使う場合、出力エンコードの選択が重要です。\
+   使用される多くのシンボルは、Latin-1（ISO 8859-1）のような一般的なテキスト\
+   エンコーディングではエンコードできません。出力エンコーディングにはUTF-8の\
+   使用が推奨されています。HTMLやXMLへの出力には、代わりに\
+   `出力エンコーディングエラーハンドラ`__\ "xmlcharrefreplace" を使います。
 
 __ ../../user/config.html#output-encoding-error-handler
 
 
-Mixed Manual and Auto-Numbered Footnotes
-........................................
+.. Mixed Manual and Auto-Numbered Footnotes
+   ........................................
+.. _mixed manual and auto-numbered footnotes:
 
-Manual and automatic footnote numbering may both be used within a
-single document, although the results may not be expected.  Manual
-numbering takes priority.  Only unused footnote numbers are assigned
-to auto-numbered footnotes.  The following example should be
-illustrative::
+手動とオートナンバー型脚注の混在
+................................
 
-    [2]_ will be "2" (manually numbered),
-    [#]_ will be "3" (anonymous auto-numbered), and
-    [#label]_ will be "1" (labeled auto-numbered).
+..
+   Manual and automatic footnote numbering may both be used within a
+   single document, although the results may not be expected.  Manual
+   numbering takes priority.  Only unused footnote numbers are assigned
+   to auto-numbered footnotes.  The following example should be
+   illustrative::
 
-    .. [2] This footnote is labeled manually, so its number is fixed.
+       [2]_ will be "2" (manually numbered),
+       [#]_ will be "3" (anonymous auto-numbered), and
+       [#label]_ will be "1" (labeled auto-numbered).
 
-    .. [#label] This autonumber-labeled footnote will be labeled "1".
-       It is the first auto-numbered footnote and no other footnote
-       with label "1" exists.  The order of the footnotes is used to
-       determine numbering, not the order of the footnote references.
+       .. [2] This footnote is labeled manually, so its number is fixed.
 
-    .. [#] This footnote will be labeled "3".  It is the second
-       auto-numbered footnote, but footnote label "2" is already used.
+       .. [#label] This autonumber-labeled footnote will be labeled "1".
+          It is the first auto-numbered footnote and no other footnote
+          with label "1" exists.  The order of the footnotes is used to
+          determine numbering, not the order of the footnote references.
+
+       .. [#] This footnote will be labeled "3".  It is the second
+          auto-numbered footnote, but footnote label "2" is already used.
+
+一つのドキュメントの中で手動と自動の脚注ナンバリングを一緒に使うことはできます\
+が、意図した結果にはならないでしょう。手動ナンバリングの方が優先されます。使わ\
+れていない番号だけが、オートナンバー脚注に割り当てられます。次の例はその実例に\
+なるでしょう::
+
+    [2]_ は "2" になり（手動で番号付け）
+    [#]_ は "3" になります（無名のオートナンバー）、そして
+    [#label]_ は "1" になります（ラベル付きオートナンバー）。
+
+    .. [2] この脚注は手動でラベル付けされているので、番号は固定です。
+
+    .. [#label] このオートナンバーラベル付き脚注は "1" とラベル付けされます。
+       これは最初のオートナンバー脚注であり、"1" というラベルを持つ脚注が他に\
+       存在しないからです。脚注の順番が番号付けに使われるのであって、脚注参照\
+       の順番ではありません。
+
+    .. [#] この脚注は "3" とラベル付けされます。これは２つ目のオートナンバー\
+       脚注ですが、脚注ラベル "2" は既に使われています。
 
 
-Citations
-`````````
+.. Citations
+   `````````
+.. _citations:
 
-Citations are identical to footnotes except that they use only
-non-numeric labels such as ``[note]`` or ``[GVR2001]``.  Citation
-labels are simple `reference names`_ (case-insensitive single words
-consisting of alphanumerics plus internal hyphens, underscores, and
-periods; no whitespace).  Citations may be rendered separately and
-differently from footnotes.  For example::
+引用
+````
 
-    Here is a citation reference: [CIT2002]_.
+..
+   Citations are identical to footnotes except that they use only
+   non-numeric labels such as ``[note]`` or ``[GVR2001]``.  Citation
+   labels are simple `reference names`_ (case-insensitive single words
+   consisting of alphanumerics plus internal hyphens, underscores, and
+   periods; no whitespace).  Citations may be rendered separately and
+   differently from footnotes.  For example::
 
-    .. [CIT2002] This is the citation.  It's just like a footnote,
-       except the label is textual.
+       Here is a citation reference: [CIT2002]_.
+
+       .. [CIT2002] This is the citation.  It's just like a footnote,
+          except the label is textual.
+
+引用は、唯一 ``[note]`` や ``[GVR2001]`` のような非数値ラベルを使用することを\
+除けば脚注と同じです。引用ラベルは、単純な 参照名_ （半角英数字および語中に\
+含まれるハイフン、アンダースコア、ピリオドで構成された大文字・小文字を区別\
+しない単語; 空白は含まない）です。引用は脚注とは別に分けてレンダリングされ\
+ます。次に例を示します。 ::
+
+    これは引用参照: [CIT2002]_ です。
+
+    .. [CIT2002] これは引用です。ラベルが文字のままである事を除けば、
+       脚注と全く同じです。
 
 
 .. _hyperlinks:
 
-Hyperlink Targets
-`````````````````
+.. Hyperlink Targets
+   `````````````````
+.. _hyperlink tarhets:
 
-Doctree element: target.
+ハイパーリンクターゲット
+````````````````````````
 
-These are also called _`explicit hyperlink targets`, to differentiate
-them from `implicit hyperlink targets`_ defined below.
+..
+   Doctree element: target.
 
-Hyperlink targets identify a location within or outside of a document,
-which may be linked to by `hyperlink references`_.
+Doc ツリー要素: target
 
-Hyperlink targets may be named or anonymous.  Named hyperlink targets
-consist of an explicit markup start (".. "), an underscore, the
-reference name (no trailing underscore), a colon, whitespace, and a
-link block::
+..
+   These are also called _`explicit hyperlink targets`, to differentiate
+   them from `implicit hyperlink targets`_ defined below.
+
+   Hyperlink targets identify a location within or outside of a document,
+   which may be linked to by `hyperlink references`_.
+
+   Hyperlink targets may be named or anonymous.  Named hyperlink targets
+   consist of an explicit markup start (".. "), an underscore, the
+   reference name (no trailing underscore), a colon, whitespace, and a
+   link block::
+
+       .. _hyperlink-name: link-block
+
+これは、次で定義されている\ `暗黙的ハイパーリンクターゲット`_\ と区別するために\
+_`明示的ハイパーリンクターゲット`\ とも呼ばれます。
+
+ハイパーリンクターゲットはドキュメント内外の場所を認識し、\
+ハイパーリンク参照_\ でリンクします。
+
+ハイパーリンクターゲットは、名前付きと名前なしにできます。
+
+名前付きハイパーリンクターゲットは明示的マークアップの開始("..")、\
+アンダースコア、参照名(末尾にアンダースコアがつかないもの)、コロン、\
+空白、そしてリンクブロックで構成されます::
 
     .. _hyperlink-name: link-block
 
-Reference names are whitespace-neutral and case-insensitive.  See
-`Reference Names`_ for details and examples.
+..
+   Reference names are whitespace-neutral and case-insensitive.  See
+   `Reference Names`_ for details and examples.
 
-Anonymous hyperlink targets consist of an explicit markup start
-(".. "), two underscores, a colon, whitespace, and a link block; there
-is no reference name::
+   Anonymous hyperlink targets consist of an explicit markup start
+   (".. "), two underscores, a colon, whitespace, and a link block; there
+   is no reference name::
+
+       .. __: anonymous-hyperlink-target-link-block
+
+   An alternate syntax for anonymous hyperlinks consists of two
+   underscores, a space, and a link block::
+
+       __ anonymous-hyperlink-target-link-block
+
+   See `Anonymous Hyperlinks`_ below.
+
+参照名は空白に対して中立であり、大文字小文字を区別しません。\
+詳細と例にについて、詳しくは 参照名_ を参照してください。
+
+無名ハイパーリンクターゲットは明示的マークアップの開始("..")、２つの\
+アンダースコア、コロン、空白、そしてリンクブロックです; 参照名はありません::
 
     .. __: anonymous-hyperlink-target-link-block
 
-An alternate syntax for anonymous hyperlinks consists of two
-underscores, a space, and a link block::
+無名ハイパーリンクの他の構文は、２つのアンダースコア、スペース、そして\
+リンクブロックで構成されます::
 
     __ anonymous-hyperlink-target-link-block
 
-See `Anonymous Hyperlinks`_ below.
+下記の\ 無名ハイパーリンク_\ を参照ください。
 
-There are three types of hyperlink targets: internal, external, and
-indirect.
+..
+   There are three types of hyperlink targets: internal, external, and
+   indirect.
 
-1. _`Internal hyperlink targets` have empty link blocks.  They provide
-   an end point allowing a hyperlink to connect one place to another
-   within a document.  An internal hyperlink target points to the
-   element following the target.  For example::
+ハイパーリンクターゲットには内部、外部、間接の３つのタイプがあります。
 
-       Clicking on this internal hyperlink will take us to the target_
-       below.
+..
+   1. _`Internal hyperlink targets` have empty link blocks.  They provide
+      an end point allowing a hyperlink to connect one place to another
+      within a document.  An internal hyperlink target points to the
+      element following the target.  For example::
 
-       .. _target:
+          Clicking on this internal hyperlink will take us to the target_
+          below.
 
-       The hyperlink target above points to this paragraph.
+          .. _target:
 
-   Internal hyperlink targets may be "chained".  Multiple adjacent
-   internal hyperlink targets all point to the same element::
+          The hyperlink target above points to this paragraph.
 
-       .. _target1:
-       .. _target2:
+      Internal hyperlink targets may be "chained".  Multiple adjacent
+      internal hyperlink targets all point to the same element::
 
-       The targets "target1" and "target2" are synonyms; they both
-       point to this paragraph.
+          .. _target1:
+          .. _target2:
 
-   If the element "pointed to" is an external hyperlink target (with a
-   URI in its link block; see #2 below) the URI from the external
-   hyperlink target is propagated to the internal hyperlink targets;
-   they will all "point to" the same URI.  There is no need to
-   duplicate a URI.  For example, all three of the following hyperlink
-   targets refer to the same URI::
+          The targets "target1" and "target2" are synonyms; they both
+          point to this paragraph.
+
+      If the element "pointed to" is an external hyperlink target (with a
+      URI in its link block; see #2 below) the URI from the external
+      hyperlink target is propagated to the internal hyperlink targets;
+      they will all "point to" the same URI.  There is no need to
+      duplicate a URI.  For example, all three of the following hyperlink
+      targets refer to the same URI::
+
+          .. _Python DOC-SIG mailing list archive:
+          .. _archive:
+          .. _Doc-SIG: http://mail.python.org/pipermail/doc-sig/
+
+      An inline form of internal hyperlink target is available; see
+      `Inline Internal Targets`_.
+
+1. _`内部ハイパーリンクターゲット`\ は空のリンクブロックを持ちます。\
+   これはドキュメント内の他の一つの場所へ、ハイパーリンクで繋げられる\
+   エンドポイントを提供します。例えば::
+
+       この内部ハイパーリンクは、下の\ ターゲット_\ に飛びます。
+
+       .. _ターゲット:
+
+       上のハイパーリンクリンクターゲットは、この段落を指します。
+
+   内部ハイパーリンクターゲットは、"連鎖"させることができます。\
+   隣接した複数の内部ハイパーリンクターゲットは、すべて同じ要素を\
+   指し示します::
+
+       .. _ターゲット１:
+       .. _ターゲット２:
+
+       "ターゲット１" と "ターゲット２" はシノニムです; どちらも\
+       この段落を指し示します。
+
+   "指し示す"要素が外部ハイパーリンク (リンクブロックに URI を持つもの;
+   下記の #2 を参照してください) の場合、外部ハイパーリンクの URI は\
+   内部ハイパーリンクに伝播します; つまり、それらはすべて同じ URI を\
+   "指し示し"ます。
 
        .. _Python DOC-SIG mailing list archive:
        .. _archive:
        .. _Doc-SIG: http://mail.python.org/pipermail/doc-sig/
 
-   An inline form of internal hyperlink target is available; see
-   `Inline Internal Targets`_.
+   内部ハイパーリンクターゲットのインラインので形式も使えます。\
+   `インライン内部ターゲット`_\ を参照してください。
 
-2. _`External hyperlink targets` have an absolute or relative URI or
-   email address in their link blocks.  For example, take the
-   following input::
+..
+   2. _`External hyperlink targets` have an absolute or relative URI or
+      email address in their link blocks.  For example, take the
+      following input::
 
-       See the Python_ home page for info.
+          See the Python_ home page for info.
 
-       `Write to me`_ with your questions.
+          `Write to me`_ with your questions.
+
+          .. _Python: http://www.python.org
+          .. _Write to me: jdoe@example.com
+
+      After processing into HTML, the hyperlinks might be expressed as::
+
+          See the <a href="http://www.python.org">Python</a> home page
+          for info.
+
+          <a href="mailto:jdoe@example.com">Write to me</a> with your
+          questions.
+
+      An external hyperlink's URI may begin on the same line as the
+      explicit markup start and target name, or it may begin in an
+      indented text block immediately following, with no intervening
+      blank lines.  If there are multiple lines in the link block, they
+      are concatenated.  Any whitespace is removed (whitespace is
+      permitted to allow for line wrapping).  The following external
+      hyperlink targets are equivalent::
+
+          .. _one-liner: http://docutils.sourceforge.net/rst.html
+
+          .. _starts-on-this-line: http://
+             docutils.sourceforge.net/rst.html
+
+          .. _entirely-below:
+             http://docutils.
+             sourceforge.net/rst.html
+
+      If an external hyperlink target's URI contains an underscore as its
+      last character, it must be escaped to avoid being mistaken for an
+      indirect hyperlink target::
+
+          This link_ refers to a file called ``underscore_``.
+
+          .. _link: underscore\_
+
+      It is possible (although not generally recommended) to include URIs
+      directly within hyperlink references.  See `Embedded URIs`_ below.
+
+2. _`外部ハイパーリンクターゲット`\ は絶対または相対の URI もしくは\
+   メールアドレスをリンクブロックに持ちます。例えば、以下のように入力します::
+
+       詳しくは Python_ のホームページを参照してください。
+
+       質問は `私に送ってください`_ 。
 
        .. _Python: http://www.python.org
-       .. _Write to me: jdoe@example.com
+       .. _私に送ってください: jdoe@example.com
 
-   After processing into HTML, the hyperlinks might be expressed as::
+   HTML に変換されると、ハイパーリンクはこのように表現されます::
 
-       See the <a href="http://www.python.org">Python</a> home page
-       for info.
+       詳しくは <a href="http://www.python.org">Python</a> のホームページを
+       参照してください。
 
-       <a href="mailto:jdoe@example.com">Write to me</a> with your
-       questions.
+       質問は <a href="mailto:jdoe@example.com">私に送ってください。</a>
 
-   An external hyperlink's URI may begin on the same line as the
-   explicit markup start and target name, or it may begin in an
-   indented text block immediately following, with no intervening
-   blank lines.  If there are multiple lines in the link block, they
-   are concatenated.  Any whitespace is removed (whitespace is
-   permitted to allow for line wrapping).  The following external
-   hyperlink targets are equivalent::
+   外部ハイパーリンクの URI は明示的マークアップ開始やターゲットの名称と\
+   同じ行、もしくは空の行を挟まない、直後のインデントされたテキストブロックに\
+   書きます。リンクブロックが複数行ある場合、各行は連結されます。\
+   空白はすべて取り除かれます (空白は行の折り返しを可能にするために\
+   許可されています)。次の外部ハイパーリンクターゲットは等価です::
 
-       .. _one-liner: http://docutils.sourceforge.net/rst.html
+       .. _one-line: http://docutils.sourceforge.net/rst.html
 
-       .. _starts-on-this-line: http://
+       .. _starts-on-this-list: http://
           docutils.sourceforge.net/rst.html
 
        .. _entirely-below:
           http://docutils.
           sourceforge.net/rst.html
 
-   If an external hyperlink target's URI contains an underscore as its
-   last character, it must be escaped to avoid being mistaken for an
-   indirect hyperlink target::
+   外部ハイパーリンクターゲットの URI が最後の文字としてアンダースコアを含む場合、\
+   間接ハイパーリンクターゲットと誤認されないようにエスケープが必要です::
 
-       This link_ refers to a file called ``underscore_``.
+       この リンク_ は ``underscore_`` というファイルを参照します。
 
-       .. _link: underscore\_
+       .. _リンク: underscore\_
 
-   It is possible (although not generally recommended) to include URIs
-   directly within hyperlink references.  See `Embedded URIs`_ below.
+   (一般的には推奨されていませんが、) ハイパーリンク参照に直接 URI を含める\
+   ことが可能です。下記の\ `埋め込み URI`_\ を参照してください。
 
-3. _`Indirect hyperlink targets` have a hyperlink reference in their
-   link blocks.  In the following example, target "one" indirectly
-   references whatever target "two" references, and target "two"
-   references target "three", an internal hyperlink target.  In
-   effect, all three reference the same thing::
+..
+   3. _`Indirect hyperlink targets` have a hyperlink reference in their
+      link blocks.  In the following example, target "one" indirectly
+      references whatever target "two" references, and target "two"
+      references target "three", an internal hyperlink target.  In
+      effect, all three reference the same thing::
+
+          .. _one: two_
+          .. _two: three_
+          .. _three:
+
+      Just as with `hyperlink references`_ anywhere else in a document,
+      if a phrase-reference is used in the link block it must be enclosed
+      in backquotes.  As with `external hyperlink targets`_, the link
+      block of an indirect hyperlink target may begin on the same line as
+      the explicit markup start or the next line.  It may also be split
+      over multiple lines, in which case the lines are joined with
+      whitespace before being normalized.
+
+      For example, the following indirect hyperlink targets are
+      equivalent::
+
+          .. _one-liner: `A HYPERLINK`_
+          .. _entirely-below:
+             `a    hyperlink`_
+          .. _split: `A
+             Hyperlink`_
+
+3. _`間接ハイパーリンクターゲット` はリンクブロックにハイパーリンク参照を\
+   含みます。次の例では、ターゲット "one" は間接的にターゲット "two" を\
+   参照し、ターゲット "two" はターゲット "three" の内部ハイパーリンク\
+   ターゲットを参照しています。\
+   実際には、３つの参照はすべて同じものです::
 
        .. _one: two_
        .. _two: three_
        .. _three:
 
-   Just as with `hyperlink references`_ anywhere else in a document,
-   if a phrase-reference is used in the link block it must be enclosed
-   in backquotes.  As with `external hyperlink targets`_, the link
-   block of an indirect hyperlink target may begin on the same line as
-   the explicit markup start or the next line.  It may also be split
-   over multiple lines, in which case the lines are joined with
-   whitespace before being normalized.
+   ドキュメントのどこかにある ハイパーリンク参照_ と同じように、フレーズ参照を\
+   リンクブロックで使う場合には、バッククオートで囲む必要があります。\
+   外部ハイパーリンクターゲット_\ と同様に、間接ハイパーリンクターゲットの\
+   リンクブロックは、明示的マークアップ開始と同じ行か次の行に書きます。\
+   複数行に分割もでき、その場合は正規化される前に空白文字で結合されます。
 
-   For example, the following indirect hyperlink targets are
-   equivalent::
+   例えば、次の間接ハイパーリンクターゲットは等価です::
 
        .. _one-liner: `A HYPERLINK`_
        .. _entirely-below:
           `a    hyperlink`_
-       .. _split: `A
+       .. __split: `A
           Hyperlink`_
 
-If the reference name contains any colons, either:
+..
+   If the reference name contains any colons, either:
 
-- the phrase must be enclosed in backquotes::
+   - the phrase must be enclosed in backquotes::
+
+         .. _`FAQTS: Computers: Programming: Languages: Python`:
+            http://python.faqts.com/
+
+   - or the colon(s) must be backslash-escaped in the link target::
+
+         .. _Chapter One\: "Tadpole Days":
+
+         It's not easy being green...
+
+   See `Implicit Hyperlink Targets`_ below for the resolution of
+   duplicate reference names.
+
+   Syntax diagram::
+
+       +-------+----------------------+
+       | ".. " | "_" name ":" link    |
+       +-------+ block                |
+               |                      |
+               +----------------------+
+
+参照名にコロンが含まれている場合は:
+
+- フレーズをバッククオートで囲む::
 
       .. _`FAQTS: Computers: Programming: Languages: Python`:
          http://python.faqts.com/
 
-- or the colon(s) must be backslash-escaped in the link target::
+- または、リンクターゲットの中のコロンをバックスラッシュでエスケープします::
 
       .. _Chapter One\: "Tadpole Days":
 
-      It's not easy being green...
+      これは正しくエスケープするのは困難です...
 
-See `Implicit Hyperlink Targets`_ below for the resolution of
-duplicate reference names.
+参照名の重複の解決策については、下記の\ 暗黙的ハイパーリンクターゲット_\
+を参照してください。
 
-Syntax diagram::
+構文ダイアグラム::
 
     +-------+----------------------+
-    | ".. " | "_" name ":" link    |
-    +-------+ block                |
+    | ".. " | "_" 名前 ":" リンク  |
+    +-------+ ブロック             |
             |                      |
             +----------------------+
 
 
-Anonymous Hyperlinks
-....................
+.. Anonymous Hyperlinks
+   ....................
+.. _anonymous hyperlists:
 
-The `World Wide Web Consortium`_ recommends in its `HTML Techniques
-for Web Content Accessibility Guidelines`_ that authors should
-"clearly identify the target of each link."  Hyperlink references
-should be as verbose as possible, but duplicating a verbose hyperlink
-name in the target is onerous and error-prone.  Anonymous hyperlinks
-are designed to allow convenient verbose hyperlink references, and are
-analogous to `Auto-Numbered Footnotes`_.  They are particularly useful
-in short or one-off documents.  However, this feature is easily abused
-and can result in unreadable plaintext and/or unmaintainable
-documents.  Caution is advised.
+無名ハイパーリンク
+..................
 
-Anonymous `hyperlink references`_ are specified with two underscores
-instead of one::
+..
+   The `World Wide Web Consortium`_ recommends in its `HTML Techniques
+   for Web Content Accessibility Guidelines`_ that authors should
+   "clearly identify the target of each link."  Hyperlink references
+   should be as verbose as possible, but duplicating a verbose hyperlink
+   name in the target is onerous and error-prone.  Anonymous hyperlinks
+   are designed to allow convenient verbose hyperlink references, and are
+   analogous to `Auto-Numbered Footnotes`_.  They are particularly useful
+   in short or one-off documents.  However, this feature is easily abused
+   and can result in unreadable plaintext and/or unmaintainable
+   documents.  Caution is advised.
 
-    See `the web site of my favorite programming language`__.
+   Anonymous `hyperlink references`_ are specified with two underscores
+   instead of one::
 
-Anonymous targets begin with ".. __:"; no reference name is required
-or allowed::
+       See `the web site of my favorite programming language`__.
+
+`World Wide Web コンソーシアム`_ は `ウェブコンテンツ・アクセシビリティ・
+ガイドライン HTML 技術書`_ の中で、著者は "それぞれのリンクのターゲットを\
+明確に識別" すべきと推奨しています。ハイパーリンク参照は可能な限り冗長で\
+あるべきですが、ターゲットの中で冗長なハイパーリンク名が重複しているのは\
+面倒ですし間違いの元です。無名ハイパーリンクは冗長なハイパーリンク参照を\
+便利に使えるように設計されており、\ `オートナンバー型脚注`_\ に類似しています。
+これは特に短期的もしくは単発のドキュメントで有用です。ただし、この機能は\
+安易に使われると、読めないプレーンテキストおよび／または保守不能な\
+ドキュメントになることがあります。注意が必要です。
+
+無名\ `ハイパーリンク参照`_\ は、アンダースコア１つではなく２つで指定します::
+
+    `私のお気に入りプログラミング言語の Web サイト`__ を参照してください。
+
+..
+   Anonymous targets begin with ".. __:"; no reference name is required
+   or allowed::
+
+       .. __: http://www.python.org
+
+   As a convenient alternative, anonymous targets may begin with "__"
+   only::
+
+       __ http://www.python.org
+
+   The reference name of the reference is not used to match the reference
+   to its target.  Instead, the order of anonymous hyperlink references
+   and targets within the document is significant: the first anonymous
+   reference will link to the first anonymous target.  The number of
+   anonymous hyperlink references in a document must match the number of
+   anonymous targets.  For readability, it is recommended that targets be
+   kept close to references.  Take care when editing text containing
+   anonymous references; adding, removing, and rearranging references
+   require attention to the order of corresponding targets.
+
+無名ターゲットは ".. __:" ではじまります; 参照名を指定する必要がないか、\
+または許可されています::
 
     .. __: http://www.python.org
 
-As a convenient alternative, anonymous targets may begin with "__"
-only::
+便利な代替手段として、無名のターゲットは "__" だけで書き始めることもできます::
 
     __ http://www.python.org
 
-The reference name of the reference is not used to match the reference
-to its target.  Instead, the order of anonymous hyperlink references
-and targets within the document is significant: the first anonymous
-reference will link to the first anonymous target.  The number of
-anonymous hyperlink references in a document must match the number of
-anonymous targets.  For readability, it is recommended that targets be
-kept close to references.  Take care when editing text containing
-anonymous references; adding, removing, and rearranging references
-require attention to the order of corresponding targets.
+参照の参照名は、そのターゲットへの参照を一致させるためには使われていません。\
+代わりに、無名ハイパーリンク参照とターゲットのドキュメント内での順序が重要です: \
+最初の無名の参照は、最初の無名ターゲットにリンクします。ドキュメント内の無名\
+ハイパーリンク参照の数は、無名ハイパーリンクターゲットの数と一致しなければ\
+なりません。読みやすくするためには、参照をターゲットの近くに維持することを\
+お勧めします。匿名の参照を含んでいるテキストを編集するとき気をつけましょう; \
+追加、削除または再配置は、参照が対応するターゲットの順序に注意が必要です。
 
 
-Directives
-``````````
+.. Directives
+   ``````````
+.. _directives:
 
-Doctree elements: depend on the directive.
+ディレクティブ
+``````````````
 
-Directives are an extension mechanism for reStructuredText, a way of
-adding support for new constructs without adding new primary syntax
-(directives may support additional syntax locally).  All standard
-directives (those implemented and registered in the reference
-reStructuredText parser) are described in the `reStructuredText
-Directives`_ document, and are always available.  Any other directives
-are domain-specific, and may require special action to make them
-available when processing the document.
+..
+   Doctree elements: depend on the directive.
 
-For example, here's how an image_ may be placed::
+Doc ツリー要素: depend on the directive
+
+..
+   Directives are an extension mechanism for reStructuredText, a way of
+   adding support for new constructs without adding new primary syntax
+   (directives may support additional syntax locally).  All standard
+   directives (those implemented and registered in the reference
+   reStructuredText parser) are described in the `reStructuredText
+   Directives`_ document, and are always available.  Any other directives
+   are domain-specific, and may require special action to make them
+   available when processing the document.
+
+   For example, here's how an image_ may be placed::
+
+       .. image:: mylogo.jpeg
+
+   A figure_ (a graphic with a caption) may placed like this::
+
+       .. figure:: larch.png
+
+          The larch.
+
+   An admonition_ (note, caution, etc.) contains other body elements::
+
+       .. note:: This is a paragraph
+
+          - Here is a bullet list.
+
+ディレクティブは reStructuredText のための拡張機構で、新たに基本的な\
+構文を追加せずに (ディレクティブはローカルに追加の構文をサポートしても\
+よい)、新しい構造のサポートを追加する方法です。標準のディレクティブ \
+(参照実装の reStructuredText パーサに実装、登録されている) はすべて\
+`reStructuredText ディレクティブ`_\ のドキュメントに記述されていて、\
+いつでも使うことができます。それ以外のディレクティブはドメイン固有の\
+ものであり、ドキュメントを処理する際に特別なアクションを使えるように\
+する必要があります。
+
+例えば、これは\ `画像`_\ に置換されます::
 
     .. image:: mylogo.jpeg
 
-A figure_ (a graphic with a caption) may placed like this::
+`図形`_ (キャプション付きの画像) の置換はこのようにします::
 
     .. figure:: larch.png
 
-       The larch.
+       カラマツです。
 
-An admonition_ (note, caution, etc.) contains other body elements::
+`勧告`_ (覚え書き、警告、など) は他の body 要素を含みます::
 
-    .. note:: This is a paragraph
+    .. note:: これは段落です。
 
-       - Here is a bullet list.
+       - これは箇条書きリストです。
 
-Directives are indicated by an explicit markup start (".. ") followed
-by the directive type, two colons, and whitespace (together called the
-"directive marker").  Directive types are case-insensitive single
-words (alphanumerics plus isolated internal hyphens, underscores,
-plus signs, colons, and periods; no whitespace).  Two colons are used
-after the directive type for these reasons:
+..
+   Directives are indicated by an explicit markup start (".. ") followed
+   by the directive type, two colons, and whitespace (together called the
+   "directive marker").  Directive types are case-insensitive single
+   words (alphanumerics plus isolated internal hyphens, underscores,
+   plus signs, colons, and periods; no whitespace).  Two colons are used
+   after the directive type for these reasons:
 
-- Two colons are distinctive, and unlikely to be used in common text.
+   - Two colons are distinctive, and unlikely to be used in common text.
 
-- Two colons avoids clashes with common comment text like::
+   - Two colons avoids clashes with common comment text like::
 
-      .. Danger: modify at your own risk!
+         .. Danger: modify at your own risk!
 
-- If an implementation of reStructuredText does not recognize a
-  directive (i.e., the directive-handler is not installed), a level-3
-  (error) system message is generated, and the entire directive block
-  (including the directive itself) will be included as a literal
-  block.  Thus "::" is a natural choice.
+   - If an implementation of reStructuredText does not recognize a
+     directive (i.e., the directive-handler is not installed), a level-3
+     (error) system message is generated, and the entire directive block
+     (including the directive itself) will be included as a literal
+     block.  Thus "::" is a natural choice.
 
-The directive block is consists of any text on the first line of the
-directive after the directive marker, and any subsequent indented
-text.  The interpretation of the directive block is up to the
-directive code.  There are three logical parts to the directive block:
+ディレクティブは、ディレクティブタイプ、２つのコロン、そして空白が連なる\
+明示的マークアップの開始 ("..") によって示されます (以下、総称して\
+"ディレクティブマーカー" と呼びます) 。ディレクティブのタイプは、大文字と\
+小文字を区別しない単一の語 (英数字およびハイフン、アンダースコア、\
+プラス記号、コロンそしてピリオドです; 空白は含みません) です。２つの\
+コロンは、以下の理由でディレクティブの後ろに使われます::
 
-1. Directive arguments.
-2. Directive options.
-3. Directive content.
+- ２つのコロンは独特であり、普通のテキストで使われることはあまりない。
 
-Individual directives can employ any combination of these parts.
-Directive arguments can be filesystem paths, URLs, title text, etc.
-Directive options are indicated using `field lists`_; the field names
-and contents are directive-specific.  Arguments and options must form
-a contiguous block beginning on the first or second line of the
-directive; a blank line indicates the beginning of the directive
-content block.  If either arguments and/or options are employed by the
-directive, a blank line must separate them from the directive content.
-The "figure" directive employs all three parts::
+- ２つのコロンはこのような普通のテキスト・コメントとの衝突を避けることができる::
+
+      .. Danger: 変更は自己責任で！
+
+- reStructuredText の実装がディレクティブを認識しない場合 (すなわち、\
+  directive-handler がインストールされていない) 、レベル３ (エラー) の\
+  システムメッセージを生成し、ディレクティブブロック全体は (ディレクティブ自身\
+  を含みます) リテラルブロックとして含まれます。
+  したがって、"::" は自然な選択です。
+
+..
+   The directive block is consists of any text on the first line of the
+   directive after the directive marker, and any subsequent indented
+   text.  The interpretation of the directive block is up to the
+   directive code.  There are three logical parts to the directive block:
+
+   1. Directive arguments.
+   2. Directive options.
+   3. Directive content.
+
+   Individual directives can employ any combination of these parts.
+   Directive arguments can be filesystem paths, URLs, title text, etc.
+   Directive options are indicated using `field lists`_; the field names
+   and contents are directive-specific.  Arguments and options must form
+   a contiguous block beginning on the first or second line of the
+   directive; a blank line indicates the beginning of the directive
+   content block.  If either arguments and/or options are employed by the
+   directive, a blank line must separate them from the directive content.
+   The "figure" directive employs all three parts::
+
+       .. figure:: larch.png
+          :scale: 50
+
+          The larch.
+
+ディレクティブブロックは、ディレクリブマーカーの後ろの何らかのテキストと\
+それ以降の何らかのインデントされたテキストで構成されます。ディレクティブ\
+ブロックの解釈はディレクティブのコード次第です。ディレクティブブロックには\
+３つの論理的パートが存在します。
+
+1. ディレクティブ引数
+2. ディレクティブオプション
+3. ディレクティブコンテンツ
+
+個々のディレクティブはこれらのパートの任意の組み合わせを採用できます。\
+ディレクティブの引数には、ファイルシステムパス、URL、タイトルテキスト等\
+があります。ディレクティブオプションは\ `フィールドリスト`_\ を使って\
+示します; フィールド名と内容はディレクティブに固有のものです。\
+引数とオプションは、ディレクティブの最初の行または次の行から始まる\
+隣接したブロックを形成しなければなりません; 空白行はディレクティブの\
+コンテンツブロックの始まりを示します。引数および／またはオプションが\
+ディレクティブに採用されている場合、空白行がそれらとディレクティブの\
+コンテンツを分離しなければなりません。"figure" ディレクティブはこれら\
+３つのパートを採用しています::
 
     .. figure:: larch.png
        :scale: 50
 
-       The larch.
+       カラマツです。
 
-Simple directives may not require any content.  If a directive that
-does not employ a content block is followed by indented text anyway,
-it is an error.  If a block quote should immediately follow a
-directive, use an empty comment in-between (see Comments_ below).
+..
+   Simple directives may not require any content.  If a directive that
+   does not employ a content block is followed by indented text anyway,
+   it is an error.  If a block quote should immediately follow a
+   directive, use an empty comment in-between (see Comments_ below).
 
-Actions taken in response to directives and the interpretation of text
-in the directive content block or subsequent text block(s) are
-directive-dependent.  See `reStructuredText Directives`_ for details.
+   Actions taken in response to directives and the interpretation of text
+   in the directive content block or subsequent text block(s) are
+   directive-dependent.  See `reStructuredText Directives`_ for details.
 
-Directives are meant for the arbitrary processing of their contents,
-which can be transformed into something possibly unrelated to the
-original text.  It may also be possible for directives to be used as
-pragmas, to modify the behavior of the parser, such as to experiment
-with alternate syntax.  There is no parser support for this
-functionality at present; if a reasonable need for pragma directives
-is found, they may be supported.
+   Directives are meant for the arbitrary processing of their contents,
+   which can be transformed into something possibly unrelated to the
+   original text.  It may also be possible for directives to be used as
+   pragmas, to modify the behavior of the parser, such as to experiment
+   with alternate syntax.  There is no parser support for this
+   functionality at present; if a reasonable need for pragma directives
+   is found, they may be supported.
 
-Directives do not generate "directive" elements; they are a *parser
-construct* only, and have no intrinsic meaning outside of
-reStructuredText.  Instead, the parser will transform recognized
-directives into (possibly specialized) document elements.  Unknown
-directives will trigger level-3 (error) system messages.
+   Directives do not generate "directive" elements; they are a *parser
+   construct* only, and have no intrinsic meaning outside of
+   reStructuredText.  Instead, the parser will transform recognized
+   directives into (possibly specialized) document elements.  Unknown
+   directives will trigger level-3 (error) system messages.
 
-Syntax diagram::
+   Syntax diagram::
 
-    +-------+-------------------------------+
-    | ".. " | directive type "::" directive |
-    +-------+ block                         |
-            |                               |
-            +-------------------------------+
+       +-------+-------------------------------+
+       | ".. " | directive type "::" directive |
+       +-------+ block                         |
+               |                               |
+               +-------------------------------+
+
+単純なディレクティブは、任意のコンテンツを必要としないこともあります。\
+コンテンツブロックを採用していないディレクティブは、何かしらインデントされた\
+テキストが続いている場合、エラーになります。\
+引用ブロックをディレクティブの直後に続けて書く場合は、あいだに空のコメントを\
+使います (下記の\ コメント_\ を参照してください) 。
+
+ディレクティブに応じて取られるアクションと、ディレクティブのコンテンツブロックや\
+それに続くテキストブロックの解釈はディレクティブに依存します。\
+詳細については\ `reStructuredText ディレクティブ`_\ を参照してください。
+
+ディレクティブは、それぞれのコンテンツに任意の処理を行うことを意図しており、\
+元のテキストとは関係しない可能性が高いものに変換することが可能です。また、\
+ディレクティブをプラグマとして使ったり、他の構文を試すためなどのように\
+パーサの振る舞いを変更するために使うこともできます。\
+現時点でこの機能はパーサにサポートされていませんが、プラグマディレクティブに\
+関する合理的な必要性が認められた場合には、サポートされるかも知れません。
+
+ディレクティブは "directive" 要素を生成しません; *パーサのみを構成し* 、\
+reStructuredText の外部に対して本質的には意味を持ちません。かわりに\
+パーサは認識したディレクティブを (できる限り専用の) ドキュメント要素に変換します。\
+未知のディレクティブはレベル３ (エラー) システムメッセージの要因になります。
+
+構文ダイアグラム::
+
+    +-------+------------------------------------------+
+    | ".. " | ディレクティブタイプ "::" ディレクティブ |
+    +-------+ ブロック                                 |
+            |                                          |
+            +------------------------------------------+
 
 
-Substitution Definitions
-````````````````````````
+.. Substitution Definitions
+   ````````````````````````
+.. _substitution definitions:
 
-Doctree element: substitution_definition.
+置換定義
+````````
 
-Substitution definitions are indicated by an explicit markup start
-(".. ") followed by a vertical bar, the substitution text, another
-vertical bar, whitespace, and the definition block.  Substitution text
-may not begin or end with whitespace.  A substitution definition block
-contains an embedded inline-compatible directive (without the leading
-".. "), such as "image_" or "replace_".  For example::
+..
+   Doctree element: substitution_definition.
 
-    The |biohazard| symbol must be used on containers used to
-    dispose of medical waste.
+Doc ツリー要素: substitution_definition
 
-    .. |biohazard| image:: biohazard.png
+..
+   Substitution definitions are indicated by an explicit markup start
+   (".. ") followed by a vertical bar, the substitution text, another
+   vertical bar, whitespace, and the definition block.  Substitution text
+   may not begin or end with whitespace.  A substitution definition block
+   contains an embedded inline-compatible directive (without the leading
+   ".. "), such as "image_" or "replace_".  For example::
 
-It is an error for a substitution definition block to directly or
-indirectly contain a circular substitution reference.
+       The |biohazard| symbol must be used on containers used to
+       dispose of medical waste.
 
-`Substitution references`_ are replaced in-line by the processed
-contents of the corresponding definition (linked by matching
-substitution text).  Matches are case-sensitive but forgiving; if no
-exact match is found, a case-insensitive comparison is attempted.
+       .. |biohazard| image:: biohazard.png
 
-Substitution definitions allow the power and flexibility of
-block-level directives_ to be shared by inline text.  They are a way
-to include arbitrarily complex inline structures within text, while
-keeping the details out of the flow of text.  They are the equivalent
-of SGML/XML's named entities or programming language macros.
+   It is an error for a substitution definition block to directly or
+   indirectly contain a circular substitution reference.
 
-Without the substitution mechanism, every time someone wants an
-application-specific new inline structure, they would have to petition
-for a syntax change.  In combination with existing directive syntax,
-any inline structure can be coded without new syntax (except possibly
-a new directive).
+   `Substitution references`_ are replaced in-line by the processed
+   contents of the corresponding definition (linked by matching
+   substitution text).  Matches are case-sensitive but forgiving; if no
+   exact match is found, a case-insensitive comparison is attempted.
 
-Syntax diagram::
+置換定義は、垂直バーの続く明示的マークアップの開始 (".. ")、置換テキスト、\
+もう一つの垂直バー、空白、そして定義ブロックで示されます。\
+置換テキストの前後に空白は含められません。置換定義ブロックは "image_" や\
+"replace_" のような埋込みのインライン互換ディレクティブを含みます。\
+例えば::
 
-    +-------+-----------------------------------------------------+
-    | ".. " | "|" substitution text "| " directive type "::" data |
-    +-------+ directive block                                     |
-            |                                                     |
-            +-----------------------------------------------------+
+    |バイオハザード| シンボルは、医療廃棄物を処分するためのコンテナで
+    使わなければなりません。
 
-Following are some use cases for the substitution mechanism.  Please
-note that most of the embedded directives shown are examples only and
-have not been implemented.
+    .. |バイオハザード| image:: biohazard.png
 
-Objects
-    Substitution references may be used to associate ambiguous text
-    with a unique object identifier.
+置換定義ブロックに直接的または間接的に置換参照の循環を含めると、エラーに\
+なります。
 
-    For example, many sites may wish to implement an inline "user"
-    directive::
+`置換参照`_ は (マッチする置換テキストによってリンクされ) 対応する定義の\
+加工されたコンテンツによって、インラインで置換されます。マッチは大文字と小文字を\
+区別しますが、寛容で、マッチするものが見つからない場合は、大文字と小文字を\
+区別しないマッチを試みます。
 
-        |Michael| and |Jon| are our widget-wranglers.
+..
+   Substitution definitions allow the power and flexibility of
+   block-level directives_ to be shared by inline text.  They are a way
+   to include arbitrarily complex inline structures within text, while
+   keeping the details out of the flow of text.  They are the equivalent
+   of SGML/XML's named entities or programming language macros.
+
+   Without the substitution mechanism, every time someone wants an
+   application-specific new inline structure, they would have to petition
+   for a syntax change.  In combination with existing directive syntax,
+   any inline structure can be coded without new syntax (except possibly
+   a new directive).
+
+   Syntax diagram::
+
+       +-------+-----------------------------------------------------+
+       | ".. " | "|" substitution text "| " directive type "::" data |
+       +-------+ directive block                                     |
+               |                                                     |
+               +-----------------------------------------------------+
+
+置換定義はブロックレベルディレクティブパワーと柔軟性が、インラインテキストによって\
+共有することを可能にします。これはテキストの流れに詳細を含めずに、テキスト内に\
+任意の複雑なインライン構造を含める方法で、SGML/XMLの名前付きエンティティや\
+プログラミング言語のマクロに相当します。
+
+置換メカニズムがなければ、誰かがアプリケーション固有の新しいインライン構造を\
+必要とする度に、彼らは構文の変更を申請しなければならないでしょう。\
+既存のディレクティブと組み合わせることで、任意のインライン構造を、 (おそらく\
+新しいディレクティブを除いては) 新しい構文を必要とせずに書くことができます。
+
+構文ダイアグラム::
+
+    +-------+--------------------------------------------------------+
+    | ".. " | "|" 置換テキスト "| " ディレクティブタイプ "::" データ |
+    +-------+ ディレクティブブロック                                 |
+            |                                                        |
+            +--------------------------------------------------------+
+
+..
+   Following are some use cases for the substitution mechanism.  Please
+   note that most of the embedded directives shown are examples only and
+   have not been implemented.
+
+以下は、置換メカニズムのユースケースのいくつかです。例示されているディレクティブの\
+ほとんどは単なる例であり、実装はされていないことに注意してください。
+
+..
+   Objects
+       Substitution references may be used to associate ambiguous text
+       with a unique object identifier.
+
+       For example, many sites may wish to implement an inline "user"
+       directive::
+
+           |Michael| and |Jon| are our widget-wranglers.
+
+           .. |Michael| user:: mjones
+           .. |Jon|     user:: jhl
+
+       Depending on the needs of the site, this may be used to index the
+       document for later searching, to hyperlink the inline text in
+       various ways (mailto, homepage, mouseover Javascript with profile
+       and contact information, etc.), or to customize presentation of
+       the text (include username in the inline text, include an icon
+       image with a link next to the text, make the text bold or a
+       different color, etc.).
+
+       The same approach can be used in documents which frequently refer
+       to a particular type of objects with unique identifiers but
+       ambiguous common names.  Movies, albums, books, photos, court
+       cases, and laws are possible.  For example::
+
+           |The Transparent Society| offers a fascinating alternate view
+           on privacy issues.
+
+           .. |The Transparent Society| book:: isbn=0738201448
+
+       Classes or functions, in contexts where the module or class names
+       are unclear and/or interpreted text cannot be used, are another
+       possibility::
+
+           4XSLT has the convenience method |runString|, so you don't
+           have to mess with DOM objects if all you want is the
+           transformed output.
+
+           .. |runString| function:: module=xml.xslt class=Processor
+
+オブジェクト
+    置換参照はユニークなオブジェクト識別子で、曖昧なテキストと関連付けるために\
+    使えます。
+
+    例えば、多くの現場ではインラインの "user" ディレクティブの実装を望んでいる\
+    かも知れません::
+
+        |Michael| と |Jon| は我々の製品の担当者です。
 
         .. |Michael| user:: mjones
         .. |Jon|     user:: jhl
 
-    Depending on the needs of the site, this may be used to index the
-    document for later searching, to hyperlink the inline text in
-    various ways (mailto, homepage, mouseover Javascript with profile
-    and contact information, etc.), or to customize presentation of
-    the text (include username in the inline text, include an icon
-    image with a link next to the text, make the text bold or a
-    different color, etc.).
+    現場のニーズに応じて、これは後に検索するためにインデックスしたり、さまざまな\
+    方法 (mailto、ホームページ、プロフィールや連絡先情報のついたマウスオーバーの\
+    Javascript等) でハイパーリンクしたり、テキストの表現の加工 (インラインテキストに\
+    ユーザ名を含める、テキストの横にリンク付きのアイコン画像を含める、テキストを\
+    太字や異なる色に変える等) をしたりできます。
 
-    The same approach can be used in documents which frequently refer
-    to a particular type of objects with unique identifiers but
-    ambiguous common names.  Movies, albums, books, photos, court
-    cases, and laws are possible.  For example::
+    同様のアプローチは、ユニークな識別子を持つものの、あいまいな一般名を持つ\
+    オブジェクトの特定のタイプをドキュメントの中で頻繁に参照するのに使えます。
+    映画、アルバム、書籍、写真、判例、そして法令などがそうです。例えば::
 
-        |The Transparent Society| offers a fascinating alternate view
-        on privacy issues.
+        |The Transparent Society| はプライバシー問題について、もう一つの魅力的な
+        視点を提供しています。
 
         .. |The Transparent Society| book:: isbn=0738201448
 
-    Classes or functions, in contexts where the module or class names
-    are unclear and/or interpreted text cannot be used, are another
-    possibility::
+    文脈の中で、モジュールやクラス名が不明および／または解釈済みテキストが使えない\
+    ような場合、クラスや関数などはもう一つの候補です::
 
-        4XSLT has the convenience method |runString|, so you don't
-        have to mess with DOM objects if all you want is the
-        transformed output.
+        4XSLT は |runString| という便利なメソッドがあり、変換された出力が
+        欲しいだけなら DOM を台無しにする必要はありません。
 
         .. |runString| function:: module=xml.xslt class=Processor
 
@@ -3502,6 +4321,11 @@ Images
         .. _POEE: http://www.poee.org/
 
     The "image_" directive has been implemented.
+
+画像
+    画像は置換参照で一般的に使われます::
+
+
 
 Styles [#]_
     Substitution references may be used to associate inline text with
@@ -3588,7 +4412,11 @@ Replacement text
     The "replace_" directive has been implemented.
 
 
-Comments
+.. Comments
+   ````````
+.. .. _comments:
+
+コメント
 ````````
 
 Doctree element: comment.
@@ -3630,8 +4458,12 @@ Syntax diagram::
             +----------------------+
 
 
-Implicit Hyperlink Targets
-==========================
+.. Implicit Hyperlink Targets
+   ==========================
+.. _implicit hyperlink targets:
+
+暗黙的ハイパーリンクターゲット
+==============================
 
 Implicit hyperlink targets are generated by section titles, footnotes,
 and citations, and may also be generated by extension constructs.
@@ -3664,8 +4496,12 @@ calling software (such as the Docutils_) can warn of unresolvable
 links, giving reasons for the messages.
 
 
-Inline Markup
-=============
+.. Inline Markup
+   =============
+.. _liline markup:
+
+インラインマークアップ
+======================
 
 In reStructuredText, inline markup applies to words or phrases within
 a text block.  The same whitespace and punctuation that serves to
@@ -3693,8 +4529,12 @@ Three constructs use different start-strings and end-strings:
 `Standalone hyperlinks`_ are recognized implicitly, and use no extra
 markup.
 
-Inline markup recognition rules
--------------------------------
+.. Inline markup recognition rules
+   -------------------------------
+.. _inline markup recognitino rules:
+
+インラインマークアップ認識ルール
+--------------------------------
 
 Inline markup start-strings and end-strings are only recognized if all of
 the following conditions are met:
@@ -3786,8 +4626,12 @@ choice (by default, this also selects a monospaced font)::
 
     *4, class_, *args, **kwargs, `TeX-quoted', *ML, *.txt
 
-Recognition order
------------------
+.. Recognition order
+   -----------------
+.. _recognition order:
+
+認識順序
+--------
 
 Inline markup delimiter characters are used for multiple constructs,
 so to avoid ambiguity there must be a specific recognition order for
@@ -3811,8 +4655,12 @@ each character.  The inline markup recognition order is as follows:
 - `Standalone hyperlinks`_ are the last to be recognized.
 
 
-Character-Level Inline Markup
------------------------------
+.. Character-Level Inline Markup
+   -----------------------------
+.. _character-level inline markup:
+
+文字レベルのインラインマークアップ
+----------------------------------
 
 It is possible to mark up individual characters within a word with
 backslash escapes (see `Escaping Mechanism`_ above).  Backslash
@@ -3841,8 +4689,12 @@ above will disappear from the processed document.
    sparingly and only where absolutely necessary.
 
 
-Emphasis
---------
+.. Emphasis
+   --------
+.. _emphasis:
+
+強調
+----
 
 Doctree element: emphasis.
 
@@ -3855,8 +4707,12 @@ Text enclosed by single asterisk characters is emphasized::
 Emphasized text is typically displayed in italics.
 
 
-Strong Emphasis
----------------
+.. Strong Emphasis
+   ---------------
+.. _strong emphasis:
+
+強い強調
+--------
 
 Doctree element: strong.
 
@@ -3869,7 +4725,11 @@ Text enclosed by double-asterisks is emphasized strongly::
 Strongly emphasized text is typically displayed in boldface.
 
 
-Interpreted Text
+.. Interpreted Text
+   ----------------
+.. _interpreted text:
+
+解釈済みテキスト
 ----------------
 
 Doctree element: depends on the explicit or implicit role and
@@ -3910,8 +4770,12 @@ custom interpreted text roles.  In addition, applications may support
 specialized roles.
 
 
-Inline Literals
----------------
+.. Inline Literals
+   ---------------
+.. _inline literals:
+
+インラインリテラル
+------------------
 
 Doctree element: literal.
 
@@ -3939,8 +4803,12 @@ Inline literals are useful for short code snippets.  For example::
     floating-point numbers (without exponents).
 
 
-Hyperlink References
---------------------
+.. Hyperlink References
+   --------------------
+.. _hyperlink references:
+
+ハイパーリンク参照
+------------------
 
 Doctree element: reference.
 
@@ -3974,8 +4842,12 @@ match references to targets, but otherwise behave similarly to named
 hyperlinks.
 
 
-Embedded URIs
-`````````````
+.. Embedded URIs
+   `````````````
+.. _embedded uris:
+
+埋め込み URI
+````````````
 
 A hyperlink reference may directly embed a target URI inline, within
 angle brackets ("<...>") as follows::
@@ -4032,7 +4904,11 @@ text::
    to be read in processed form.
 
 
-Inline Internal Targets
+.. Inline Internal Targets
+   ------------------------
+.. _inline lnternal targets:
+
+インライン内部ターゲット
 ------------------------
 
 Doctree element: target.
@@ -4054,8 +4930,12 @@ See `Implicit Hyperlink Targets`_ for the resolution of duplicate
 reference names.
 
 
-Footnote References
--------------------
+.. Footnote References
+   -------------------
+.. _footnote references:
+
+脚注参照
+--------
 
 Doctree element: footnote_reference.
 
@@ -4080,8 +4960,12 @@ For example::
     .. [1] Read The Fine Manual
 
 
-Citation References
--------------------
+.. Citation References
+   -------------------
+.. _citation references:
+
+引用参照
+--------
 
 Doctree element: citation_reference.
 
@@ -4099,8 +4983,12 @@ For example::
 See Citations_ for the citation itself.
 
 
-Substitution References
------------------------
+.. Substitution References
+   -----------------------
+.. _substitution references:
+
+置換参照
+--------
 
 Doctree element: substitution_reference, reference.
 
@@ -4127,8 +5015,12 @@ Examples::
     refer to the "substitution and hyperlink reference" target.
 
 
-Standalone Hyperlinks
----------------------
+.. Standalone Hyperlinks
+   ---------------------
+.. _standalone hyperlinks:
+
+独立ハイパーリンク
+------------------
 
 Doctree element: reference.
 
@@ -4194,8 +5086,12 @@ characters (see `Escaping Mechanism`_ above).
    RFC2396_ and RFC2732_.
 
 
-Units
-=====
+.. Units
+   =====
+.. _units:
+
+単位
+====
 
 (New in Docutils 0.3.10.)
 
@@ -4207,8 +5103,12 @@ Units are only supported where explicitly mentioned in the reference
 manuals.
 
 
-Length Units
-------------
+.. Length Units
+   ------------
+.. _length units:
+
+長さの単位
+----------
 
 The following length units are supported by the reStructuredText
 parser:
@@ -4238,17 +5138,26 @@ specific documentation in the `user doc`__ for details.
 
 __ ../../user/
 
-Percentage Units
-----------------
+.. Percentage Units
+   ----------------
+.. _percentage units:
+
+パーセンテージの単位
+--------------------
 
 Percentage values have a percent sign ("%") as unit.  Percentage
 values are relative to other values, depending on the context in which
 they occur.
 
 
-----------------
- Error Handling
-----------------
+.. ----------------
+    Error Handling
+   ----------------
+.. _error handling:
+
+--------------------
+ エラーハンドリング
+--------------------
 
 Doctree element: system_message, problematic.
 
@@ -4256,14 +5165,17 @@ Markup errors are handled according to the specification in `PEP
 258`_.
 
 
+.. _restructuredtext入門:
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Docutils: http://docutils.sourceforge.net/
 .. _The Docutils Document Tree: ../doctree.html
 .. _Docutils Generic DTD: ../docutils.dtd
+.. _変換:
 .. _transforms:
    http://docutils.sourceforge.net/docutils/transforms/
 .. _Grouch: http://www.mems-exchange.org/software/grouch/
 .. _RFC822: http://www.rfc-editor.org/rfc/rfc822.txt
+.. _`文書タイトル変換`:
 .. _DocTitle transform:
 .. _DocInfo transform:
    http://docutils.sourceforge.net/docutils/transforms/frontmatter.py
@@ -4271,6 +5183,7 @@ Markup errors are handled according to the specification in `PEP
    http://www.python.org/doc/current/lib/module-getopt.html
 .. _GNU libc getopt_long():
    http://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Options.html
+.. _`doctest モジュール`:
 .. _doctest module:
    http://www.python.org/doc/current/lib/module-doctest.html
 .. _Emacs table mode: http://table.sourceforge.net/
@@ -4278,16 +5191,23 @@ Markup errors are handled according to the specification in `PEP
    http://www.iana.org/assignments/uri-schemes
 .. _Retired Index of WWW Addressing Schemes:
    http://www.w3.org/Addressing/schemes.html
+.. _`World Wide Web コンソーシアム`:
 .. _World Wide Web Consortium: http://www.w3.org/
+.. _`ウェブコンテンツ・アクセシビリティ・ ガイドライン HTML 技術書`:
 .. _HTML Techniques for Web Content Accessibility Guidelines:
    http://www.w3.org/TR/WCAG10-HTML-TECHS/#link-text
+.. _画像:
 .. _image: directives.html#image
 .. _replace: directives.html#replace
 .. _meta: directives.html#meta
+.. _図形:
 .. _figure: directives.html#figure
+.. _勧告:
 .. _admonition: directives.html#admonitions
 .. _role: directives.html#custom-interpreted-text-roles
+.. _reStructuredText ディレクティブ:
 .. _reStructuredText Directives: directives.html
+.. _reStructuredText 解釈済みテキスト:
 .. _reStructuredText Interpreted Text Roles: roles.html
 .. _RFC2396: http://www.rfc-editor.org/rfc/rfc2396.txt
 .. _RFC2732: http://www.rfc-editor.org/rfc/rfc2732.txt
