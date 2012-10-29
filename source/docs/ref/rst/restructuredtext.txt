@@ -4294,16 +4294,45 @@ Doc ツリー要素: substitution_definition
 
         .. |runString| function:: module=xml.xslt class=Processor
 
-Images
-    Images are a common use for substitution references::
+..
+   Images
+       Images are a common use for substitution references::
+
+           West led the |H| 3, covered by dummy's |H| Q, East's |H| K,
+           and trumped in hand with the |S| 2.
+
+           .. |H| image:: /images/heart.png
+              :height: 11
+              :width: 11
+           .. |S| image:: /images/spade.png
+              :height: 11
+              :width: 11
+
+           * |Red light| means stop.
+           * |Green light| means go.
+           * |Yellow light| means go really fast.
+
+           .. |Red light|    image:: red_light.png
+           .. |Green light|  image:: green_light.png
+           .. |Yellow light| image:: yellow_light.png
+
+           |-><-| is the official symbol of POEE_.
+
+           .. |-><-| image:: discord.png
+           .. _POEE: http://www.poee.org/
+
+       The "image_" directive has been implemented.
+
+画像
+    画像は置換参照で一般的に使われます::
 
         West led the |H| 3, covered by dummy's |H| Q, East's |H| K,
         and trumped in hand with the |S| 2.
 
-        .. |H| image:: /images/heart.png
+        .. |H| image:: /image/heart.png
            :height: 11
            :width: 11
-        .. |S| image:: /images/spade.png
+        .. |S| image:: /image/spade.png
            :height: 11
            :width: 11
 
@@ -4311,21 +4340,18 @@ Images
         * |Green light| means go.
         * |Yellow light| means go really fast.
 
-        .. |Red light|    image:: red_light.png
+        .. |Red light|    image:: red_right.png
         .. |Green light|  image:: green_light.png
         .. |Yellow light| image:: yellow_light.png
 
         |-><-| is the official symbol of POEE_.
 
-        .. |-><-| image:: discord.png
+        .. \-><-\ image:: discord.png
         .. _POEE: http://www.poee.org/
 
-    The "image_" directive has been implemented.
+    .. todo:: リテラルブロック内は未翻訳。
 
-画像
-    画像は置換参照で一般的に使われます::
-
-
+    "画像_" ディレクティブは、元から組み込まれています。
 
 Styles [#]_
     Substitution references may be used to associate inline text with
@@ -4360,6 +4386,36 @@ Styles [#]_
        warrant simpler syntax such as an extension to the interpreted
        text role syntax.  The substitution mechanism is cumbersome for
        simple text styling.
+
+スタイル [#]_
+    置換参照は外部に定義された表示スタイルをインラインテキストに関連付ける\
+    ことができます::
+
+        Even |the text in Texas| is big.
+
+        .. |the text in Texas| style:: big
+
+    スタイル名は、ある任意の出力形式の文脈で意味のある名前 (HTML 出力における\
+    CSS クラス名、LaTeX における LaTeX スタイルなど) で、他の出力形式 (プレーン\
+    テキストなど) では無視されます。
+
+    .. @@@ これは再考と書きなおしまたは削除が必要:
+
+       スタイル名のセットが予め定義されたものでない - コンテンツ作者のドメイン\
+       であり、パーサや出力フォーマッタの作者のものではない - ですし、スタイル名\
+       の引数を解釈済みテキストスタイルロールに関連付ける方法がないため、\
+       解釈済みテキストはこの用途には不向きです。また、スタイリングブロックには\
+       同じメカニズムを使うのが望ましいです::
+
+           .. style:: motto
+              ボブの下着店で、君のパンツを手に入れるためになにかしよう。
+
+           .. style:: disclaimer
+              All rights reserved. Reprint what you like.
+
+    .. [#] 解釈済みテキスト構文の拡張のような、よりシンプルな構文を保証する\
+       ための "スタイル" のメカニズムには十分な需要があるでしょう。
+       置換メカニズムは、単純なテキストのスタイリングをするには煩雑です。
 
 Templates
     Inline markup may be used for later processing by a template
